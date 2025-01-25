@@ -1,0 +1,54 @@
+html, body {
+font-family: Calibri, Cadara, Constantia, Corbel, sans-serif;   
+}
+body{
+padding: 0 20px 0;
+}
+h1, h2, h3 {
+font-weight: normal;
+}
+hgroup{
+padding: 0 0 20px;
+}
+hgroup > h2{
+text-indent: 20px;                
+font-size: medium;
+margin: 0;
+}
+h1{
+font-size: xx-large;
+padding: 10px 0 0;  
+margin: 0;
+}
+h2{
+font-size: x-large;
+margin: 0 0 10px;
+}
+h3{
+font-size: large;
+text-indent: 10px;  
+margin: 0 0 5px;
+}
+dl{
+padding: 5px 0;
+margin: 0;
+}
+dl, h3{
+clear: both;
+}
+dt{
+text-indent: 25px;  
+width: 120px;
+float: left;
+margin: 0;
+}
+dd{
+float: left;
+margin: 0;
+}
+section{
+margin: 10px 0 0;
+}
+h3.previous{
+margin: 30px 0 0;
+}
