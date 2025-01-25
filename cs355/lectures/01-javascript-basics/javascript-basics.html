@@ -1,0 +1,633 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>javascript-basics</title><link href='https://fonts.loli.net/css?family=Merriweather:900,900italic,300,300italic&subset=latin-ext' rel='stylesheet' type='text/css' /><link href='https://fonts.loli.net/css?family=Lato:900,300&subset=latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+  .typora-export h1::after, .typora-export h2::after, .typora-export h3::after, .typora-export h4::after, .typora-export h5::after, .typora-export h6::after { content: ""; display: block; height: 100px; margin-bottom: -100px; }
+}
+
+
+@include-when-export url(https://fonts.loli.net/css?family=Merriweather:900,900italic,300,300italic&subset=latin-ext);
+@include-when-export url(https://fonts.loli.net/css?family=Lato:900,300&subset=latin-ext);
+
+:root {
+	--control-text-color: #777;
+}
+
+/**
+ * forked from pixyll.com
+ * MIT license
+ */
+
+h1,
+.h1,
+.f1 {
+	font-size: 2rem;
+	line-height: 2.5rem;
+}
+h2,
+.h2,
+.f2 {
+	font-size: 1.5rem;
+	line-height: 2rem;
+}
+h3,
+.h3,
+.f3 {
+	font-size: 1.25rem;
+	line-height: 1.5rem;
+}
+p,
+.p,
+.f4,
+h4,
+h5,
+h6,
+dl,
+ol,
+ul,
+pre[cid],
+div[cid],
+#typora-source {
+	font-size: 1.125rem;
+	line-height: 1.5rem;
+}
+
+h4 {
+	font-size: 1.13rem;
+}
+/*
+ Pixyll
+ A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff.
+ Best served with BASSCSS (http://jxnblk.github.io/basscss)
+ Crafted with <3 by John Otander (@4lpine) - ©2015 John Otander MIT License http://opensource.org/licenses/MIT
+
+*/
+
+body {
+	font-family: "Merriweather", "PT Serif", Georgia, "Times New Roman", "STSong", Serif;
+	line-height: 1.5rem;
+	font-weight: 400;
+}
+
+#write {
+	max-width: 914px;
+	color: #333;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1100px;
+	}
+}
+
+@media only screen and (min-width: 1700px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+img {
+	width: auto;
+	max-width: 100%;
+}
+body {
+	font-size: 1.5rem;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.ty-table-edit {
+	background: #ededed;
+}
+
+table {
+	width: 100%;
+	font-size: 1.125rem;
+}
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td,
+table > tfoot > tr > th,
+table > tfoot > tr > td {
+	padding: 12px;
+	line-height: 1.2;
+	vertical-align: top;
+	border-top: 1px solid #333;
+}
+table > thead > tr > th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #333;
+}
+table > caption + thead > tr:first-child > th,
+table > caption + thead > tr:first-child > td,
+table > colgroup + thead > tr:first-child > th,
+table > colgroup + thead > tr:first-child > td,
+table > thead:first-child > tr:first-child > th,
+table > thead:first-child > tr:first-child > td {
+	border-top: 0;
+}
+table > tbody + tbody {
+	border-top: 2px solid #333;
+}
+p {
+	font-weight: 300;
+	line-height: 1.5;
+}
+abbr {
+	border-bottom: 1px black dotted;
+	cursor: help;
+}
+pre,
+code {
+	font-family: Menlo, Monaco, "Courier New", monospace;
+}
+
+code,
+.md-fences  {
+	color: #7a7a7a;
+}
+
+.md-fences {
+	padding: 1.125em;
+	margin-bottom: 0.88em;
+	font-size: 1rem;
+	border: 1px solid #7a7a7a;
+	padding-bottom: 0.5rem;
+	padding-top: 0.5rem;
+}
+
+blockquote {
+	padding: 1.33em;
+	font-style: italic;
+	border-left: 5px solid #7a7a7a;
+	color: #555;
+}
+blockquote em {
+	color: #000;
+}
+blockquote footer {
+	font-size: .85rem;
+	font-style: normal;
+	background-color: #fff;
+	color: #7a7a7a;
+	border-color: transparent;
+}
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	font-family: "Lato", 'Helvetica Neue', Helvetica, sans-serif;
+	font-weight: bold;
+	line-height: 1.2;
+	margin: 1em 0 0.5em;
+}
+@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.3rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before{
+		top: 1px;
+	}
+	.p,
+	p,
+	li {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}
+@media (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.3rem;
+	}
+}
+@media screen and (min-width: 64em) {
+	.h1,
+	h1 {
+		font-size: 4.498rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.29rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.9rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.591rem;
+	}
+	#write>h4.md-focus:before{
+		top:4px;
+	}
+}
+a {
+	color: #463F5C;
+	text-decoration: underline;
+}
+
+#write {
+	padding-top: 2rem;
+}
+
+#write pre.md-meta-block {
+	min-height: 35px;
+	padding: 0.5em 1em;
+	white-space: pre;
+	border: 0px;
+
+	border-left: 30px #f8f8f8 solid;
+	border-right: 30px #f8f8f8 solid;
+	width: 100vw;
+	max-width: calc(100% + 60px);
+
+	margin-left: -30px;
+	margin-bottom: 2em;
+	margin-top: -2010px;
+	padding-top: 2000px;
+	padding-bottom: 10px;
+	line-height: 1.5em;
+	color: #7a7a7a;
+	background-color: #fafafa;
+	font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+	font-weight: 300;
+	clear: both;
+	padding-left: 0;
+	font-size:1.125rem;
+}
+.md-image>.md-meta {
+	color: #463F5C
+}
+.footnotes {
+	font-size:1.1rem;
+}
+.md-tag {
+	font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+}
+.code-tooltip {
+	background: white;
+}
+.code-tooltip-content {
+	font-size: 1.1rem;
+}
+
+.task-list{
+	padding-left: 0;
+}
+
+.md-task-list-item {
+	padding-left:34px;
+}
+
+.md-task-list-item > input{
+	width: 1.25rem;
+	height: 1.25rem;
+	display: block;
+	-webkit-appearance: initial;
+	top: -0.2rem;
+	margin-left: -1.6em;
+	margin-top: calc(1rem - 7px);
+	border: none;
+}
+
+.md-task-list-item > input:focus{
+	outline: none;
+	box-shadow: none;
+}
+
+.md-task-list-item > input:before{
+	border: 1px solid #555;
+	border-radius: 1.5rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	background: #fff;
+	content: ' ';
+	transition: background-color 200ms ease-in-out;
+	display: block;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	background: #333;
+	border-width: 2px;
+	display:inline-block;
+	transition: background-color 200ms ease-in-out;
+}
+
+.md-task-list-item > input:checked:after,
+.md-task-list-item > input[checked]:after {
+	opacity: 1;
+}
+
+.md-task-list-item > input:after {
+	opacity: 1;
+	-webkit-transition: opacity 0.05s ease-in-out;
+	-moz-transition: opacity 0.05s ease-in-out;
+	transition: opacity 0.05s ease-in-out;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	position: absolute;
+	top: 0.4375rem;
+	left: 0.28125rem;
+	width: 0.9375rem;
+	height: 0.5rem;
+	border: 3px solid #fff;
+	border-top: 0;
+	border-right: 0;
+	content: ' ';
+	opacity: 0;
+}
+
+.md-tag {
+	color:inherit;
+}
+
+.md-toc:focus .md-toc-content{
+	margin-top: 19px;
+}
+
+#typora-sidebar {
+	font-size:1rem !important;
+}
+
+.html-for-mac #typora-sidebar {
+	background-color:white;
+}
+
+.outline-content li, .outline-content ul {
+	font-size:1rem !important;
+}
+
+.outline-title {
+	line-height: inherit;
+	margin-top: 10px;
+}
+
+.outline-expander {
+	width: 18px;
+}
+
+.outline-expander:before {
+ 	content: "+";
+	font-family: inherit;
+	color: rgb(108, 108, 108); 
+  	font-size: 1.5rem;
+ 	top: 0.1rem;
+}
+
+.outline-expander:hover:before {
+	content: "+";
+}
+
+.outline-item-open>.outline-item>.outline-expander:before{
+	content: "-";
+}
+
+/** source code mode */
+#typora-source {
+	font-family: Courier, monospace;
+    color: #6A6A6A;
+}
+
+.os-windows #typora-source {
+	font-family: inherit;
+}
+
+.cm-s-typora-default .cm-header, 
+.cm-s-typora-default .cm-property,
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+	color: #428bca;
+}
+
+.cm-s-typora-default .cm-atom, .cm-s-typora-default .cm-number {
+	color: #777777;
+}
+
+.md-diagram-panel {
+	margin-top: 24px;
+	margin-left: -1.2em;
+}
+
+.md-mathjax-midline {
+	background: #fafafa;
+}
+
+.enable-diagrams pre.md-fences[lang="sequence"] .code-tooltip,
+.enable-diagrams pre.md-fences[lang="flow"] .code-tooltip,
+.enable-diagrams pre.md-fences[lang="mermaid"] .code-tooltip {
+    bottom: -3.4em;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write'  class=''><h1><a name="javascript-basics" class="md-header-anchor"></a><span>JavaScript Basics</span></h1><p>&nbsp;</p><h2><a name="setting-up-your-environment" class="md-header-anchor"></a><span>Setting up your environment</span></h2><ol start='' ><li><p><span>Install Node.js (Current v14+)</span></p></li><li><p><span>Create a new file  </span><code>cs355-demos/javascript-basics.js</code></p></li><li><p><span>Open it up in your text editor of choice, I recommend Visual Studio Code</span></p></li><li><p><span>Go through each demo, adding the code to </span><code>javascript-basics.js</code><span> running each block of code and checking the output to ensure it makes sense.</span></p></li><li><p><span>To run a program in Visual Studio Code, </span>
+<span>You can go to </span><code>Run &gt; Run without Debugging</code><span> or press </span><code>CTRL + F5</code></p><p>&nbsp;</p></li><li><p><span>[Optional] </span></p><p><span>Most of the code in this basic lecture can also be run in a browser, but later demos will use Node.js only APIs that are unavailable in the browser for security reasons.  So make sure you can run programs via steps 1-5 first.</span></p><blockquote><p><span>There are also browser only APIs like the DOM, the window object, and fetch that Node.js doesn&#39;t have</span></p></blockquote><p><span>The benefit of running code in your browser&#39;s interpreter is the convivence of copying and pasting, giving you instant feedback without.  To do this in Firefox or Chrome navigate to a page that is not particularly busy.  Firefox home or google.com work well.</span></p><p><span>In your browser press </span><code>CTRL + SHIFT + I</code><span> to open the document inspector, on top should be a tab for Console.  Click on that and ignore any of the errors and warnings.  This console is a full fledged JavaScript interpreter and you can type JS code into it.  </span></p><p>&nbsp;</p><p><span>Try it with  </span><code>1 + 1;</code><span> </span></p><p><span>Note as with most command prompt styled interpreters, the last value returned is always outputted on the screen (which is why we see 2 without using a print statement) </span></p><p>&nbsp;</p><p><span>This value will often be </span><code>undefined</code><span> when using functions like </span><code>console.log();</code><span> which has no return value, so don&#39;t worry about seeing an extra </span><code>undefined</code><span> when using a browser.  It&#39;s a feature of command prompt styled interpreters.  If you run a program via a file they should go away.</span></p><p>&nbsp;</p><p><span>Additional note: Memory of all variables persist in this environment until you refresh, you will get redeclaration errors if you copy and paste the same code twice.  Refresh your browser to fix.</span></p></li></ol><h2><a name="printing" class="md-header-anchor"></a><span>Printing</span></h2><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js-basics.js "></script><h2><a name="primitive-datatypes" class="md-header-anchor"></a><span>Primitive Datatypes</span></h2><p><span>JavaScript has 6 basic primitive data types</span></p><ul><li><span>Number (64-bit binary format IEEE 754)</span></li><li><span>String</span></li><li><span>Boolean</span></li><li><span>undefined</span></li><li><span>Symbol (not discussed in this course)</span></li><li><span>BigInt (not discussed in this course)</span></li></ul><h3><a name="number" class="md-header-anchor"></a><span>Number</span></h3><p><span>There are no ints in JavaScript.  All numbers are 64-bit floating point numbers, this means you need to be careful when working with decimal numbers.</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js-basics_02-floating-point.js"></script><p><span>Whole numbers should be safe as long as you stay within the range of ±2^53−1.</span></p><p><span>You can use </span><code>Number.MAX_SAFE_INTEGER</code><span> and </span><code>Number.MIN_SAFE_INTEGER</code><span> instead.</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js-basics_03-max_safe_integer.js"></script><h3><a name="strings" class="md-header-anchor"></a><span>Strings</span></h3><p><span>Single Quotes and Double Quotes can be used interchangeably. </span></p><p><span>Template strings to evaluate expressions can be added using Backticks</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js-basics_04-strings.js"></script><h4><a name="stringlength" class="md-header-anchor"></a><span>String.length</span></h4><p><span>All primitives also have an object version instantiable with the new keyword</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_05-string.length.js"></script><p><span>When we invoke a primitive, the interpreter will automatically coerce it into the object form, that way we can use property/method dot operations on what should be a primitive.</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_06-string.length.js"></script><h2><a name="objects" class="md-header-anchor"></a><span>Objects</span></h2><p><span>JavaScript contains non-data structural types that wrap primitives to form complex objects.</span></p><p><span>The Object is the most basic of these structural types, all other objects are derived from this.</span></p><p><span>An object is a dictionary styled list of comma separated key : value pairs.  Each pair is separated with a colon.</span></p><p><span>Objects are denoted by a set curly braces.</span></p><p><span>Keys can be only strings (or Symbols, but we won&#39;t be talking about them)</span></p><p><span>When referencing keys, non-quoted values are treated as strings.</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_07-objects.js "></script><p><span>We can also access properties using square braces, this can be useful if you want to use a variable as your key.  Because of the previous rule</span></p><blockquote><p><span>When referencing keys, non quoted values are treated as strings.</span></p></blockquote><p><span>You cannot use the dot operator with a variable, as it is automatically treated as a string.</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_08-objects-square-braces.js "></script><p>&nbsp;</p><h3><a name="computed-property-names" class="md-header-anchor"></a><span>Computed property names</span></h3><p><span>Another way to do this is with computed property names which accept expressions that return strings</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_09-objects-computer-property-names.js "></script><p><span>Objects are compared by their references</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_10-object-references.js "></script><p><span>You can add double quotes to your keys, these are equivalent</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_11-object-quoted-keys.js"></script><h3><a name="const" class="md-header-anchor"></a><span>const</span></h3><p><span>const is short for a constant, they cannot be set to a new value.  They must be initialized at declaration.</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_12-object-const.js "></script><p><span>Regarding objects this does not mean the internals cannot be changed</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_13-object-const.js "></script><p><span>If you want to prevent an object from changing, you can apply </span><code>Object.freeze()</code><span> to make it immutable.  Any changes will be silently ignored.</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_14-object-const.js "></script><h3><a name="destructuring-assignment" class="md-header-anchor"></a><span>Destructuring Assignment</span></h3><p><span>The destructuring assignment allows the creation of multiple variables using the properties of an existing object</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_15-object-destructuring-assignment.js "></script><p><span>The variables are arranged based on their names, you do not need to pull out properties that you have no use for.</span></p><h3><a name="property-value-shorthand" class="md-header-anchor"></a><span>Property value shorthand</span></h3><p><span>If you have a variable and you want to create an object with that variable and are fine using the same property name, a shorthand allows you to omit the colon and duplicate key value definitions.  This doesn&#39;t work if you need to rename the property.</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_16-object-property-value-shorthand.js "></script><h3><a name="function" class="md-header-anchor"></a><span>Function</span></h3><p><span>In JavaScript functions are objects</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_17-functions.js"></script><p><span>You will have to run this in a browser to see the properties (or just take my word on this), Node.js prints just the function body when using </span><code>console.log()</code></p><p><span>We can define functions in (at least 2 ways)</span></p><h4><a name="function-declaration" class="md-header-anchor"></a><span>Function Declaration</span></h4><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_18-function-declaration.js"></script><p><span>A function declaration will be &quot;hoisted&quot; to the top of it&#39;s scope.</span></p><h4><a name="function-expression" class="md-header-anchor"></a><span>Function Expression</span></h4><p><span>In contrast a function expression can only be used after it is defined</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_19-function-expression.js"></script><h4><a name="function-constructor-reference" class="md-header-anchor"></a><span>Function Constructor [reference]</span></h4><p><span>Using the function constructor is more academic and not really used in practice, especially since it uses an evil </span><code>eval()</code><span> command under the hood, which prevents it from being run in browsers.</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_20-function-constructor.js"></script><p><span>Should work in Node.js, but most browser will block it</span></p><blockquote><p><span>Functions created with the </span><code>Function</code><span> constructor do not  create closures to their creation contexts; they always are created in  the global scope. When running them, they will only be able to access  their own local variables and global ones, not the ones from the scope  in which the </span><code>Function</code><span> constructor was created.</span></p><p><span>-</span><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function#Difference_between_Function_constructor_and_function_declaration' target='_blank' class='url'>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function#Difference_between_Function_constructor_and_function_declaration</a></p></blockquote><h4><a name="function-names" class="md-header-anchor"></a><span>Function names</span></h4><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_21-function-names.js"></script><p><span>When using a function expression the function name is not used, instead the variable name (</span><code>functon_05</code><span> in this example) is the only way to refer to the function, it is generally good practice to include a function name to describe it, but it is not required.</span></p><h4><a name="anonymous-functions" class="md-header-anchor"></a><span>Anonymous Functions</span></h4><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_22-anonymous-function.js"></script><p><span>An anonymous function is a function without a name</span></p><p><span>These can be used when passing functions to higher-order functions.  As an example, the Array&#39;s map method takes a function as it&#39;s argument and applies that function to every element in the array.</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_23-anonymous-function.js"></script><p><span>Here we pass in an anonymous function  </span><code>function(x) {return x * x}</code></p><p><span>This is typically done if we don&#39;t plan on needing this function again.</span></p><h3><a name="arrays" class="md-header-anchor"></a><span>Arrays</span></h3><p><span>Arrays are collections of data, you can mix types inside your array.</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_24-arrays.js"></script><p><span>Can you get the number 4 to print using this array?</span></p><p><span>Arrays have a </span><code>Array.length</code><span> property and several methods (like </span><code>Array.map</code><span>), we will go over a few basic ones now and the rest will be explained as we encounter them.</span></p><p><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array' target='_blank' class='url'>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array</a></p><h4><a name="appending" class="md-header-anchor"></a><span>Appending</span></h4><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_25-array-appending.js"></script><h4><a name="search" class="md-header-anchor"></a><span>Search</span></h4><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_26-array-search.js"></script><p><span>If no match is found </span><code>-1</code><span> is returned</span></p><h4><a name="removal" class="md-header-anchor"></a><span>Removal</span></h4><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_27-array-removal.js"></script><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_28-array-filter.js"></script><p><span>Filter takes a function as it&#39;s argument and applies that function to each element in the array, all the values that return a true are returned in a new array.  The original array is unchanged.</span></p><p>&nbsp;</p><h4><a name="spread-operator" class="md-header-anchor"></a><span>Spread Operator</span></h4><p><span>Arrays have a special operator called the spread operator that effectively removes the braces from an array so that it can be used in functions that take a comma separated list of numbers</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_29-array-spread.js"></script><p><code>Math.max()</code><span>  expects a comma separated list of numbers</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_30-array-spread.js"></script><h4><a name="rest-operator" class="md-header-anchor"></a><span>Rest Operator</span></h4><p><span>Rest operator is similar, it&#39;s usage is inside functions parameters however, the argument becomes an array when used like this.</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_31-array-rest.js"></script><p><span>It&#39;s called rest because you can access the rest of the argument list with it, in this scenario the first two variables are removed and the rest are accessed in the array </span><code>rest</code><span>.  This can possibly be an empty array.</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_32-array-rest.js"></script><h2><a name="undefined-vs-null" class="md-header-anchor"></a><span>undefined vs null</span></h2><p><span>There is a &quot;7th&quot; primitive that you may encounter called </span><code>null</code></p><p><span>The difference between undefined and null is semantic:</span></p><p><code>undefined</code><span> is used in the case where a value has not been set yet, it does not convey any information.</span></p><p><code>null</code><span> is used in the case where a value has been explicitly set, but the value represents a null, empty,  or non-existent reference.</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_33-null.js"></script><h2><a name="declaring-variables" class="md-header-anchor"></a><span>Declaring variables</span></h2><p><span>In JavaScript there are 4 ways to declare a variables types</span></p><ul><li><span>Using </span><code>let</code><span> defines a block scoped variable</span></li><li><span>Using </span><code>const</code><span> defines a block scoped constant</span></li><li><span>Using </span><code>var</code><span> defines a function scoped variable</span></li><li><span>Using no keyword defines a global scoped variable </span></li></ul><p><span>Block scoped means that a variable can only be accessed within the set of curly braces in which it was defined, in addition </span><code>let</code><span> and </span><code>const</code><span> only allow variables to be accessed after they&#39;ve been defined.  You will get an error if you try to access it while in this &quot;temporal dead zone&quot;.</span></p><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_34-declaring-variables.js"></script><script src="https://gist.github.com/raymondlaw/e38acd279aefb9c75789a10c472bd906.js?file=js_basics_35-declaring-variables.js"></script><p><span>When a variable is declared with </span><code>var</code><span>, if it is used inside a function, the variable is locally scoped, otherwise it becomes a global.  In addition it ignores the temporal dead zone rule, instead initializing all variables to undefined.</span></p><p><span>There are some special edge cases where </span><code>var</code><span> can be helpful, but even I rarely encounter them.  As for global&#39;s you should always avoid them.  For this course, use of </span><code>let</code><span> and </span><code>const</code><span> is recommended and will work for any problem I give you, and personally I&#39;d recommend avoiding </span><code>var</code><span> usage.</span></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></div>
+</body>
+</html>
