@@ -1,0 +1,491 @@
+html {
+box-sizing:border-box;
+background: transparent;
+}
+
+*,:before,:after {
+box-sizing:inherit;
+}
+
+body {
+font-family:Roboto, sans-serif;
+background:#363B40;
+}
+
+nav {
+width:100%;
+text-align:center;
+padding:0 0 10px;
+background:#000;
+}
+
+h1 {
+font-size:140%;
+}
+
+abbr[title] {
+text-decoration:none;
+}
+
+dt, p, footer, .note, .weight, .assesment{
+font-size:larger;
+}
+time{
+font-style:italic;
+}
+.nav {
+min-height:2rem;
+display:flex;
+align-items:flex-end;
+color:#FFF;
+text-shadow:none;
+text-decoration:none;
+}
+
+.nav-bottom div {
+display:block;
+padding:0 10px;
+}
+
+.nav:hover {
+text-shadow:1px 1px 2px #FF7;
+}
+
+#nav-home {
+font-weight:400;
+text-align:left;
+padding-left:5px;
+padding-top:5px;
+}
+
+#content {
+max-width:960px;
+margin:0 auto 50px;
+}
+
+article,aside {
+overflow:auto;
+color:#000;
+margin:10px;
+padding:20px;
+background:rgba(255,255,255,0.5);
+}
+
+h1,h2 {
+font-weight:400;
+margin:0;
+}
+h3{
+font-weight:400;
+font-size: 130%;
+margin:0 0 10px;
+
+}
+h2{
+margin:10px 0;
+}
+#course dl{
+margin:10 0;
+}
+#course dd{
+display:none;
+height:24px;
+}
+#course address,#course cite{
+font-size:smaller;
+font-style:italic;
+}
+#assessment time{
+	display:block;
+}
+#assessment article{
+	display:grid;
+	grid-template-columns:1fr;
+}
+.countdown-timer{
+	font-weight:bold;
+}
+.urgent{
+	color:red;
+}
+
+#content a{
+color: #000;
+}
+
+#schedule iframe{
+margin: 0 auto;
+max-width: 960px;
+width: 95%;
+border: solid 1px #000;
+display: block;
+height:calc(100vh - 12.2rem);
+
+}
+.new{
+margin-left: 10px;
+padding: 0 5px;
+border: #000 solid 2px;
+font-weight: bold;
+font-size: small;
+border-radius: 5px;
+}
+#course #nav-course div,#assessment #nav-assessment div,#schedule #nav-schedule div,#login #nav-grade div,#grade #nav-grade div {
+border-left:5px solid #FFF;
+padding:0 5px;
+}
+#course article{
+	padding-bottom:0;
+}
+#home article{
+margin: 10px 10px 20px;
+}
+fieldset{
+	width:9rem;
+	margin: 0 auto;
+	border:none;
+}
+#login #content{
+	max-width:448px;
+}
+#login label{
+	display:flex;
+	flex-direction:row-reverse;
+	justify-content:center;
+}
+#login img{
+	vertical-align: text-top;
+	align-self: center;
+	background:#FFF;
+	padding:6px;
+}
+#login input[name="cuny-first-id"]{
+	border:none;
+	width:9rem;
+	font-size:23px;
+	text-align:center;
+	margin:2px 2px 2px 0;
+	height:32px;
+}
+#login input[type="submit"]{
+	background:#000;
+	color: #FFF;
+	font-weight:600;
+	letter-spacing:2px;
+	width: 5em;
+	height:2.5em;
+	text-shadow:0 0 2px #000;
+	border-radius:5px;
+	border:none;
+	font-size:smaller;
+	float:right;
+	font-family: 'Noto Sans', sans-serif;
+}
+#login input[name="cuny-first-id"]:focus{
+	outline:none;
+	border:2px solid #00F;
+	border-left:none;
+	margin:0;
+
+}
+#login input[name="cuny-first-id"]:focus + img{
+	border:2px solid #00F;
+	border-right:none;
+	padding:4px;
+	margin-bottom:4px;
+}
+#assessment h2{
+	margin-bottom: 5px;
+}
+#assessment .remaining{
+	font-style:italic;
+	font-weight:bold;
+	text-align:right;
+	display:block;
+}
+
+.strike{
+	text-decoration:line-through;
+	opacity:0.3;
+}
+article iframe[src^="https://www.youtube.com/embed/"]{
+	width: calc(100vw - 74px); 
+	height: calc(56.25vw - 41px); 
+	max-width:920px; 
+	max-height: 517px; 
+	margin: 0 auto;
+}
+
+#assessment .weight{
+font-style:italic;
+font-size:medium;
+}
+twitter-widget{
+margin: 0 !important;
+width: 100% !important;
+}
+
+.demo-button{
+display:inline;
+margin: 0 0 0 5px;
+font-size:12pt;
+text-decoration: none;
+}
+
+/*Experimental*/
+/*
+	.ribbon {
+	  color:blue;
+	  position: absolute;
+	  right: 5px; 
+	  top: 75px;
+	  z-index: 1;
+	  overflow: hidden;
+	  width: 75px; 
+	  height: 75px;
+	  text-align: right;
+	}
+	.ribbon span {
+	  font-size: 10px;
+	  font-weight: bold;
+	  color: #FFF;
+	  text-transform: uppercase;
+	  text-align: center;
+	  line-height: 20px;
+	  transform: rotate(45deg);
+	  -webkit-transform: rotate(45deg);
+	  width: 100px;
+	  display: block;
+	  background: #79A70A;
+	  background: linear-gradient(#9BC90D 0%, #79A70A 100%);
+	  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+	  position: absolute;
+	  top: 19px; 
+	  right: -21px;
+	}
+	.ribbon span::before {
+	  content: "";
+	  position: absolute; left: 0px; top: 100%;
+	  z-index: -1;
+	  border-left: 3px solid #79A70A;
+	  border-right: 3px solid transparent;
+	  border-bottom: 3px solid transparent;
+	  border-top: 3px solid #79A70A;
+	}
+	.ribbon span::after {
+	  content: "";
+	  position: absolute; right: 0px; top: 100%;
+	  z-index: -1;
+	  border-left: 3px solid transparent;
+	  border-right: 3px solid #79A70A;
+	  border-bottom: 3px solid transparent;
+	  border-top: 3px solid #79A70A;
+	}
+*/
+
+@media only screen and (min-width: 442px) {
+
+	nav {
+	display:grid;
+	grid-template-columns:1fr 1fr 1fr 1fr;
+	grid-template-rows:1fr 1fr;
+	grid-template-areas:"title title title title" "course assessment schedule grade";
+	padding:0;
+	}
+	#nav-home {
+	font-size:110%;
+	grid-area:title;
+	border-left:none;
+	border-top:none;
+	padding:0 5px;
+	}
+
+	#nav-home br {
+	display:none;
+	}
+
+	#content {
+	margin-top:1em;
+	}
+
+	.nav {
+	border:none;
+	border-left:none;
+	display:flex;
+	align-items:flex-end;
+	justify-content:center;
+	font-size:larger;
+	margin:0;
+	}
+
+	.nav-bottom {
+	font-size:larger;
+	height:3em;
+	}
+
+	.nav-bottom div {
+	border-bottom:4px solid #000;
+	padding-bottom:8px;
+	}
+
+	#nav-course {
+	grid-area:course;
+	border-left:none;
+	}
+
+	#nav-assessment {
+	grid-area:assessment;
+	}
+
+	#nav-schedule {
+	grid-area:schedule;
+	}
+
+	#nav-grade {
+	grid-area:grade;
+	}
+
+	#course #nav-course div,#assessment #nav-assessment div,#schedule #nav-schedule div,#grade #nav-grade div, #login #nav-grade div {
+	border-left:none;
+	}
+
+	#course #nav-course span,#assessment #nav-assessment span,#schedule #nav-schedule span,#login #nav-grade span ,#grade #nav-grade span{
+	border-bottom:4px solid #FFF;
+	padding-bottom:8px;
+	position:relative;
+	top:-8px;
+	}
+		
+	#schedule iframe{
+	height:calc(100vh - 9rem);
+	}
+
+}
+@media only screen and (min-width: 800px) {
+
+	nav {
+	position:fixed;
+	top:0;
+	display:flex;
+	width:100%;
+	z-index:2;
+	justify-content:flex-end;
+	}
+	
+	.course-number {
+	display:none;
+	text-align:left;
+	}
+
+	.course-title:before {
+	content:'Computer Science';
+	color:#FFF;
+	display:block;
+	}
+
+	#nav-home {
+	font-size:100%;
+	border-left:none;
+	margin:0 auto 0 0;
+	padding:0 0 0 10px;
+	}
+
+	#nav-home h1 {
+	padding-bottom:3px;
+	}
+
+	#nav-home br {
+	display:block;
+	}
+
+	#content {
+	margin-top:5em;
+	}
+
+	.nav {
+	border:none;
+	padding:0 5px;
+	}
+
+	.nav-bottom div {
+	border-bottom:none;
+	padding-bottom:12px;
+	}
+
+	#course #nav-course span,#assessment #nav-assessment span,#schedule #nav-schedule span,#grade #nav-grade span,#login #nav-grade span {
+	border-bottom:4px solid #FFF;
+	padding-bottom:8px;
+	position:relative;
+	top:-12px;
+	}
+	
+	#home article{
+	display:grid;
+	grid-template-columns:1fr 100px;
+	grid-template-rows:1fr auto;
+	grid-template-areas:"article_heading date" "content content" "footer footer";
+	}
+	#home .article-content{
+		grid-area:content;
+	}
+	#home footer{
+		grid-area:footer;
+	}
+	#schedule iframe{
+	height:calc(100vh - 100px);
+	}
+	#assessment article{
+	grid-template-columns:1fr 1fr 1fr;
+	grid-template-rows:1fr auto;
+	grid-template-areas:"assessment_title assessment_title assessment_title";
+
+	}
+	#assessment h2{
+		grid-area:assessment_title;
+	}
+	#assessment .due{
+		text-align:center;
+	}
+	#assessment .cutoff{
+		text-align:right;
+	}
+	#grade article{
+		display:grid;
+		grid-template-rows: 1fr auto;
+		grid-template-columns:3fr 1fr 1fr;
+		grid-template-areas:"description weight assesment"
+							"note note note";
+	}
+	#grade .weight{
+		text-align:right;
+		grid-area:weight;
+	}
+	#grade .assesment{
+		text-align:right;
+		grid-area:assesment;
+	}
+	.note{
+		grid-area:note;
+		padding-top:5px;
+	}
+	
+	#course dl{
+	display:grid;
+	grid-template-columns:11fr 4fr;
+	grid-row-gap: 0.25em;
+	}
+	#course dt{
+		
+	}
+	#course dd{
+	display:block;
+	margin-left:auto;
+	}
+}
+
+@media only screen and (min-width: 960px) {
+	#home article{
+	margin-left: 0;
+	margin-right: 0;
+	}
+}
