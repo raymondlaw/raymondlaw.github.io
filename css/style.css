@@ -1,65 +1,54 @@
-body {
-background:#363B40;
+html, body {
+font-family: Calibri, Cadara, Constantia, Corbel, sans-serif;   
 }
-@media only screen and (min-width: 800px) {
-	.course-title:before {
-	content:'Computer Science 355';
-	}
+body{
+padding: 0 20px 0;
 }
-
-#schedule iframe{
-margin: 0 auto 0;
-max-width: 960px;
-width: 95%;
-border: solid 0 #000;
-display: block;
-height:calc(50vh - 6rem);
-
+h1, h2, h3 {
+font-weight: normal;
 }
-#schedule h2{
-font-family:Arial,sans-serif;
-font-weight:bold;
-font-size:100%;
-margin: 20px auto 0;
-max-width: 960px;
-width: 95%;
-color: #222;
-background:#FFF;
-padding: 5px 10px ;
-border-radius: 5px 35px 0 0;
+hgroup{
+padding: 0 0 20px;
 }
-#schedule #content{
-	margin-bottom:5px;
+hgroup > h2{
+text-indent: 20px;                
+font-size: medium;
+margin: 0;
 }
-article{
-background: rgba(255,255,255,0.75);	
+h1{
+font-size: xx-large;
+padding: 10px 0 0;  
+margin: 0;
 }
-
-
-summary {
-	display:block;
+h2{
+font-size: x-large;
+margin: 0 0 10px;
 }
-summary article{
-	padding-top:0;
-
+h3{
+font-size: large;
+text-indent: 10px;  
+margin: 0 0 5px;
 }
-#home h3{
-margin-top:20px;
+dl{
+padding: 5px 0;
+margin: 0;
 }
-#home .topic{
-border: 1px solid #000;
-padding:0 20px 10px;
-margin:20px 0;
+dl, h3{
+clear: both;
 }
-#home li{
-line-height: 25.1px;
-min-height: 25.1px;
+dt{
+text-indent: 25px;  
+width: 120px;
+float: left;
+margin: 0;
 }
-@media only screen and (min-width: 800px) {
-	h2:target::before {
-	  content: "";
-	  display: block;
-	  height: 95px; /* fixed header height*/
-	  margin: -95px 0 0; /* negative fixed header height */
-	}
+dd{
+float: left;
+margin: 0;
+}
+section{
+margin: 10px 0 0;
+}
+h3.previous{
+margin: 30px 0 0;
 }
