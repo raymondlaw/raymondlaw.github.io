@@ -1,0 +1,686 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>asynchronous-programming</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='asynchronous-programming'><span>Asynchronous Programming</span></h1><p>&nbsp;</p><p><strong><mark><a href='https://github.com/raymondlaw/asynchronous-programming/archive/master.zip'><span>Download Files</span></a></mark></strong></p><p><span>In this lecture we will introduce asynchronous programming using callbacks in JavaScript.  </span></p><p><span>Asynchronous programming is one of key recurring topics of this course and is intertwined with many other components in not just the programming aspect, but also in networking theory.  Success in this topic generally means success throughout the rest of the course.</span></p><h2 id='learning-goals'><span>Learning Goals</span></h2><ul><li><span>The asynchronous programming paradigm.  </span></li><li><span>The architecture of the Node.js runtime engine.</span></li></ul><h2 id='motivation'><span>Motivation</span></h2><p><span>In your previous courses you have looked at procedural styled programming where statements are executed top down.  Even with added functions and object-oriented features, code written like this share the feature that they are blocking.</span></p><blockquote><p><span>Blocking: The next task cannot be completed until the previous has completed.</span></p></blockquote><p><span>This model may work fine for local applications that run near instantaneously, but when we introduce network overhead and possible data loss, your application may wind up hanging as it waits for data. </span></p><p>&nbsp;</p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.2px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">task_a(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  //network request</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">task_b();</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 45px;"></div><div class="CodeMirror-gutters" style="display: none; height: 45px;"></div></div></div></pre><p><span>Assume that </span><code>task_a</code><span> uses the Internet.  Due to external factors, it is possible for that </span><code>task_a</code><span> to take a large (possibly infinite) amounts of time to complete.  Because traditional procedural styled programming must wait for all previous tasks to complete, it is possible for our entire application to lock up entirely due to network instability.</span></p><p>&nbsp;</p><p><span>If you&#39;ve taken CS 340, you might suggest using threads to solve this problem.</span></p><blockquote><p><span>A programmer had a problem, so he used threads. Then hhade tprobwolems. </span></p></blockquote><p>&nbsp;</p><p><span>Interacting with threads directly means having to deal with race conditions, which is not just difficult to get correct, it&#39;s out of scope for most application developers.  </span></p><p><span>Tasks like reading and writing files from hard disk, downloading content from the Internet, and encrypting files can often take an unbounded amount of time due to external factors (file size, bandwidth, disk speed, availability of dedicated hardware components).  It&#39;s unreasonable to have the program stall, while the operating system works on these problems.</span></p><p><span>Node.js allows us to avoid working with threads directly through it&#39;s API.  A lot of the tools we will use happen to utilize threads under the hood, but we won&#39;t have to worry about this, as the details are abstracted away by the Node.js architecture.  </span></p><p>&nbsp;</p><p>&nbsp;</p><h3 id='lab'><span>Lab</span></h3><ol start='' ><li><p><span>Open a desktop browser like Firefox or Chrome and navigate to the course home page.</span></p><p><a href='https://venus.cs.qc.cuny.edu/~rlaw/cs355/' target='_blank' class='url'>https://venus.cs.qc.cuny.edu/~rlaw/cs355/</a></p></li><li><p><span>Open up document inspector with </span><code>CTRL + SHIFT + I</code></p></li><li><p><span>Navigate to the console tab.  Ignore any errors and warnings that you see.</span></p></li><li><p><span>Copy this program into the console, and wait until it prints &quot;Finished&quot;, should take about 10 seconds</span></p></li></ol><p>&nbsp;</p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F01-lab%2F01-loop.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p><span>   </span></p><ol start='5' ><li><span>If it finishes much faster, adjust the value of </span><code>i</code><span> until it takes roughly 10 seconds to print &quot;Finished&quot;</span></li><li><span>Run the program one more time, and while it is executing (before it prints &quot;Finished&quot;) try to interact with the webpage (try highlight some text, try right clicking to open a context menu, try click on some buttons and links), </span><strong><span>none of these should work</span></strong><span>.</span></li><li><span>When the &quot;Finished&quot; statement finally prints, all the blocked commands quickly fire in quick succession afterwards.</span></li><li><span>Repeat step 6, but use this code instead</span></li></ol><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F01-lab%2F02-async.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p>&nbsp;</p><ol start='9' ><li><p><span>When you try to interact with the page now everything should work and 10 seconds later &quot;Finished&quot; should print.</span></p></li><li><p><span>You won&#39;t be allowed to use </span><code>setTimeout</code><span> after this initial demo.  It serves as a good motivator for comparing procedural and asynchronous programming, but I&#39;ve found this function gets misused by those struggling to understand asynchronous programming.</span></p><p><span>They use it to create artificial delays in their program that give it the appearance of it working, but the code it is riddled with race conditions and artificial delays.  When used correctly, asynchronous programming should not have either.</span></p><blockquote><p><span>Specifically for all graded components of this course you will not be allowed to use </span><code>setTimeout</code><span> or it&#39;s variants (like </span><code>setImmediate</code><span> or </span><code>setInterval</code><span>).</span></p></blockquote><p>&nbsp;</p><p><span>In the appendix there is an example of why </span><code>setTimeout</code><span> can be dangerous for those just learning asynchronous programming, but you should look at that last as it utilizes some constructs we haven&#39;t discussed yet.</span></p></li></ol><p>&nbsp;</p><h2 id='nodejs'><span>Node.js</span></h2><p><span>The Node.js runtime is powered by the open source V8 JavaScript engine.  For our purposes, JavaScript is single threaded, but supports asynchronous programming through the use of built-in threads within the runtime that the application programmer has no direct access to.  </span></p><p><span>The application programmer will be able to make specific calls to Node.js&#39;s API&#39;s, which uses threads to accomplish the task under the hood.  Because they are abstracted away, the application programmer won&#39;t be able to interact with those threads directly.</span></p><p><span>This provides a safe way to do multithreading on long running tasks, without needing to worry about complex operating system issues like semaphores and mutexes.</span></p><p><span>Within the next few demos we will learn how to properly interact with those APIs.</span></p><blockquote><p><span>API: Application programming interface - A collection of public functions, methods, and variables that form a way to interact with some (typically built in) utility.  Examples include the Node.js&#39;s File I/O API and the Browser&#39;s </span><a href='https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API'><span>Geolocation API</span></a></p><p><span>Typically we can use API&#39;s by just calling their public interface methods like </span><code>fs.readFile()</code><span> or </span><code>navigator.geolocation.getCurrentPosition()</code><span>.  We don&#39;t need to worry about how these work under the hood; the complexities have been abstracted away for us.  We can use it like a typical function call.</span></p></blockquote><p>&nbsp;</p><h2 id='nodejs-architecture'><span>Node.js Architecture</span></h2><p>&nbsp;</p><p><img src="images/node-architecture.png" referrerpolicy="no-referrer" alt="Node.js Architecture"></p><p>&nbsp;</p><h3 id='nodejs-api-written-in-javascript'><span>Node.js API (written in JavaScript)</span></h3><p><span>Node.js&#39;s API&#39;s provides public interfaces that allow our application code to  communications with the operating system in a limited manner.  This abstraction model allows the application programmer to utilize system resources without concerning themselves with how those resources get obtained.  </span></p><p>&nbsp;</p><p><img src="images/modules.png" referrerpolicy="no-referrer" alt="modules"></p><h3 id='nodejs-standard-library'><span>Node.js Standard Library</span></h3><p><span>Most of Node.js&#39;s standard library of functions is also written in JavaScript.  Modules like Console, Timers, and HTTP are referred to as the core modules.</span></p><h3 id='nodejs-bindings'><span>Node.js Bindings</span></h3><p><span>For other modules where speed and correctness are important it&#39;s better to reuse existing battle tested libraries.  We have a problem that most of these libraries are written in C/C++.  </span></p><p><span>v8, libuv, c-ares, http-parser, open-ssl, and zlib are all written in C/C++.</span></p><ul><li><span>zlib: Used to compress/decompress files</span></li><li><span>open-ssl: Used encrypt/decrypt files, used in </span><code>tls</code><span> and </span><code>crypto</code><span> modules</span></li><li><span>http-parser: Used for parsing HTTP request/responses</span></li><li><span>c-ares: Used for </span><code>dns</code><span> module (translates human readable web address to IP address)</span></li></ul><p><span>Node.js Bindings provides a way to bridge JavaScript and C/C++.</span></p><h3 id='cc-addons'><span>C/C++ Addons</span></h3><p><span>C/C++ Addons extend this by allowing the user to write their own C/C++ library to be used in Node.js.  We won&#39;t be discussing this topic.</span></p><p>&nbsp;</p><h3 id='v8'><span>V8</span></h3><p><span>V8 is an open-source JavaScript engine developed by Google.  A JavaScript engine is a program that executes JavaScript code.  Currently the most popular engines are V8 (Node.js and Google Chrome) and SpiderMonkey (Firefox).</span></p><p><span>Traditional JavaScript engines were interpreters that ran JavaScript code one line at a time.  Modern JavaScript engines contain both an interpreter and a compiler, which pass the AST into both programs so that the code runs concurrently.  If the interpreted code finishes execution first, the compilation job is discarded, but if the compilation process finishes first, the optimized machine code is swapped in place with the interpreter.  This compilation and swapping repeats as secondary passes allow JavaScript engines to discover further optimizations.</span></p><p>&nbsp;</p><p><img src="images/interpreted-vs-compiled.png" referrerpolicy="no-referrer" alt="interpreted-vs-compiled"></p><p>&nbsp;</p><p><span>V8 supplies us with a Stack where are function calls live and a heap where variables are stored.  </span></p><p><span>V8 is single threaded, that is the program thread can only execute a single task at a time.  As our program runs and we have functions calling other functions, those calls are pushed and popped from the stack as they run to completion.</span></p><p><img src="images/v8.png" referrerpolicy="no-referrer" alt="v8"></p><p>&nbsp;</p><h3 id='libuv'><span>Libuv</span></h3><p><span>When we talk about JavaScript a third construct the </span><strong><span>Event Queue</span></strong><span> is often brought up.  This is provided to us by the libuv library.</span></p><blockquote><p><span>libuv is a multi-platform C library that provides support for asynchronous I/O based on event loops</span></p></blockquote><p><img src="images/libuv.png" referrerpolicy="no-referrer" alt="libuv"></p><p>&nbsp;</p><p><span>When an asynchronous call is made that task (whether it be reading a file or making a network call) is given to libuv and the execution of the program continues without waiting for a response.</span></p><p><span>Libuv takes the asynchronous task and either pushes it into the Task Queue if it requires the CPU to complete, or if the task is IO related and requires accessing disk it will make the request.  </span></p><p><span>The CPU bound tasks will wait in the Task Queue for an available worker thread.  These worker threads will pick up tasks as they become free.</span></p><p><span>IO bound tasks (like writing to disk) will be polled (checked for updates) at set intervals by the event loop.</span></p><p><span>Calls from asynchronous API methods have a secondary parameter the </span><strong><span>callback</span></strong><span>.  The callback is a function that dictates what should occur once the original asynchronous call finishes.</span></p><p><span>There are two parts to asynchronous calls:</span></p><ol start='' ><li><p><span>The task that you want to complete (eg. write this file)</span></p></li><li><p><span>What will occur when that task is finished. (the callback)</span></p><blockquote><p><span>This can includes the function that does nothing (common if you are writing a cache), but you must have a function, you cannot give it a null value.</span></p></blockquote></li></ol><p>&nbsp;</p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F02-callback%2F01-callback.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p>&nbsp;</p><p><span>Rewritten with Arrow Functions</span></p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F02-callback%2F02-callback.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p>&nbsp;</p><p><span>A good way to write your code if you plan to reuse this callback function definition.  </span></p><p><code>do_after_reading</code><span> is the callback in this scenario.</span></p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F02-callback%2F03-callback.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p>&nbsp;</p><h3 id='event-queue'><span>Event Queue</span></h3><p><span>As asynchronous tasks complete the attached callback function is placed on to the Event Queue.</span></p><p><span>In the above example as </span><code>file01.txt</code><span> is finished being reading the function </span><code>do_after_reading</code><span> is added the the event queue.  It stays on this event queue until V8&#39;s stack is completely empty.</span></p><p>&nbsp;</p><h3 id='event-loop'><span>Event Loop</span></h3><p><span>The event loop will periodically inspect V8&#39;s stack.  Because V8 is single threaded, tasks cannot be added so long as the stack still has other instructions.  The event loop waits until the stack is completely empty and then moves the first item from the Event Queue on to the stack for execution.  As that task completes and is removed from the stack the next item from the event queue is moved to the stack.</span></p><p><span>When using an asynchronous method the only place you are guaranteed to know the function has run to completion is inside t the callback.  </span></p><p><span>Inside that callback, it is quite common to make additional asynchronous calls restarting this process.  This can be done recursively creating a process that never ends, but also doesn&#39;t block other processes.  This is because the recursive asynchronous call upon completion adds it callback to the end of the Event Queue.</span></p><p><span>In contrast if you put an infinite loop on the stack, because the stack never empties, all callbacks will starve in the event queue.</span></p><p>&nbsp;</p><h2 id='dns-resolution'><span>DNS Resolution</span></h2><p><span>Domain Name System (DNS) is an Internet service that converts human readable domains into (one or more) machine readable IP addresses.  The </span><strong><span>c-ares</span></strong><span> library written in C provides DNS support and we can utilize this package from within the </span><code>dns</code><span> module.</span></p><p><span>We will learn the details of this process later in the semester, but to keep it relevant to the task at hand, the IP address information is fetched from special servers on the Internet backbone.  As that data makes it way back your computer, jumping from server to server, it is cached at each intermediate DNS server along the way, so future requests are sped up.  </span></p><p><span>Downloading this information will still take some time though.  How much time depends on several factors, your internet speed, whether the connection is wired or wireless, how many servers the request needs to travel through, and if there is a record cached at intermediary already.  </span></p><p><span>It is also possible for the request to never complete (for example if your connection is weak, throttled, or blocked entirely).  Node.js provides timeout options for this.</span></p><p>&nbsp;</p><blockquote><p><span>Note while testing in Visual Studio Code v1.49, I encountered some bugs with VSCode&#39;s debugger.  These went away when I switched to running the program in terminal directly.    I was able to track it down to scenarios where there were multiple DNS requests.</span></p><p><span>I created a bug report, you can follow along to see if the bug is real (or more likely) some dumb mistake on my part.</span></p><p><a href='https://github.com/microsoft/vscode/issues/106821' target='_blank' class='url'>https://github.com/microsoft/vscode/issues/106821</a></p><p>&nbsp;</p><p><span>Until this gets resolved, to avoid these issues for this demo and the first assessment use Terminal to run the application instead of running from within Visual Studio Code Debug Console.</span></p><p><span>Open up a terminal, navigate to the exercise location and run the command</span></p><p><code>node &lt;filename&gt;</code></p><p><span>eg.</span></p><p><code>node 01-concurrency.js</code></p><p><span>Repeat the process for each demo.</span></p><p><span>Tip: You can type </span><code>node</code><span>, a space, and then hit tab to cycle through files in the current directory.</span></p><p><span>Tip: For quicker navigation, you can use Windows Explorer, navigate to the folder, hold Shift, right click inside somewhere inside the directory (not on a file), and an extra hidden context menu </span><code>Open Powershell here</code><span>  will pop up.</span></p></blockquote><p>&nbsp;</p><p>&nbsp;</p><h3 id='our-first-dns-request'><span>Our First DNS request</span></h3><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F03-dns%2F01-dns.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p><span>Play around with this code try different websites</span></p><hr /><p><span>Explanation (By Line Number):</span></p><ol start='' ><li><p><span>Utilizes  the </span><code>dns</code><span> module  to access built in APIs for DNS requests.</span></p></li><li><p><span>This is the domain we want to convert</span></p></li><li><p><code>dns.resolve(hostname, callback)</code><span> </span></p><p><span>The DNS resolution request is sent to the operating system whom performs the necessary networking to get it completed.  When the worker thread gets a response back (or the request times out) it puts a new task </span><code>after_resolution</code><span> into the event queue to be completed when the call stack is empty.  </span></p></li><li><p><span>Declares a function </span><code>after_resolution</code><span>.  (This function declaration occurs before any other variable is created)</span>
+<span>This function accepts two arguments </span><code>err</code><span>, </span><code>records</code><span>.  These arguments are the return values from the previously completed asynchronous code.  The argument names don&#39;t matter, but the order does.</span></p><p><span>Node.js APIs typically return errors as the first argument.  Errors are an object type so you can look at the error details in the </span><code>err</code><span> object.  </span></p><p><span>The second parameter typically represents the data that was returned from that request.</span></p><p><span>In this case the second parameter </span><code>records</code><span> refers to the data that was retrieved from the DNS request.  There are exceptions to this, for example when writing files with </span><code>fs.writeFile()</code><span> no data is retrieved.  For specific examples of what data is returned back from the completed asynchronous request, look at the Node.js API documentation.</span></p><p>&nbsp;</p></li></ol><blockquote><p><span>When printing </span><code>records</code><span> it will be wrapped in braces.  The data is inside an array because DNS requests can result in multiple IP addresses, anyone of which are valid to be used.  </span></p><p><span>When registering a domain, the owner is asked to supply the IP address that the domain should resolve to.  Multiple values can be supplied indicating the site is using load balancing for reliability purposes.</span></p><p><span>As of the time this document was created </span><code>cat.com</code><span> resolved to two different IPs.</span></p></blockquote><p>&nbsp;</p><p><span>Function declarations can be ordered in any fashion</span></p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F03-dns%2F02-dns.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p>&nbsp;</p><p>&nbsp;</p><h3 id='new-function-1'><span>New Function</span></h3><h4 id='dnsresolvehostname-callback'><span>dns.resolve(hostname, callback)</span></h4><ul><li><p><code>hostname</code><span>: string representing domain to get IP address for</span></p></li><li><p><code>callback</code><span>: Function</span></p><ul><li><code>err</code><span>: Error - Information related to why the DNS failed.  </span><code>false</code><span> if no error.</span></li><li><code>records</code><span>: Array of strings - Contains the IP addresses that are associated with the hostname</span></li></ul></li></ul><p><a href='https://nodejs.org/api/dns.html#dns_dns_resolve_hostname_rrtype_callback' target='_blank' class='url'>https://nodejs.org/api/dns.html#dns_dns_resolve_hostname_rrtype_callback</a></p><p>&nbsp;</p><p>&nbsp;</p><h3 id='multiple-synchronous-tasks'><span>Multiple Synchronous Tasks</span></h3><p><span>Completing tasks synchronously means that each subsequent task will only begin after the previous task completes.  In procedural styled languages this is as simple as putting the next instruction after the current instruction.  When working with Asynchronous API&#39;s this does not work.  </span></p><p>&nbsp;</p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F04-multiple-sync%2F01-incorrect.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p>&nbsp;</p><p>&nbsp;</p><p><span>This will not work because </span><code>dns.resolve()</code><span> is executed asynchronously.  Even in the best case scenario where the asynchronous task finishes right away and the callback </span><code>after_resolution</code><span> is added to the event queue immediately; it is only executed once the stack is empty.  The call stack won&#39;t be empty until </span><code>next_task(data)</code><span> is executed.  The following occurs:</span></p><ol start='' ><li><code>dns.resolve(domain, after_resolution);</code><span>  This is done on a worker thread which will add </span><code>after_resolution</code><span> to the Event Queue when it completes.</span></li><li><code>next_task(data);</code><span>  </span><code>data</code><span> is currently </span><code>undefined</code><span> so that is printed.</span></li><li><span>Call Stack is empty, take next task from Event Queue</span></li><li><code>after_resolution(err, records);</code><span> This sets </span><code>data</code><span> to the correct value, but there are no more print statements.</span></li></ol><p>&nbsp;</p><p><span>It is important to understand this is NOT a race condition.  Even if </span><code>dns.resolve()</code><span> finishes immediately, </span><code>next_task()</code><span> will always execute first, because </span><strong><span>existing code on the call stack has priority</span></strong><span>.  This is always the case with asynchronous code in </span><code>Node.js</code><span>.</span></p><p>&nbsp;</p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F04-multiple-sync%2F02-correct.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p><span>By putting the next task as the last statement in the </span><code>after_resolution</code><span> function the following happens instead:</span></p><ol start='' ><li><code>dns.resolve(domain, after_resolution);</code><span>  This is done on a worker thread which will add </span><code>after_resolution</code><span> to the Event Queue when it completes.</span></li><li><span>Call Stack is empty, take next task from Event Queue</span></li><li><code>after_resolution(err, records);</code><span> This sets </span><code>data</code><span> to the correct value</span></li><li><code>next_task(data);</code><span>  </span><code>data</code><span> is printed</span></li></ol><p><span>This strategy of passing control to the next function is called </span><a href='https://en.wikipedia.org/wiki/Continuation-passing_style'><span>Continuation passing style</span></a></p><p>&nbsp;</p><p>&nbsp;</p><h3 id='continuation-passing-style'><span>Continuation Passing Style</span></h3><p><span>This next example has us performing two DNS resolutions back to back.  (</span><code>venus</code><span> then </span><code>mars</code><span>) Once the first one is finished, the second one starts.</span></p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F05-continuation-passing-style%2F01-continuation-passing-style.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p>&nbsp;</p><p><span>Lets walk through what&#39;s happening here:</span></p><ol start='' ><li><p><code>dns.resolve(venus, after_venus);</code><span> - The resulting callback is added to the Event Queue, which will only move a task over if the call stack is empty.</span></p></li><li><p><span>Call Stack is empty, take next task from Event Queue</span></p></li><li><p><code>after_venus(err, records)</code><span> - adds </span><code>records</code><span> to </span><code>ip_addresses</code></p></li><li><p><code>dns.resolve(mars, after_mars);</code><span> - The resulting callback is added to the Event Queue, which will only move a task over if the call stack is empty.</span></p></li><li><p><span>Call stack is empty, take next task from Event Queue</span></p></li><li><p><code>after_mars(err, records)</code><span> - adds </span><code>records</code><span> to </span><code>ip_addresses</code></p></li><li><p><span>Turns the array  </span><code>ip_addresses</code><span> into a comma separated string, before printing it out</span></p><p>&nbsp;</p></li></ol><p><span>The order in this scenario is guaranteed, if both exist, the IP address of </span><code>venus</code><span> will always print before </span><code>mars</code></p><p>&nbsp;</p><p>&nbsp;</p><h3 id='concurrency'><span>Concurrency</span></h3><p><span>DNS requests are generally better done concurrently.  Each task is not related with the prior one.  To achieve concurrency we use the fact that each call to </span><code>dns.resolve()</code><span> is done asynchronously and the first call to </span><code>dns.resolve(venus,after_venus)</code><span> merely requests the OS perform this resolution, it does not wait for the OS to reply, the next line of  code will execute.</span></p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F06-concurrency%2F01-concurrency.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p>&nbsp;</p><p>&nbsp;</p><p><span>The order of the two </span><code>console.log(&quot;Prints Immediately&quot;)</code><span> is guaranteed, The order of the print statements from </span><code>dns.resolve()</code><span> is not guaranteed.</span></p><p><span>To test this, after running it once, change </span><code>venus.cs.qc.cuny.edu</code><span> to </span><code>red.cs.qc.cuny.edu</code><span>.  Because the request for </span><code>mars.cs.qc.cuny.edu</code><span> is likely cached from it&#39;s first execution, the printing of messages will likely be reversed </span><strong><span>(although this is also not guaranteed!)</span></strong><span>.</span></p><p><span>Most DNS servers have caching in place though, so they&#39;ll remember prior results.  The act of making the DNS request will likely have the results cached on servers you don&#39;t control, meaning subsequent requests will likely (but are not guaranteed to) resolve in the order they are sent.  If you run the code a second time </span><code>red</code><span> will likely appear before </span><code>mars</code><span> this time.</span></p><p><span>If you need some fresh domains to try this with, here are some that I&#39;ve found on the </span><code>cs.qc.cuny.edu</code><span> network.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.2px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">godel.cs.qc.cuny.edu<span class="cm-tab" role="presentation" cm-text="	">    </span>alpha.cs.qc.cuny.edu<span class="cm-tab" role="presentation" cm-text="	">    </span>apple.cs.qc.cuny.edu</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">black.cs.qc.cuny.edu<span class="cm-tab" role="presentation" cm-text="	">    </span>enigma.cs.qc.cuny.edu<span class="cm-tab" role="presentation" cm-text="	">   </span>wizard.cs.qc.cuny.edu</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">white.cs.qc.cuny.edu<span class="cm-tab" role="presentation" cm-text="	">    </span>sigma.cs.qc.cuny.edu<span class="cm-tab" role="presentation" cm-text="	">    </span>delta.cs.qc.cuny.edu</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">omega.cs.qc.cuny.edu<span class="cm-tab" role="presentation" cm-text="	">    </span>gamma.cs.qc.cuny.edu<span class="cm-tab" role="presentation" cm-text="	">    </span>castle.cs.qc.cuny.edu</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">theta.cs.qc.cuny.edu<span class="cm-tab" role="presentation" cm-text="	">    </span>tundra.cs.qc.cuny.edu<span class="cm-tab" role="presentation" cm-text="	">   </span>gothic.cs.qc.cuny.edu</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 112px;"></div><div class="CodeMirror-gutters" style="display: none; height: 112px;"></div></div></div></pre><blockquote><p><span>Note most of these domains do not have an http server associated with them so you won&#39;t be able to visit them in a browser.</span></p></blockquote><p>&nbsp;</p><p>&nbsp;</p><h3 id='closures'><span>Closures</span></h3><p><code>after_venus</code><span> and </span><code>after_mars</code><span> have roughly the same code inside them. </span>
+<span>We want to generalize them into a single function </span><code>after_resolution(err, records)</code></p><p><span>Notice in the previous code we have separate variables for </span><code>venus</code><span> and </span><code>mars</code><span> .  To combine these two variables into a single variable </span><code>domain</code><span> we need to use closures.</span></p><p><span>  </span></p><blockquote><p><span>Before looking at the solution:</span></p><p><span>I&#39;d recommend trying to write the function </span><code>after_resolution</code><span> first using your existing knowledge.  </span></p><p><span>Getting stuck is fine, I do not expect many people to solve this problem, the very act of attempting it however will help you understand what closures are trying to solve.</span></p></blockquote><p>&nbsp;</p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F07-dns-closures%2F01-dns-closures.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p>&nbsp;</p><p><span>We utilize a closure here, which has us putting a function inside a function to preserve access to an outer scoped variable (</span><code>domain</code><span> in this case)</span></p><p><span>Stepping through the code:</span></p><ol start='' ><li><p><code>resolve(venus);</code></p></li><li><p><code>dns.resolve(&quot;venus.cs.qc.cuny.edu&quot;, after_resolution)</code><span> : Even if this resolution is immediate, the resulting callback is added to the Event Queue, which will only move a task over if the call stack is empty, which it is not (This entire program must run to completion before the stack is empty)</span></p></li><li><p><span>End of </span><code>resolve(venus)</code><span> jump back to previous location</span></p></li><li><p><code>resolve(mars);</code></p></li><li><p><code>dns.resolve(&quot;mars.cs.qc.cuny.edu&quot;, after_resolution)</code><span> : If this resolves before </span><code>venus</code><span> resolves, it will appear in the Event Queue first.</span></p></li><li><p><span>Call Stack is empty, take next task from Event Queue</span></p></li><li><p><code>after_resolution(err, records)</code><span> : prints </span><code>console.log(domain, records);</code></p></li><li><p><span>Call Stack is empty, take next task from Event Queue</span></p></li><li><p><code>after_resolution(err, records)</code><span>  prints </span><code>console.log(domain, records);</code></p><p><span>(Depending on which resolves first, </span><code>venus</code><span> or </span><code>mars</code><span> the order of printing is not guaranteed.)</span></p></li></ol><p>&nbsp;</p><p>&nbsp;</p><p><span>Closures are a technique that allows variables to still be accessible, even after they would normally be out of scope.</span></p><p><span>By step 6, both calls to </span><code>resolve</code><span> has terminated, so </span><code>domain</code><span> should no longer be in scope, but there are no errors when </span><code>console.log(domain, records);</code><span> is called, in fact each call to </span><code>after_resolution</code><span> prints out a different value.</span></p><p><span>How does this work?  A closure is a collection of all the variables in scope at the time of the function&#39;s initialization.  These closures are automatically generated and will be associated with that instance of the function, until it is no longer in scope itself.</span></p><p><span>Each instance of </span><code>after_resolution</code><span> will have associated with it, a closure that includes it&#39;s own variable </span><code>domain</code><span>.  Even though they share the same variable domain name </span><code>domain</code><span> the variable that they are closed under are each unique.  This is how </span><code>domain</code><span> is able to print both </span><code>venus</code><span> and </span><code>mars</code><span> despite not having a guarantee on which one evaluates first.</span></p><p>&nbsp;</p><p>&nbsp;</p><h3 id='n-domains-concurrently-loop'><span>N Domains Concurrently (Loop)</span></h3><p><span>The next step is to scale up, if we need to deal with </span><code>n</code><span> domains concurrently we need to introduce a loop.</span></p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F08-n-domains-concurrently%2F01-n-domains-concurrently.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p>&nbsp;</p><p><span>This example includes some domains that don&#39;t exist, including </span><code>earth.cs.qc.cuny.edu</code><span> and </span><code>definitely.not.a.domain</code><span> these should either print the </span><code>Failed to resolve</code><span> message.</span></p><p>&nbsp;</p><blockquote><p><span>Certain ISPs (like Verizon) may redirect requests that fail to resolve to their own custom search.</span>
+<span>You may not see any </span><code>Failed to resolve</code><span> messages in this case, instead both fake domains should point to the same server, that your ISP uses for their custom search.</span></p></blockquote><p>&nbsp;</p><p><span>There is  a sleight of hand here though:</span></p><p><span>In most languages when we write a for loop, any declaration placed inside the first part is considered outside the scope of the loop.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="java"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="java"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.2px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// Java Snippit</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">for</span>(<span class="cm-variable-3">int</span> <span class="cm-variable">i</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable">i</span> <span class="cm-operator">&lt;</span> <span class="cm-number">5</span>; <span class="cm-variable">i</span><span class="cm-operator">++</span>){</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">System</span>.<span class="cm-variable">out</span>.<span class="cm-variable">println</span>(<span class="cm-variable">i</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 90px;"></div><div class="CodeMirror-gutters" style="display: none; height: 90px;"></div></div></div></pre><p><span>is equivalent to</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.2px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// Java Snippit</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">int</span> <span class="cm-variable">i</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">for</span>(<span class="cm-variable">i</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable">i</span> <span class="cm-operator">&lt;</span> <span class="cm-number">5</span>; <span class="cm-variable">i</span><span class="cm-operator">++</span>){</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">System</span>.<span class="cm-variable">out</span>.<span class="cm-variable">println</span>(<span class="cm-variable">i</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 112px;"></div><div class="CodeMirror-gutters" style="display: none; height: 112px;"></div></div></div></pre><p>&nbsp;</p><p><span>We have a problem though when this is done with asynchronously functions.</span></p><p><span>Run this in your JS browser console:</span></p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F08-n-domains-concurrently%2F02-var.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p>&nbsp;</p><p><span>Because </span><code>i</code><span> gets moved outside the scope of the loop</span></p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F08-n-domains-concurrently%2F03-var.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p><span>All instances of </span><code>i</code><span> are refer to the same variable and prints out the number 5, five times.</span></p><p>&nbsp;</p><p><span>In the JavaScript specification variables declared as block scope using </span><code>let</code><span> are to be scoped as if they are inside the loop.  On each iteration of this loop a new variable </span><code>i</code><span> is declared with it&#39;s value set to be the value of the previous </span><code>i</code><span> after the increment.</span></p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F08-n-domains-concurrently%2F04-let.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p><span>This will print 0 to 4 as the closure preserves each unique instance of variable </span><code>i</code><span>.</span></p><p>&nbsp;</p><h3 id='n-domains-synchronously-recursion'><span>N Domains Synchronously (Recursion)</span></h3><p><span>Performing a large number (100+) number of DNS resolutions concurrently will likely not work as most DNS services use rate limiting to prevent Denial of service attacks.</span></p><p>&nbsp;</p><p><span>Here&#39;s an excerpt from Google&#39;s public DNS hosted on </span><code>8.8.8.8</code></p><p><span>	</span><a href='https://developers.google.com/speed/public-dns/docs/security#rate_limit' target='_blank' class='url'>https://developers.google.com/speed/public-dns/docs/security#rate_limit</a></p><p>&nbsp;</p><p><span>Within Node.js, the maximum timeout seems to be hardcoded to 5 seconds.  If it takes longer than that you will get an </span><code>ETIMEOUT</code><span> error.</span></p><p><a href='https://github.com/nodejs/node/blob/7b1297d856dbd9af85c18478301b234caebf04e4/deps/cares/src/ares_private.h#L40' target='_blank' class='url'>https://github.com/nodejs/node/blob/7b1297d856dbd9af85c18478301b234caebf04e4/deps/cares/src/ares_private.h#L40</a></p><p>&nbsp;</p><p><span>It looks like the current version of Node.js does not support changing the maximum timeout from within the DNS built in module.</span></p><p><span>	</span><a href='https://github.com/nodejs/node/issues/7231' target='_blank' class='url'>https://github.com/nodejs/node/issues/7231</a></p><p>&nbsp;</p><p><span>If we need to make 100+ DNS requests, it&#39;s better to do each DNS requests synchronously. </span>
+<span>Make a single DNS request, complete it entirely, before making the next one to avoid timeout issues.</span></p><p>&nbsp;</p><p><span>If we need to perform </span><code>n</code><span> tasks synchronously we need to extend continuation passing style.  This is done by counting how many requests are finished.  In the Continuation Passing Example, you should have noticed that </span><code>after_venus</code><span> and </span><code>after_mars</code><span> had roughly the same code except for one line after the else block. </span></p><p><code>after_venus</code><span> has </span><code>dns.resolve(mars, after_mars);</code><span>	</span><span>(more domains to be checked)</span></p><p><code>after_mars</code><span> has </span><code>console.log(ip_addresses);</code><span>	</span><span>(no more domains to be checked)</span></p><p><span>If we needed to extend that result to </span><code>n</code><span> domains, we can do so using an if statement to split into two paths:</span></p><ol start='' ><li><span>a recursive case if there are more domains to be checked, </span></li><li><span>a base case to stop at, if there are no other domains to check.</span></li></ol><p>&nbsp;</p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F09-n-domains-synchronously%2F01-n-domains-synchronously.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p><span>Lets walk through what&#39;s happening here:</span></p><ol start='' ><li><p><code>dns.resolve(domains[0], after_resolved);</code><span> Tells the OS to make the DNS request (does not block because this API call is asynchronous). The resulting callback is added to the Event Queue, which will only move a task over if the call stack is empty.</span></p></li><li><p><span>Call Stack is empty, take next task from Event Queue</span></p></li><li><p><code>after_resolution(err, records)</code><span> : </span></p><ul><li><code>count++;</code><span>, </span></li><li><code>ip_addresses.push(records)</code></li></ul></li><li><p><code>count</code><span> is less than </span><code>domains.length</code><span> so execute else block </span></p><p><code>dns.resolve(domains[count], after_resolved);</code><span> The resulting callback is added to the Event Queue, which will only move a task over if the call stack is empty.</span></p></li><li><p><span>... Repeat Steps 2 to 4 until count is equal to </span><code>domains.length</code></p></li><li><p><span>Do not make further recursive calls, instead print the </span><code>ip_addresses</code><span> collected</span></p></li></ol><p>&nbsp;</p><p><span>As these are all executed synchronously, order is guaranteed.</span></p><p>&nbsp;</p><blockquote><p><span>A hybrid approach is likely even better, as rate limiting typically occurs on a requests/timeframe basis.  So sending 20 requests and waiting for them to resolve before sending the next 20 should be more effective than 1 at a time.  Further testing can find that sweet spot that avoids ETIMEOUTS.</span></p></blockquote><p>&nbsp;</p><p>&nbsp;</p><h3 id='going-from-synchronous-to-concurrent'><span>Going from Synchronous to Concurrent</span></h3><p><strong><span>Scenario:</span></strong><span> </span><code>domain-01.txt</code><span> contains multiple domain names inside it, one on each line.  We want to read the contents, then </span><strong><span>only after the data has been read</span></strong><span> use </span><code>dns.resolve()</code><span> to convert each line into an IP addresses and print them to console.</span></p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F10-synchronous-to-concurrent%2F01-synchronous-to-concurrent.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p>&nbsp;</p><p><span>DNS resolution is done concurrently, if there are multiple domains, order is not guaranteed.</span></p><p><span>Utility Functions:</span></p><ul><li><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split'><span>String.split(separator)</span></a></li></ul><p>&nbsp;</p><p><span>Like </span><code>dns.resolve()</code><span>, </span><code>fs.readFile()</code><span> will give the instructions to the operating system to perform the read operation, but will not wait for them to be completed.  If another task needs to be done after the file is read, then it should be carried out inside the callback.  (In this example we call </span><code>resolve()</code><span> inside </span><code>after_read</code><span>)</span></p><p>&nbsp;</p><h3 id='new-function-2'><span>New Function</span></h3><h4 id='fsreadfilepath-options-callback'><span>fs.readFile(path, options, callback)</span></h4><ul><li><p><code>path</code><span>: string representing location of file</span></p></li><li><p><code>options</code><span> : options for determining how the binary data is decoded.</span>
+<span>For our class we will be using either: </span><code>{encoding:&quot;utf8&quot;}</code><span> for strings or </span><code>{encoding:null}</code><span> for binary data.</span></p></li><li><p><code>callback</code><span>: Function</span></p><ul><li><code>err</code><span>: Error - Information related to why the read failed.  </span><code>false</code><span> if no error.</span></li><li><code>data</code><span>: Data read.  If </span><code>{encoding:&quot;UTF8&quot;}</code><span> it is a string, if </span><code>{encoding:null}</code><span> it is a buffer</span>
+<span>(Buffers discussed later)</span></li></ul></li></ul><p><a href='https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback' target='_blank' class='url'>https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback</a></p><p>&nbsp;</p><p>&nbsp;</p><h3 id='going-from-concurrent-to-synchronous'><span>Going from Concurrent to Synchronous</span></h3><p><strong><span>Scenario:</span></strong><span> We have an array of valid domains we want to convert to IP addresses (and we want to do this concurrently), the final output should be a single string of all IP addresses separated by newlines (</span><code>&quot;\r\n&quot;</code><span>).  We use the same counting technique used previously to only progress to </span><code>next_task()</code><span> after we have converted all domains.</span></p><p><span>We will have </span><code>n</code><span> calls to </span><code>resolve()</code><span>.  Only the call that </span><strong><span>resolves last</span></strong><span> will pass the </span>
+<code>count === domains.length</code><span> check, which will then progress to </span><code>next_task()</code></p><p><span>Remember there are no race conditions here as the event loop only moves one callback from the Event Queue into the call stack at a time and only if the call stack is empty.</span></p><p>&nbsp;</p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F11-concurrent-to-synchronous%2F01-concurrent-to-synchronous.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p>&nbsp;</p><p><span>Order is not preserved in this case, as whatever DNS request resolves first will be be placed in to the </span><code>ip_addresses[0]</code><span>.  Verify this by replacing one of the domains with a domain that you know exist, but haven&#39;t visited recently.  The order should not match the input order (although this is not guaranteed, so you may have to do it a few times).</span></p><p><span>Additional Notes:</span></p><ul><li><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat'><code>Array.prototype.flat()</code></a></li><li><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join'><code>Array.prototype.join()</code></a></li></ul><p>&nbsp;</p><h3 id='preserving-order'><span>Preserving Order</span></h3><p><span>Order can be preserved by reserving space for each result and passing not just the domain, but also the index into the closure.  </span></p><p><span>We do this by using </span><code>Array(n)</code><span> which creates an empty array of size </span><code>n</code></p><p><span>When the resolution completes it will add the result into the reserved slot using the index.</span></p><p><span>I&#39;ve added an additional </span><code>console.log(ip_addresses);</code><span> so you can see the IP addresses get populated.  (Node.js will print </span><code>&lt;X empty item/s&gt;</code><span> for empty slots)</span></p><p><span>Again after running it once, replace one of the domains with a domain that you know exist, but haven&#39;t visited recently and that should be filled in last, but this time in it&#39;s reserved spot.</span></p><script src="https://gist-it.appspot.com/https://github.com/raymondlaw/asynchronous-programming/blob/master/12-preserving-order/01-preserving-order.js"></script><h2 id='compressing-data-with-deflate'><span>Compressing Data with Deflate</span></h2><p><span>Compression is the process of taking data and reencoding it such that the resulting output has the same information, but in fewer total bytes.  Because this process is CPU intensive, and can take a substantial amount of time, it&#39;s API was designed to be asynchronous.</span></p><p><span>The </span><code>zlib</code><span> module provides support for compressing and decompressing various formats.  We will be using the </span><a href='https://en.wikipedia.org/wiki/DEFLATE'><span>DEFLATE</span></a><span> format.</span></p><p>&nbsp;</p><blockquote><p><span>Note we will be compressing strings, not files so you won&#39;t be able to decompress the output using decompression software (7zip, winrar, ...) as there is no file structure information associated with the compressed data.</span></p></blockquote><p>&nbsp;</p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F13-compressing-with-deflate%2F01-compressing-with-deflate.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p><span>This demonstrates a style of writing code using by placing functions inside of functions.  This is helpful because we can access the variable </span><code>buffer</code><span> from inside </span><code>after_write</code><span> thanks to a closure.</span></p><p><span>The drawback to this style of writing code is the added complexity of having multiple layers of nesting in your code.  When taken to an extreme level this is referred to as </span><a href='http://callbackhell.com/'><span>callback hell</span></a><span>.</span></p><p>&nbsp;</p><p><span>Try to decouple these functions.  That is try to write two separate functions that </span><code>after_compress</code><span> and </span><code>after_write</code><span> that are not nested inside of each other.</span></p><p>&nbsp;</p><blockquote><p><span>The solution is posted below, </span><strong><span>but</span></strong><span> try it yourself first.</span></p><p><span>Again it&#39;s fine to get stuck, this is expected and you can learn a lot about what we are trying to accomplish in the process.  When you see the solution afterwards you will understand the motivation better.</span></p></blockquote><p>&nbsp;</p><h3 id='solution'><span>Solution:</span></h3><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F13-compressing-with-deflate%2F02-compressing-with-deflate.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p>&nbsp;</p><p><span>The problem we have is that we can&#39;t access </span><code>buffer.length</code><span> if we extract </span><code>after_write</code><span> out of </span><code>after_compress</code><span>  The closure preserved our access to that variable, and the </span><code>fs.write()</code><span> function only gives us back a single parameter </span><code>err</code><span> without anyway to input additional data.</span></p><p><span>The solution is to use a </span><strong><span>wrapper function</span></strong><span>.  When </span><code>fs.writeFile()</code><span> finishes, an Anonymous arrow function </span><code>(err) =&gt; after_write(err, buffer.length)</code><span> is put on the Event Queue.  This function takes the returned error and forwards the results to </span><code>after_write()</code><span>, but also includes the buffer.length.</span></p><p><span>Callbacks have a restricted format as defined by their API.  To pass in additional parameters we use a wrapper function.</span></p><p><span>We use an arrow function here for succinctness, but a regular function should work too.  </span></p><blockquote><p><span>Now that you&#39;ve seen the solution, for further practice go through the previous demo&#39;s and try to extract </span><code>after_resolution</code><span> from </span><code>resolve</code><span> using the same techniques.  Of course the output should be unchanged, we are just modularizing our code to minimize the nesting of functions.  This can be difficult for some of the demos, but it can be done for all of them.</span></p></blockquote><p>&nbsp;</p><h4 id='additional-notes-regarding-encoding'><span>Additional Notes regarding Encoding</span></h4><p><span>Data stored on computers is typically referred to as binary data as it is represented using 0 and 1s.  When we are encode data using a format like ascii or utf8, we are structuring the data in a way that is readable by text editors.  This added structure comes with some overhead even if we stick to just English text.</span></p><p><img src="images\utf8.png" referrerpolicy="no-referrer" alt="utf8"></p><p><span>In contrast if we were looking to minimize used space we can compress our data using algorithms like Huffman code, and store it as binary.  It will no longer be readable by a text editor, but the file size will be substantially smaller.</span></p><p><code>fs.writeFile()</code><span> is fairly smart in that regard, it can tell whether you are trying to write a string (in which case it will choose encoding format &quot;utf8&quot;) or a binary file (in which case it will use no encoding, and write the data exactly as it is)</span></p><p><span>When reading files however it cannot tell, as the same typing information is not available. This is why when using </span><code>fs.readFile()</code><span> it requires an encoding format.  (For this course this is easy, strings are </span><code>&quot;utf8&quot;</code><span> and binary data is </span><code>null</code><span>)</span></p><hr /><h3 id='new-functions-1'><span>New Functions</span></h3><h4 id='fswritefilefile-data-callback'><span>fs.writeFile(file, data, callback)</span></h4><ul><li><p><code>file</code><span>: string representing location of file to write, If file doesn&#39;t exist it will create it, if it does it will overwrite the existing contents</span></p></li><li><p><code>data</code><span>: data to write</span></p></li><li><p><code>callback</code><span>: Function</span></p><ul><li><code>err</code><span> Error message in case the write fails</span></li></ul></li></ul><p><span>   </span><a href='https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback' target='_blank' class='url'>https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback</a></p><p>&nbsp;</p><h4 id='zlibdeflatebuffer-callback'><span>zlib.deflate(buffer, callback)</span></h4><ul><li><p><code>buffer</code><span>: buffer or string content to compress</span></p></li><li><p><code>callback</code><span>: Function</span></p><ul><li><code>err</code><span> Error message in case the compress operation fails</span></li><li><code>buffer</code><span> Binary representation of the compressed data.</span></li></ul></li></ul><p><span>   </span><a href='https://nodejs.org/api/zlib.html#zlib_zlib_deflate_buffer_options_callback' target='_blank' class='url'>https://nodejs.org/api/zlib.html#zlib_zlib_deflate_buffer_options_callback</a></p><hr /><p>&nbsp;</p><p>&nbsp;</p><h2 id='decompressing-data-with-inflate'><span>Decompressing Data with Inflate</span></h2><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F14-decompressing-with-inflate%2F01-decompressing-with-inflate.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p>&nbsp;</p><h3 id='new-functions-2'><span>New Functions</span></h3><h4 id='zlibinflatebuffer-callback'><span>zlib.inflate(buffer, callback)</span></h4><ul><li><p><code>buffer</code><span>: Binary representation of the compressed data.</span></p></li><li><p><code>callback</code><span>: Function</span></p><ul><li><code>err</code><span> Error message in case the decompress operation fails</span></li><li><code>buf</code><span> Buffer: Decompressed data that has yet to be decoded yet.  Apply </span><code>toString(&quot;utf8&quot;)</code><span> to read the bytes as a </span><code>&quot;utf8&quot;</code><span> String.</span></li></ul></li></ul><p><span>   </span><a href='https://nodejs.org/api/zlib.html#zlib_zlib_deflate_buffer_options_callback' target='_blank' class='url'>https://nodejs.org/api/zlib.html#zlib_zlib_deflate_buffer_options_callback</a></p><p>&nbsp;</p><p><span>Since we know the input file has been passed through </span><code>DEFLATE</code><span> compression, we will treat </span><code>data</code><span> as a binary file.  When reading it, we will use encoding format </span><code>null</code><span> which tells Node.js to consider it literally as a series of 1s and 0s and don&#39;t try to convert them to readable characters.  </span><code>data</code><span> in this case is not a string, but a Buffer type.</span></p><p><code>zlib.inflate()</code><span> will decompress </span><code>data</code><span> and put the result into </span><code>buf</code><span> .  Because we never specified the encoding of this, the result will still be treated as a series of 1s and 0s.  To tell the Node.js to treat this as readable text, we apply the function </span><a href='https://nodejs.org/api/buffer.html#buffer_buf_tostring_encoding_start_end'><code>Buffer.toString(&quot;utf8&quot;)</code></a></p><p><span>If we remove the </span><code>.toString(&quot;utf8&quot;)</code><span> what prints out is a Buffer type with a series of hexadecimal numbers representing the literal 1s and 0s in a condensed format.</span></p><p>&nbsp;</p><p><span>The next file extracts out the function </span><code>after_decompress</code><span> so that it is not nested under </span><code>after_read</code></p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2F14-decompressing-with-inflate%2F02-decompressing-with-inflate.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><h2 id='appendix'><span>Appendix</span></h2><p><span>Why can&#39;t we use </span><code>setTimeout()</code><span> in this course?</span></p><p><span>During my analysis of past assignments, I&#39;ve noticed a common mistake was to use this function to create artificial delays, which create programs that are slow, hardware dependent, and prone to race conditions.  By removing student&#39;s access to this function the use of these &quot;hacks&quot; disappeared.</span></p><p><span>Specifically code like the following code was problematic:</span></p><script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fraymondlaw%2Fasynchronous-programming%2Fblob%2Fmaster%2Fappendix%2Fmistake.js&amp;style=github&amp;showBorder=on&amp;showLineNumbers=on&amp;showFileMeta=on&amp;showCopy=on"></script><p><span>The student in question would see that </span><code>fileContents</code><span> was undefined and delay the printing by 1 second to compensate.</span></p><p><span>The problem with this code is two fold:</span></p><ol start='' ><li><p><span>The output depends on the read task finishing within 1000 milliseconds.  What if we were using a slower cd rom, a floppy drive, or a networked drive?  What if the file were larger?</span></p><p><span>I&#39;ve supplied a script that creates a 512MB file, run the script, and swap out </span><code>file01.txt</code><span> for the created </span><code>file02.txt</code><span> in </span><code>mistake.js</code><span> and see if the program finishes.  (If you have a SSD it might actually finish, in that case just imagine that the file was even larger!)</span></p><p><span>For input large enough this application will eventually fail.</span></p></li><li><p><span>Reading a small file does not take 1000ms, but because we cannot control the input, we have a large constant delay no matter what size the file is.  What if we need to read 1000 files of arbitrary size synchronously?  Now our program takes 1000 x 1000ms.</span></p></li></ol><p>&nbsp;</p><p><span>For this course don&#39;t use </span><code>setTimeout</code><span> at all.</span></p><p><span>Outside of this course, use </span><code>setTimout</code><span> when you need to simulate time passing.  If you&#39;re using it to create artificial delays, so that another function finishes first, you are introducing race conditions and this it is no longer a program, but a series of hacks glued together.</span></p><p>&nbsp;</p><p>&nbsp;</p></div></div>
+</body>
+</html>
