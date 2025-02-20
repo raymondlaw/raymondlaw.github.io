@@ -1,0 +1,705 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>data-link-layer</title><link href='https://fonts.loli.net/css?family=Merriweather:900,900italic,300,300italic&subset=latin-ext' rel='stylesheet' type='text/css' /><link href='https://fonts.loli.net/css?family=Lato:900,300&subset=latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+  .typora-export h1::after, .typora-export h2::after, .typora-export h3::after, .typora-export h4::after, .typora-export h5::after, .typora-export h6::after { content: ""; display: block; height: 100px; margin-bottom: -100px; }
+}
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+@include-when-export url(https://fonts.loli.net/css?family=Merriweather:900,900italic,300,300italic&subset=latin-ext);
+@include-when-export url(https://fonts.loli.net/css?family=Lato:900,300&subset=latin-ext);
+
+:root {
+	--control-text-color: #777;
+}
+
+/**
+ * forked from pixyll.com
+ * MIT license
+ */
+
+h1,
+.h1,
+.f1 {
+	font-size: 2rem;
+	line-height: 2.5rem;
+}
+h2,
+.h2,
+.f2 {
+	font-size: 1.5rem;
+	line-height: 2rem;
+}
+h3,
+.h3,
+.f3 {
+	font-size: 1.25rem;
+	line-height: 1.5rem;
+}
+p,
+.p,
+.f4,
+h4,
+h5,
+h6,
+dl,
+ol,
+ul,
+pre[cid],
+div[cid],
+#typora-source {
+	font-size: 1.125rem;
+	line-height: 1.5rem;
+}
+
+h4 {
+	font-size: 1.13rem;
+}
+/*
+ Pixyll
+ A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff.
+ Best served with BASSCSS (http://jxnblk.github.io/basscss)
+ Crafted with <3 by John Otander (@4lpine) - ©2015 John Otander MIT License http://opensource.org/licenses/MIT
+
+*/
+
+body {
+	font-family: "Merriweather", "PT Serif", Georgia, "Times New Roman", "STSong", Serif;
+	line-height: 1.5rem;
+	font-weight: 400;
+}
+
+#write {
+	max-width: 914px;
+	color: #333;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1100px;
+	}
+}
+
+@media only screen and (min-width: 1700px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+img {
+	width: auto;
+	max-width: 100%;
+}
+body {
+	font-size: 1.5rem;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.ty-table-edit {
+	background: #ededed;
+}
+
+table {
+	width: 100%;
+	font-size: 1.125rem;
+}
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td,
+table > tfoot > tr > th,
+table > tfoot > tr > td {
+	padding: 12px;
+	line-height: 1.2;
+	vertical-align: top;
+	border-top: 1px solid #333;
+}
+table > thead > tr > th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #333;
+}
+table > caption + thead > tr:first-child > th,
+table > caption + thead > tr:first-child > td,
+table > colgroup + thead > tr:first-child > th,
+table > colgroup + thead > tr:first-child > td,
+table > thead:first-child > tr:first-child > th,
+table > thead:first-child > tr:first-child > td {
+	border-top: 0;
+}
+table > tbody + tbody {
+	border-top: 2px solid #333;
+}
+p {
+	font-weight: 300;
+	line-height: 1.5;
+}
+abbr {
+	border-bottom: 1px black dotted;
+	cursor: help;
+}
+pre,
+code {
+	font-family: Menlo, Monaco, "Courier New", monospace;
+}
+
+code,
+.md-fences  {
+	color: #7a7a7a;
+}
+
+.md-fences {
+	padding: 1.125em;
+	margin-bottom: 0.88em;
+	font-size: 1rem;
+	border: 1px solid #7a7a7a;
+	padding-bottom: 0.5rem;
+	padding-top: 0.5rem;
+}
+
+blockquote {
+	padding: 1.33em;
+	font-style: italic;
+	border-left: 5px solid #7a7a7a;
+	color: #555;
+}
+blockquote em {
+	color: #000;
+}
+blockquote footer {
+	font-size: .85rem;
+	font-style: normal;
+	background-color: #fff;
+	color: #7a7a7a;
+	border-color: transparent;
+}
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	font-family: "Lato", 'Helvetica Neue', Helvetica, sans-serif;
+	font-weight: bold;
+	line-height: 1.2;
+	margin: 1em 0 0.5em;
+}
+@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.3rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before{
+		top: 1px;
+	}
+	.p,
+	p,
+	li {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}
+@media (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.3rem;
+	}
+}
+@media screen and (min-width: 64em) {
+	.h1,
+	h1 {
+		font-size: 4.498rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.29rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.9rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.591rem;
+	}
+	#write>h4.md-focus:before{
+		top:4px;
+	}
+}
+a {
+	color: #463F5C;
+	text-decoration: underline;
+}
+
+#write {
+	padding-top: 2rem;
+}
+
+#write pre.md-meta-block {
+	min-height: 35px;
+	padding: 0.5em 1em;
+	white-space: pre;
+	border: 0px;
+
+	border-left: 30px #f8f8f8 solid;
+	border-right: 30px #f8f8f8 solid;
+	width: 100vw;
+	max-width: calc(100% + 60px);
+
+	margin-left: -30px;
+	margin-bottom: 2em;
+	margin-top: -2010px;
+	padding-top: 2000px;
+	padding-bottom: 10px;
+	line-height: 1.5em;
+	color: #7a7a7a;
+	background-color: #fafafa;
+	font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+	font-weight: 300;
+	clear: both;
+	padding-left: 0;
+	font-size:1.125rem;
+}
+.md-image>.md-meta {
+	color: #463F5C
+}
+.footnotes {
+	font-size:1.1rem;
+}
+.md-tag {
+	font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+}
+.code-tooltip {
+	background: white;
+}
+.code-tooltip-content {
+	font-size: 1.1rem;
+}
+
+.task-list{
+	padding-left: 0;
+}
+
+.md-task-list-item {
+	padding-left:34px;
+}
+
+.md-task-list-item > input{
+	width: 1.25rem;
+	height: 1.25rem;
+	display: block;
+	-webkit-appearance: initial;
+	top: -0.2rem;
+	margin-left: -1.6em;
+	margin-top: calc(1rem - 7px);
+	border: none;
+}
+
+.md-task-list-item > input:focus{
+	outline: none;
+	box-shadow: none;
+}
+
+.md-task-list-item > input:before{
+	border: 1px solid #555;
+	border-radius: 1.5rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	background: #fff;
+	content: ' ';
+	transition: background-color 200ms ease-in-out;
+	display: block;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	background: #333;
+	border-width: 2px;
+	display:inline-block;
+	transition: background-color 200ms ease-in-out;
+}
+
+.md-task-list-item > input:checked:after,
+.md-task-list-item > input[checked]:after {
+	opacity: 1;
+}
+
+.md-task-list-item > input:after {
+	opacity: 1;
+	-webkit-transition: opacity 0.05s ease-in-out;
+	-moz-transition: opacity 0.05s ease-in-out;
+	transition: opacity 0.05s ease-in-out;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	position: absolute;
+	top: 0.4375rem;
+	left: 0.28125rem;
+	width: 0.9375rem;
+	height: 0.5rem;
+	border: 3px solid #fff;
+	border-top: 0;
+	border-right: 0;
+	content: ' ';
+	opacity: 0;
+}
+
+.md-tag {
+	color:inherit;
+}
+
+.md-toc:focus .md-toc-content{
+	margin-top: 19px;
+}
+
+#typora-sidebar {
+	font-size:1rem !important;
+}
+
+.html-for-mac #typora-sidebar {
+	background-color:white;
+}
+
+.outline-content li, .outline-content ul {
+	font-size:1rem !important;
+}
+
+.outline-title {
+	line-height: inherit;
+	margin-top: 10px;
+}
+
+.outline-expander {
+	width: 18px;
+}
+
+.outline-expander:before {
+ 	content: "+";
+	font-family: inherit;
+	color: rgb(108, 108, 108); 
+  	font-size: 1.5rem;
+ 	top: 0.1rem;
+}
+
+.outline-expander:hover:before {
+	content: "+";
+}
+
+.outline-item-open>.outline-item>.outline-expander:before{
+	content: "-";
+}
+
+/** source code mode */
+#typora-source {
+	font-family: Courier, monospace;
+    color: #6A6A6A;
+}
+
+.os-windows #typora-source {
+	font-family: inherit;
+}
+
+.cm-s-typora-default .cm-header, 
+.cm-s-typora-default .cm-property,
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+	color: #428bca;
+}
+
+.cm-s-typora-default .cm-atom, .cm-s-typora-default .cm-number {
+	color: #777777;
+}
+
+.md-diagram-panel {
+	margin-top: 24px;
+	margin-left: -1.2em;
+}
+
+.md-mathjax-midline {
+	background: #fafafa;
+}
+
+.enable-diagrams pre.md-fences[lang="sequence"] .code-tooltip,
+.enable-diagrams pre.md-fences[lang="flow"] .code-tooltip,
+.enable-diagrams pre.md-fences[lang="mermaid"] .code-tooltip {
+    bottom: -3.4em;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write'  class=''><h1><a name="data-link-layer" class="md-header-anchor"></a><span>Data Link Layer </span></h1><p><span>The Data Link Layer focuses on the node to node transfer of data between adjacent connections.  These networked nodes can consist of various devices like computers, routers, and switches.  </span></p><p><span>The data link layer is only concerned with providing transport from a single node to another node.  A higher layer protocol then chains together these short hops, to transmit messages across networks.  The data link layer abstract away the need for other layers to care about the physical layer and what hardware (whether it be twisted pair, fiber, or wireless) is in use.</span></p><p><span>In this example there are 4 independent data link layer exchanges necessary to send a message from Host1 to Host 2.</span></p><p><span>Within the OSI model, the data link layer can be further divided into two sublayers the Logical Link Control (or LLC sublayer) and the Media Access Control (or MAC sublayer).</span></p><h2><a name="media-access-control" class="md-header-anchor"></a><span>Media Access Control</span></h2><p><span>The medium access control sublayer controls the hardware responsible for interaction with the wired, optical or wireless transmission mediums.  It translates data into signal.</span></p><p><span>When receiving signal from the physical layer, the Media Access control is in charge of converting that physical signal whether it be electrical current, optical light, or wireless radio frequencies into bits and arranging those bits into frames for the the Logical Link Control.  </span></p><p><span>It must also do this in the reverse.  When transmitting data the Media Access control receives a frame from the Logical Link Control and is in charge of converting that frame into a physical signal.  </span></p><h2><a name="logical-link-control" class="md-header-anchor"></a><span>Logical Link Control  </span></h2><p><span>On top of the Media Access Control sublayer is the Logical Link Control.</span></p><p><span>The LLC sublayer acts as an interface between the media access control and the network layer.  </span></p><ol start='' ><li><span>It receives a message from an upper layer protocol (usually IP packet), </span></li><li><span>chooses which network interface (or NIC) to send the data out on (for example on a laptop with both wireless and ethernet capabilities, ethernet is typically chosen by the operating system). </span></li><li><span>If necessary it performs multiplexing, which is used to ensure multiple network layer protocols can coexist.  Multiplexing is the process of combining multiple signals from different sources into a single useable one.</span></li><li><span>Finally It wraps the message with the appropriate header, and sends it to the MAC sublayer to be sent out.</span></li><li><span>The entire process is performed in reverse when receiving a frame from the MAC sublayer.</span></li></ol><p><span>The transmission medium will determine the required header.  The encapsulated packet is called a frame.</span></p><p><span>In modern applications there are two major family of protocols each with their own headers:</span></p><ul><li><span>802.3 (Ethernet)</span></li><li><span>802.11 (WiFi)</span></li></ul><p><span>Each of these protocols has had multiple iterations over their existence, with each upgrade changing a one or two letter suffix, for example 802.11 a/b/g/n/ac and more recently 802.11ax or more commonly referred to as Wi-Fi 6</span></p><p><span>Historically we also had a protocol specifically for fiber connections called </span><a href='https://en.wikipedia.org/wiki/Fiber_Distributed_Data_Interface#Frame_format'><span>Fiber Distributed Data Interface</span></a><span> (or FDDI, but it is now obsolete, replaced with Ethernet over Fiber)</span></p><p>&nbsp;</p><h3><a name="why-do-we-use-frames" class="md-header-anchor"></a><span>Why do we use frames?</span></h3><p><span>In The next section we will go into the details of the Ethernet frame, but it&#39;s important to keep in mind on a high level how frames work and why we need them.  We&#39;ve already mentioned that the Data link layer deals with the node to node transmission of data and that multiple exchanges are used in conjunction with a higher layer protocol to deliver packets across the Internet.</span></p><p><span>In order to get a message from one device to the next we need to specify additional information, for example who the sender is and who the receiver is.  This type of meta-information is what the frame is composed of.  It is just header information that is added by the LLC sublayer in order to ensure the delivery of a message from one node to the next.</span></p><p><span>At each hop along it&#39;s path the header information is discarded.  This is because the goal of the data link layer frame is completed once it arrives at the next device.  The information regarding where it&#39;s next hop will be, is stored one layer above inside the network layer header.  (We will come back to that in a later lecture regarding routing, so we can blackbox that for now)  Once it&#39;s chosen it&#39;s next hop, a new data link layer frame is then generated (whether it be Ethernet or 802.11) all the fields are recomputed using the current hardware device&#39;s properties.</span></p><p><span>This is for scalability reaso ns, our network may have hundreds or even thousands of devices connected together, but our frame size will always remains constant, no matter the number of hops required.</span></p><h2><a name="ethernet-ieee-8023" class="md-header-anchor"></a><span>Ethernet (IEEE 802.3)</span></h2><p><span>The Ethernet frame is a family of frames that is used for wired connections, both copper and fiber.</span></p><p><span>It contains 6 or 7 fields with each frame separated by an interframe gap of 12 bytes for synchronization purposes.</span></p><p><span>We will be looking at the Ethernet II frame structure, but there are minor changes in the IEEE Ethernet standard used today which we need not concern ourselves with.</span></p><p>&nbsp;</p><p>&nbsp;</p><p><img src="images/Ethernet.png" referrerpolicy="no-referrer" alt="1050px-Ethernet_Type_II_Frame_format.svg"></p><p>&nbsp;</p><ul><li><p><span>Preamble (8 Bytes)  </span></p><p><span>The first 8 bytes of an ethernet frame are the preamble, which is a series of alternating 1s and 0s used to synchrnoize clocks (by detecting the transmission rate)</span></p><p><span>	</span><span>10101010 10101010 10101010 10101010 10101010 10101010 10101010 </span><strong><span>10101011</span></strong></p><ul><li><p><span>First 7 bytes are alternating 1s and 0s - used to synchronize clocks (by detect transmission rate)</span></p></li><li><p><span>The last byte of the preamble called the start frame delimiter (or SFD) has it&#39;s last bit changed to a 1,  to signals the start of next section</span></p><p>&nbsp;</p></li></ul></li></ul><h3><a name="mac-address" class="md-header-anchor"></a><span>MAC address</span></h3><p><span>The next two fields are addressing fields.</span></p><p><span>Addressing on the data link layer is done via the MAC address. </span></p><p><span>The MAC address is a universally unique field used to represent all devices in existence.</span></p><p><span>It is a 48-bit number (which gives us 281 trillion combinations).  Each network device is assigned a unique MAC address by it&#39;s manufacturer.  To prevent name collisions between manufacturers, each MAC address is composed of two parts, a 24-bit Organizationally Unique Identifier (OUI) followed by a 24-bit vendor assigned portion.  Manufacturer&#39;s of networking hardware coordinate with the IEEE, and are allocated blocks of OUI numbers, under the condition that each networking device has a unique MAC address.</span></p><blockquote><p><span>It is possible to tell who manufactured a device by looking up it&#39;s OUI.</span></p></blockquote><p><span>Open up powershell and type in</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="powershell"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="powershell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4.16667px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-identifier">ipconfig</span> <span class="cm-operator">/</span><span class="cm-identifier">all</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>If on mac type into terminal</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4.16667px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">networksetup -listallhardwareports</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p>&nbsp;</p><p><img src="images/mac-address.PNG" referrerpolicy="no-referrer"></p><p><span>You are looking for a 48bit number called the Physical Address, typically represented as 6 sets of hexadecimal pairs separated by dashes or colons.  The first half of that number is the OUI, we can put that number into a search engine or OUI repository websites (like </span><a href='https://hwaddress.com/' target='_blank' class='url'>https://hwaddress.com/</a><span>) to find the manufacturer of your network card.</span></p><p><span>In this example Micro-Star International was the creator of my Ethernet NIC.</span></p><p>&nbsp;</p><p><span>Many devices will have multiple MAC addresses, if it supports simultaneous communication.  For example routers and switches will have a separate MAC address for each physical port that exists on the device.  A computer that can communicate via Ethernet and Wi-Fi will have separate MAC addresses for each networking card.  </span></p><p><span>You may also have one or more software based MAC addresses if you are running a virtual machine or VPN.</span></p><blockquote><p><span>In the past there were other addressing mechanisms on the data link layer (like DECnet), but as these addresses were assigned by hardware manufacturer&#39;s, having multiple competing standards was not a good idea and the MAC address became the standard format used by all data link layer protocols.</span></p></blockquote><p><img src="images/Ethernet.png" referrerpolicy="no-referrer" alt="1050px-Ethernet_Type_II_Frame_format.svg"></p><p>&nbsp;</p><h4><a name="special-mac-addresses" class="md-header-anchor"></a><span>Special MAC Addresses</span></h4><p><span>Most routing is unicast, where there is a single sender and receiver, but there are two special category of addresses:</span></p><ul><li><p><span>The Broadcast address allows a message to be sent to the entire local network.  The Broadcast MAC Address is the address with all it&#39;s bit&#39;s set to 1 or  </span><code>FF:FF:FF:FF:FF:FF</code><span>.  Any switch on the network that receives a frame containing the broadcast address as the destination will replicate and forward the frame to every other device on the local network and is used in discovery protocols like ARP</span></p><p>&nbsp;</p></li><li><p><span>Certain MAC addresses are reserved as multicast addresses or one sender to many recipients.  For those interested I&#39;ve linked to a list of address ranges, but you won&#39;t be quizzed on specific values.</span></p><ul><li><a href='https://en.wikipedia.org/wiki/Multicast_address#Ethernet' target='_blank' class='url'>https://en.wikipedia.org/wiki/Multicast_address#Ethernet</a></li></ul><p>&nbsp;</p><p><span>It is more important to understand how multicast works.  Multicast addresses allow devices to send messages to a subsets of the network.  This is done by configuring switches to accept or reject messages from a specified multicast address.  Upon receiving a message with a multicast address, they will only be forward it if the switch has been configured to accept messages for that specific multicast address. </span></p><p>&nbsp;</p></li></ul><h3><a name="ieee-8021q" class="md-header-anchor"></a><span>IEEE 802.1Q</span></h3><ul><li><p><span>IEEE 802.1Q is an optional  (4 Bytes) field that provides support for VLANs and Quality of Service (QoS)</span></p><p><span>VLAN stands for virtual LAN. </span></p><p><span>They address the problem of having complex networks where the physical topology (or connections) may not match the virtual.  </span></p><p><span>With VLANs we can creating multiple private networks, that utilize the same physical network.  Imagine a company intranet with hundreds of people that work on different floors.  To ensure security, each department must have only it&#39;s members connected, but they may be spaced apart on different floors.</span></p><p><span>VLANs lets you have multiple logical LANs operating on the same physical equipment. </span></p><p><span>When a message is designated for another device on the same VLAN, it will get tagged with a special VLAN header, any frame with a VLAN tag will only b e forwarded out of a switch interface configured to relay that specific tag.  Switches won&#39;t forward tagged messages to endpoints not configured to receive a specific VLAN tag. </span></p><p>&nbsp;</p><p><span>This way you can have multiple virtual network that may operate using a single physical network. As an example you can have one VLAN for accounting and another for human resources.</span></p><p>&nbsp;</p><p><span>The standard also provides support for Quality of Service (or QoS) to allow your network to specify which VLANs will take priority should frames need to be queued or dropped entirely.  Voice over IP, competitive gaming, stock trading, and other time sensitive applications might be prioritized over file transfers.</span></p></li></ul><p>&nbsp;</p><p><img src="images/EthernetFrame.jpg" referrerpolicy="no-referrer" alt="EthernetFrame"></p><h3><a name="ethertype-2-bytes" class="md-header-anchor"></a><span>EtherType (2 Bytes)</span></h3><p><span>Used to indicate which protocol is encapsulated in the payload of the frame</span></p><p><span>An EtherType value of:</span></p><ul><li><span>0x0800 signals that the frame contains an IPv4 datagram.</span></li><li><span>0x0806 indicates an Address Resolution Protocol  (or </span><a href='https://en.wikipedia.org/wiki/Address_Resolution_Protocol'><span>ARP</span></a><span> frame which is a protocol used to bridge Data link and network layer, discussed later), </span></li><li><span>0x86DD indicates an </span><a href='https://en.wikipedia.org/wiki/IPv6'><span>IPv6</span></a><span> frame  </span></li></ul><h3><a name="payload-46-1500-bytes" class="md-header-anchor"></a><span>Payload (46-1500 Bytes)</span></h3><p><span>This is the content that is being delivered, typically an IP packet.</span></p><h3><a name="frame-check-sequence-fcs--4-bytes" class="md-header-anchor"></a><span>Frame Check Sequence (FCS)  (4 Bytes)</span></h3><p><span>Provides Data integrity </span></p><p><span>The FCS Uses a 32bit Cyllic Redundancy Check Algorithm (or CRC32)</span></p><p><a href='https://en.wikipedia.org/wiki/Cyclic_redundancy_check' target='_blank' class='url'>https://en.wikipedia.org/wiki/Cyclic_redundancy_check</a></p><p><span>Before data is transmitted on the wire, it takes all the data and passes it through the CRC32 algorithm which produces a digest, this digest is then added to the frame.  </span></p><p><span>On the receiving end, the  CRC32 algorithm is run again on the received data, and the computed digest is compared with the one in the FCS.  If they don&#39;t match there was something corrupt and the packet gets dropped.</span></p><p><span>The frame check sequence only provides data integrity, there is no recovery aspect built into it, that is handled by a higher layer protocol.</span></p><p>&nbsp;</p><h2><a name="switches" class="md-header-anchor"></a><span>Switches</span></h2><p><span>Now that we have a basic understanding of what is inside an Ethernet frame we can discuss switches in more detail.</span></p><p><span>A network switch is a data link layer hardware device that has the ability to inspect frames and forward them only to the applicable party and not the entire network.</span></p><p>&nbsp;</p><p><img src="images/switch.png" referrerpolicy="no-referrer" alt="d1.png"></p><p>&nbsp;</p><p><span>In the following network diagram, if all the devices were connected via repeaters,  </span><code>AA:AA:AA:AA:AA:AA</code><span> transmitting to </span><code>BB:BB:BB:BB:BB:BB</code><span> would prevent </span><code>DD:DD:DD:DD:DD:DD</code><span> from transmitting to </span><code>EE:EE:EE:EE:EE:EE</code><span> as each signal would be duplicated to all endpoints at each repeater.  Without CSMA The messages that </span><code>B</code><span> and </span><code>E</code><span> receive would likely be corrupted.</span></p><p><span>The switch however is able to inspect each frame and forward it only to the physical port associated with the destination MAC address.</span></p><p><span>This ability to inspect the contents of the frame is what makes the switch a data link layer hardware device in contrast to the hub which is a physical layer hardware device.  In our next lecture we will introduce the router which is a network layer hardware device and as you may have guessed, can inspect the contents of the network layer packet.</span></p><p>&nbsp;</p><p><span>Switches maintain a memory of attached devices called the Forwarding information base (FIB) or MAC Address Tables.  It stores each known device on the local network.  This table has four columns VLAN, MAC Address, Type (which can be either static or dynamic), and Physical Port.  The job of the Forwarding information base is to map MAC addresses to physical ports.  That way when a device wants to send a frame to a specified ethernet address the switch knows which port to send it out on.</span></p><p>&nbsp;</p><blockquote><p><span>Port here refers to the physical connection on the switch.  (When we get to the Transport layer the term port is unfortunately used again, but they are unrelated.  To avoid confusion I will use the terms Physical Ports when referring to switches and Logical Ports when referring to transport layer sockets.</span></p></blockquote><p>&nbsp;</p><p><span>The switch uses the Destination MAC address in the frame combined with the MAC Address Table to look up the Physical Port, where it then forwards the message.  These forwards are chained together until the final destination is reached.</span></p><p>&nbsp;</p><p><span>Example of a MAC Address table inside a switch </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4.16667px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#show mac address-table</span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;  Mac Address Table</span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">-------------------------------------------</span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Vlan &nbsp;  Mac Address &nbsp; &nbsp; &nbsp; Type &nbsp; &nbsp; &nbsp;  Ports</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">---- &nbsp;  ----------- &nbsp; &nbsp; &nbsp; -------- &nbsp;  -----</span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 1 &nbsp;  00ld.70ab.5d60 &nbsp;  DYNAMIC &nbsp; &nbsp; Fa0/2</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; 1 &nbsp;  00le.f724.al60 &nbsp;  DYNAMIC &nbsp; &nbsp; Fa0/3</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Total Mac Addresses for this criterion: 2</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 187px;"></div><div class="CodeMirror-gutters" style="display: none; height: 187px;"></div></div></div></pre><p>&nbsp;</p><p><span>Switches learn about attached devices through two processes.  </span></p><p><span>When a frame is received, the switch will inspect the contents, and if the source address is not currently in the Forwarding information base, the MAC Address and physical port on which the frame was received will be added.</span></p><p>&nbsp;</p><p><span>In this example we have two switches with empty MAC address tables</span></p><p><span>Machine A attempts to send a message to machine D.  The first step that the switch does upon receiving a message from A, is inspect the frame&#39;s source address and associated A&#39;s MAC address with the port </span><code>Fa0/4</code><span>  (Note port names are arbitrary and vendor dependent)</span></p><p>&nbsp;</p><p><span>If a Switch receives a frame with an unknown destination address it uses a technique called unicast flooding to try and discover the device.  </span></p><p><span>A switch will make a request to all physical ports on the network to try to discover who owns the unknown MAC address.  Those who do not own the specified MAC address ignore the message.  </span></p><p>&nbsp;</p><p><span>Other switches on the network will first check to see if they have a record for the specified MAC address in their FIB, and if it does, will send back the information, otherwise the intermediate switch will recursively unicast flood the request.  </span></p><p><span>The computer with the queried MAC address will send an acknowledgement.  Computers with different MAC address&#39;s will ignore the message.  If a response is received, each switch along the path will add the MAC Address and port used to it&#39;s Mac Address Table.</span></p><p><span>That is in order to get a message from A to D, the data must be first received on switch 1 using port Fa0/4, then forwarded off of port Fa/07, received on switch 2 using port Ga0/3 and forwarded out on port Ga/01.  Any future requests from A to D or D to A will be much faster now that there are entries for both devices in the MAC address table.</span></p><p>&nbsp;</p><h2><a name="wi-fi-ieee-80211" class="md-header-anchor"></a><span>Wi-Fi (IEEE 802.11)</span></h2><p><span>802.11 or Wi-Fi operates in Half Duplex (Wifi messages are exchanged in Data + Ack pairs).  Wi-Fi can be extremely lossy depending on how far away the sender and receiver are  (possibly up to 10% loss and still usable).  This is generally what the number of bars or signal quality on your Wi-Fi connection is referring to.</span></p><p><span>Because of this large percentage of loss, the frame used for Wi-Fi are different than the one for Ethernet, it includes mechanisms for acknowledging the receipt of messages.</span></p><p><span>Each Wireless station will have a Service Set Identifier (SSID) used as the human readable name for a wireless access point, and a Basic Service Set Identifier (BSSID) which is the station&#39;s unique wireless identifier (or MAC address of the wireless station)</span></p><h3><a name="wi-fi-frame" class="md-header-anchor"></a><span>Wi-Fi Frame</span></h3><figure><table><thead><tr><th><img src="images/802.11_frame.png" referrerpolicy="no-referrer" alt="802.11_frame"></th></tr></thead><tbody><tr><td><em><span>Image:</span></em><span> </span><a href='https://commons.wikimedia.org/wiki/File:802.11_frame.png'><span>Buhadram / Wikicommons</span></a><span> </span><a href='https://creativecommons.org/licenses/by-sa/4.0/deed.en'><span>CC BY-SA 4.0</span></a></td></tr></tbody></table></figure><ul><li><p><span>Frame Control (2 Bytes)</span></p><p><span>	</span><span>Defines the Type of frame: </span></p><p><a href='https://en.wikipedia.org/wiki/802.11_Frame_Types' target='_blank' class='url'>https://en.wikipedia.org/wiki/802.11_Frame_Types</a></p><p><span>Frames are broken up into 3 major categories, management, control and data.</span></p><ul><li><p><span>Management frames assists in connecting and disconnecting devices</span></p><p><span>They include:</span></p><ul><li><span>Beacons: Which are continuously announced by wireless routers and include SSID, transfer rate, encryption</span></li><li><span>Probes: Laptops and phones remember connections they&#39;ve used previously, so it can run through it&#39;s list of known networks and send probes out in order to automatically connect next time</span></li><li><span>Authentication: which are frames used to provide credentials to show they are an authorized user</span></li><li><span>Association: Once authentication is complete, mobile devices can associate with a wireless access point to gain full access to the network, frames used in this context are categorized as association. </span></li></ul></li><li><p><span>Control: Assists in the delivery of messages and are necessary due to the half duplex nature of Wi-Fi</span></p><ul><li><span>ACKs: Acknowledges receipt of data</span></li><li><span>Block-ACKS: Acknowledges receipt of multiple chunks</span></li><li><span>RTS and CTS: </span></li></ul><p><span>Request to send and Clear to Send</span></p><p><span>Both of these signals ar e used to combat the hidden node problem </span></p><h4><a name="hidden-node-problem" class="md-header-anchor"></a><span>Hidden Node Problem</span></h4><p><img src="images/hidden.png" referrerpolicy="no-referrer" alt="RTSCTS"></p><p><span>In the hidden node problem there are three actors A,B, and C.  A and C can interact with B, but do not receive each other&#39;s messages.  The half duplex nature of Wi-Fi means that collisions can occur if both try sending at the same time and data is loss in these cases.  Is there a protocol that minimizes thi s loss?</span></p><p><span>In RTSCTS, devices send RTS requests and wait for a CTS response, if it receives a CTS message that is designated for a different device, it will assume that someone else is using the network and wait a random interval before sending another RTS.  This is the same algorithm (Carrier sense multiple access with collision avoidance) we discussed in the first lecture used by network hubs in the 1970.  </span></p><p><span>These type of algorithms can be used in any half-duplex situation.</span></p><p>&nbsp;</p><ul><li><span>Data : Contain the payload</span></li></ul></li></ul></li></ul><figure><table><thead><tr><th><img src="images/802.11_frame.png" referrerpolicy="no-referrer" alt="802.11_frame"></th></tr></thead><tbody><tr><td>&nbsp;</td></tr></tbody></table></figure><ul><li><p><span>Duration (2 Bytes)</span></p><ul><li><span>Duration: Used by the sending radio to specify how much time it is reserving when waiting for pending acknowledgment frame.</span></li></ul></li></ul><h3><a name="mac-address-n205" class="md-header-anchor"></a><span>MAC Address</span></h3><p><span>There are four MAC address fields on each 802.11 frame.  </span></p><p><span>The Last two are optional and depend on the type of frame </span></p><ul><li><span>Address 1: The receiver, is the device that decode the radio waves.  This is often the destination, but that is not a required.  This address can be broadcast or multicast address in which Address 3 is checked upon receiving the packet.</span></li><li><span>Address 2: The transmitter, i s the device that sends the radio waves. this is required in order to send acknowledgements.</span></li><li><span>Address 3: Used for filtering devices when using multicast or broadcast addresses, they ignore messages from BSSIDs that they are not a part.</span></li><li><span>Address 4: Used for Wi-Fi bridging (not discussed)</span></li></ul><hr /><p>&nbsp;</p><ul><li><p><span>QoS Control + HT Control: Used to prioritized traffic (Again VOIP, competitive gaming, stock trading are both time sensitive activities and you might want to prioritize that traffic over a file transfer)</span></p></li><li><p><span>Sequence Control (2 Bytes) - Used for authentication (not discussed)</span></p></li><li><p><span>Payload (0-7951 Bytes)</span></p></li><li><p><span>Frame Check Sequence (FCS) </span></p><p><span>The same (4 Bytes) used in the ethernet frame to provide data integrity</span></p><p><span>It also uses the CRC32 algorithm</span></p></li></ul><p>&nbsp;</p><p><span>Our next topic will be the network layer where we will learn how millions of messages are routed from our local machines to a server possibly thousands of miles away, all in a few seconds.</span></p><p>&nbsp;</p><h3><a name="additional-reference" class="md-header-anchor"></a><span>Additional Reference:</span></h3><ul><li><a href='https://witestlab.poly.edu/blog/802-11-wireless-lan-2/' target='_blank' class='url'>https://witestlab.poly.edu/blog/802-11-wireless-lan-2/</a></li><li><a href='https://www.oreilly.com/library/view/80211-wireless-networks/0596100523/ch04.html' target='_blank' class='url'>https://www.oreilly.com/library/view/80211-wireless-networks/0596100523/ch04.html</a></li></ul></div>
+</body>
+</html>
