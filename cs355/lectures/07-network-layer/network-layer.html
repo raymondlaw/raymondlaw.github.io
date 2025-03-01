@@ -1,0 +1,705 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>network-layer</title><link href='https://fonts.loli.net/css?family=Merriweather:900,900italic,300,300italic&subset=latin-ext' rel='stylesheet' type='text/css' /><link href='https://fonts.loli.net/css?family=Lato:900,300&subset=latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+@include-when-export url(https://fonts.loli.net/css?family=Merriweather:900,900italic,300,300italic&subset=latin-ext);
+@include-when-export url(https://fonts.loli.net/css?family=Lato:900,300&subset=latin-ext);
+
+:root {
+	--control-text-color: #777;
+}
+
+/**
+ * forked from pixyll.com
+ * MIT license
+ */
+
+h1,
+.h1,
+.f1 {
+	font-size: 2rem;
+	line-height: 2.5rem;
+}
+h2,
+.h2,
+.f2 {
+	font-size: 1.5rem;
+	line-height: 2rem;
+}
+h3,
+.h3,
+.f3 {
+	font-size: 1.25rem;
+	line-height: 1.5rem;
+}
+p,
+.p,
+.f4,
+h4,
+h5,
+h6,
+dl,
+ol,
+ul,
+pre[cid],
+div[cid],
+#typora-source {
+	font-size: 1.125rem;
+	line-height: 1.5rem;
+}
+
+h4 {
+	font-size: 1.13rem;
+}
+/*
+ Pixyll
+ A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff.
+ Best served with BASSCSS (http://jxnblk.github.io/basscss)
+ Crafted with <3 by John Otander (@4lpine) - ©2015 John Otander MIT License http://opensource.org/licenses/MIT
+
+*/
+
+body {
+	font-family: "Merriweather", "PT Serif", Georgia, "Times New Roman", "STSong", Serif;
+	line-height: 1.5rem;
+	font-weight: 400;
+}
+
+#write {
+	max-width: 914px;
+	color: #333;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1100px;
+	}
+}
+
+@media only screen and (min-width: 1700px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+img {
+	width: auto;
+	max-width: 100%;
+}
+body {
+	font-size: 1.5rem;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.ty-table-edit {
+	background: #ededed;
+}
+
+table {
+	width: 100%;
+	font-size: 1.125rem;
+}
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td,
+table > tfoot > tr > th,
+table > tfoot > tr > td {
+	padding: 12px;
+	line-height: 1.2;
+	vertical-align: top;
+	border-top: 1px solid #333;
+}
+table > thead > tr > th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #333;
+}
+table > caption + thead > tr:first-child > th,
+table > caption + thead > tr:first-child > td,
+table > colgroup + thead > tr:first-child > th,
+table > colgroup + thead > tr:first-child > td,
+table > thead:first-child > tr:first-child > th,
+table > thead:first-child > tr:first-child > td {
+	border-top: 0;
+}
+table > tbody + tbody {
+	border-top: 2px solid #333;
+}
+p {
+	font-weight: 300;
+	line-height: 1.5;
+}
+abbr {
+	border-bottom: 1px black dotted;
+	cursor: help;
+}
+pre,
+code {
+	font-family: Menlo, Monaco, "Courier New", monospace;
+}
+
+code,
+.md-fences  {
+	color: #7a7a7a;
+}
+
+.md-fences {
+	padding: 1.125em;
+	margin-bottom: 0.88em;
+	font-size: 1rem;
+	border: 1px solid #7a7a7a;
+	padding-bottom: 0.5rem;
+	padding-top: 0.5rem;
+}
+
+blockquote {
+	padding: 1.33em;
+	font-style: italic;
+	border-left: 5px solid #7a7a7a;
+	color: #555;
+}
+blockquote em {
+	color: #000;
+}
+blockquote footer {
+	font-size: .85rem;
+	font-style: normal;
+	background-color: #fff;
+	color: #7a7a7a;
+	border-color: transparent;
+}
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	font-family: "Lato", 'Helvetica Neue', Helvetica, sans-serif;
+	font-weight: bold;
+	line-height: 1.2;
+	margin: 1em 0 0.5em;
+}
+@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.3rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before{
+		top: 1px;
+	}
+	.p,
+	p,
+	li {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}
+@media (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.3rem;
+	}
+}
+@media screen and (min-width: 64em) {
+	.h1,
+	h1 {
+		font-size: 4.498rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.29rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.9rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.591rem;
+	}
+	#write>h4.md-focus:before{
+		top:4px;
+	}
+}
+a {
+	color: #463F5C;
+	text-decoration: underline;
+}
+
+#write {
+	padding-top: 2rem;
+}
+
+#write pre.md-meta-block {
+	min-height: 35px;
+	padding: 0.5em 1em;
+	white-space: pre;
+	border: 0px;
+
+	border-left: 30px #f8f8f8 solid;
+	border-right: 30px #f8f8f8 solid;
+	width: 100vw;
+	max-width: calc(100% + 60px);
+
+	margin-left: -30px;
+	margin-bottom: 2em;
+	margin-top: -2010px;
+	padding-top: 2000px;
+	padding-bottom: 10px;
+	line-height: 1.5em;
+	color: #7a7a7a;
+	background-color: #fafafa;
+	font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+	font-weight: 300;
+	clear: both;
+	padding-left: 0;
+	font-size:1.125rem;
+}
+.md-image>.md-meta {
+	color: #463F5C
+}
+.footnotes {
+	font-size:1.1rem;
+}
+.md-tag {
+	font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+}
+.code-tooltip {
+	background: white;
+}
+.code-tooltip-content {
+	font-size: 1.1rem;
+}
+
+.task-list{
+	padding-left: 0;
+}
+
+.md-task-list-item {
+	padding-left:34px;
+}
+
+.md-task-list-item > input{
+	width: 1.25rem;
+	height: 1.25rem;
+	display: block;
+	-webkit-appearance: initial;
+	top: -0.2rem;
+	margin-left: -1.6em;
+	margin-top: calc(1rem - 7px);
+	border: none;
+}
+
+.md-task-list-item > input:focus{
+	outline: none;
+	box-shadow: none;
+}
+
+.md-task-list-item > input:before{
+	border: 1px solid #555;
+	border-radius: 1.5rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	background: #fff;
+	content: ' ';
+	transition: background-color 200ms ease-in-out;
+	display: block;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	background: #333;
+	border-width: 2px;
+	display:inline-block;
+	transition: background-color 200ms ease-in-out;
+}
+
+.md-task-list-item > input:checked:after,
+.md-task-list-item > input[checked]:after {
+	opacity: 1;
+}
+
+.md-task-list-item > input:after {
+	opacity: 1;
+	-webkit-transition: opacity 0.05s ease-in-out;
+	-moz-transition: opacity 0.05s ease-in-out;
+	transition: opacity 0.05s ease-in-out;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	position: absolute;
+	top: 0.4375rem;
+	left: 0.28125rem;
+	width: 0.9375rem;
+	height: 0.5rem;
+	border: 3px solid #fff;
+	border-top: 0;
+	border-right: 0;
+	content: ' ';
+	opacity: 0;
+}
+
+.md-tag {
+	color:inherit;
+}
+
+.md-toc:focus .md-toc-content{
+	margin-top: 19px;
+}
+
+#typora-sidebar {
+	font-size:1rem !important;
+}
+
+.html-for-mac #typora-sidebar {
+	background-color:white;
+}
+
+.outline-content li, .outline-content ul {
+	font-size:1rem !important;
+}
+
+.outline-title {
+	line-height: inherit;
+	margin-top: 10px;
+}
+
+.outline-expander {
+	width: 18px;
+}
+
+.outline-expander:before {
+ 	content: "+";
+	font-family: inherit;
+	color: rgb(108, 108, 108); 
+  	font-size: 1.5rem;
+ 	top: 0.1rem;
+}
+
+.outline-expander:hover:before {
+	content: "+";
+}
+
+.outline-item-open>.outline-item>.outline-expander:before{
+	content: "-";
+}
+
+/** source code mode */
+#typora-source {
+	font-family: Courier, monospace;
+    color: #6A6A6A;
+}
+
+.os-windows #typora-source {
+	font-family: inherit;
+}
+
+.cm-s-typora-default .cm-header, 
+.cm-s-typora-default .cm-property,
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+	color: #428bca;
+}
+
+.cm-s-typora-default .cm-atom, .cm-s-typora-default .cm-number {
+	color: #777777;
+}
+
+.md-diagram-panel {
+	margin-top: 24px;
+	margin-left: -1.2em;
+}
+
+.md-mathjax-midline {
+	background: #fafafa;
+}
+
+.enable-diagrams pre.md-fences[lang="sequence"] .code-tooltip,
+.enable-diagrams pre.md-fences[lang="flow"] .code-tooltip,
+.enable-diagrams pre.md-fences[lang="mermaid"] .code-tooltip {
+    bottom: -3.4em;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write'  class=''><h1><a name="network-layer" class="md-header-anchor"></a><span>Network Layer</span></h1><p><span>The Network Layer provides support for internetwork communication.  It facilitates packet forwarding and routing between devices on separate networks and enables end to end communication.  Our discussion of the network layer will be split into two parts, in this first lecture we will discuss the architecture of the Internet, how routers work, the Internet Protocol, and the structure of the IP packet.</span></p><p>&nbsp;</p><p><span>In the following lecture we will look into various routing protocols, which dictate the rules that routers and autonomous systems follow, on how to forward packets such that they reach their final destination as efficiently as possible.  We talk about shortest path algorithms like Dijkstra and Bellman–Ford and how they are used to route traffic.</span></p><p>&nbsp;</p><p><span>The consequences of doing the lectures in this order, is that, during this lecture you will have to assume that each router knows the best path to forward packets to and this entire process is efficient.  More concisely, if we are sending a message over the Internet from computer A to B, at each router we can use an &quot;oracle&quot; to determine which router will be the next hop.  The details about this &quot;oracle&quot; algorithm will be revealed in the next lecture as well as it&#39;s runtime complexities.</span></p><p>&nbsp;</p><h2><a name="local-area-network-lan" class="md-header-anchor"></a><span>Local Area Network (LAN)</span></h2><p><span>A local area network (or LAN) is a grouping of computers that are interconnected within a single physical network.  Typically devices on a LAN can easily communicate with each other, but require special configuration in order to communicate with devices outside the local network.  Networks are separated by routers, a single network may have multiple routers each acting as a gateway between other networks.</span></p><p><span>If the topology of multiple connected networks is known beforehand, and we have the MAC addresses of all intermediate nodes, this can be done solely through the data link layer through the use of network bridges which are devices that connect two or more LANs.  Even with routers in play, if we control the entire network we can communicate using just the data link layer.</span></p><p><span>When using the Internet though, we need to be able to communicate with devices that we don&#39;t own and are connected to routers that we have no control over.  The network layer facilitates delivery of these messages by getting us closer and closer to the final destination one hop at a time.</span></p><p><span>IPv4 a network layer protocol, facilitates communications between networks that are not known beforehand.</span></p><p>&nbsp;</p><h2><a name="internet-protocol-ipv4" class="md-header-anchor"></a><span>Internet Protocol (IPv4)</span></h2><p><span>The most widely used protocol on the network layer is the Internet Protocol (abbreviated IP) It has two versions, IPv4 and IPv6.  Other protocols like ICMP also exists, but is mainly for error reporting purposes and it&#39;s header is largely the same as an IP datagram with a few additional fields.</span></p><p><span>Before your computer sends a message off to the Internet it attaches an IP Header to it, this header for the most part stays the same at each hop along the path (certain values like TTL are decreased, but the address fields are maintained).  This is contrast to datalink layer protocols like Ethernet and 802.11 where the frame headers are removed at each hop.</span></p><p>&nbsp;</p><p><img src="images\header.gif" referrerpolicy="no-referrer" alt="header"></p><p>&nbsp;</p><p><span>This IP Header contains multiple fields, the most important of which is the Source and Destination address.</span></p><h3><a name="ip-addresses" class="md-header-anchor"></a><span>IP Addresses</span></h3><p><span>Addressing in IPv4 is done with IP addresses.  Each device connected to the Internet is identified by this IP address.  These IP addresses are leased to individuals by Internet Service Providers (or ISPs)  </span></p><p><span>Your monthly Internet bill includes payment for a temporary lease of an IP address from your ISP&#39;s pool of available addresses.  You are not guaranteed the same IP address each time unless you pay for business class Internet that includes a static IP.  </span></p><p>&nbsp;</p><blockquote><p><span>ISPs in recent years have sent legal warnings to its users for illegal sharing of copyrighted material.  But how do they know who was sharing files if the IP addresses are shared?</span></p><p><span>The complaints are sent from the copyright holders to ISPs, and include not just the IP address that were used and the files that was shared, </span><strong><span>but also the timestamp of when the files were being uploaded</span></strong><span>.  From there the ISP can identify what user was using that IP during that window of time to catch the culprit.</span></p></blockquote><p>&nbsp;</p><p><span>IP address are a 32 bit number composed of four octets.  Each octet is typically represented as a number from 0 to 255 separated by dots (Eg. 192.168.0.0 or 255.255.255.255).  This format is called dotted decimal notation. </span></p><p><span>Due to IP addresses being a 32-bit number there is upper limit of 2</span><sup><span>32</span></sup><span>  or 4,294,967,296 addresses.  While enormous at the time, the wide adoption of the Internet has caused these numbers to quickly deplete.  By January 2020 all IPv4 addresses have been allocated between various ISPs around the world.  This is called the IPv4 Address Exhaustion Problem.</span></p><p>&nbsp;</p><p><img src="images\1.jpg" referrerpolicy="no-referrer" alt="1"></p><p>&nbsp;</p><p>&nbsp;</p><p><span>IP Addresses are composed of two parts, a network component and a host component.  The network component uniquely identifies a network, while the host component allow all devices on that network to share the same prefix.  By decreasing the number of bits used in the network component, those bits are automatically shifted to the host component, allowing for a single network to to have more devices. The cost of this is that there are fewer unique networks allowed on the Internet.</span></p><p><img src="images\nh.png" referrerpolicy="no-referrer" alt="nh"></p><p>&nbsp;</p><p>&nbsp;</p><h4><a name="classful-addressing--historical" class="md-header-anchor"></a><span>Classful Addressing  (Historical)</span></h4><p><span>Originally these network addresses were divided into network/host components at every 8 bits (called an octet) creating 3 classes of addresses.</span></p><ul><li><p><span>Class A: </span><em><span>(1 octet for network, 3 octets for host)</span></em></p><p><span>Allowed for (2</span><sup><span>24</span></sup><span> - 2) or 16,777,214 devices per network</span></p><p><span>Identified by first octet in the range 0-126</span></p></li><li><p><span>Class B: </span><em><span>(2 octet for network 2 octets for host)</span></em><span> </span></p><p><span>Allowed for (2</span><sup><span>16</span></sup><span> - 2) or 65,534 devices per network</span></p><p><span>Identified by first octet in the range 128-191</span></p></li><li><p><span>Class C: </span><em><span>(3 octet for network, 1 octet for host)</span></em><span> </span></p><p><span>Allowed for (2</span><sup><span>8</span></sup><span> - 2) or 254 hosts</span></p><p><span>Identified by first octet in the range 192-223</span></p></li></ul><p>&nbsp;</p><p><img src="images\class.png" referrerpolicy="no-referrer" alt="class"></p><p>&nbsp;</p><blockquote><p><span>There were also Class D and Class E addresses reserved for multicasting and future use.</span></p><ul><li><span>Class D: Start with bits 1110.  Used for multicasting [Begins with 223-239]</span></li><li><span>Class E: Unassigned [Begins with 240-255]</span></li></ul></blockquote><p>&nbsp;</p><p><span>The drawback to this system was that because there were only three rigid sizes of IP address blocks, small companies could outgrow their allocated class C address and their only option, would be to either get another class C address and combine them (but this would create two separate ranges of IPs for a single organization) or upgrade to a Class B address, giving them 256 times as much address space as they had previously had.  This would also happen for Class B addresses that wanted more host, with the added complication that there could only ever exist 126 class A addresses.</span></p><p>&nbsp;</p><h4><a name="cidr---classless-interdomain-routing" class="md-header-anchor"></a><span>CIDR - Classless Interdomain Routing</span></h4><p><span>In modern applications we use Classless Interdomain Routing (or CIDR).  </span></p><p><span>In CIDR instead of an entire octet (8 bits) being changed at once, a single bit is moved from the network to the host.</span></p><p><span>When using CIDR, IP addresses have two forms:</span></p><ol start='' ><li><p><span>one to identify the network (called the CIDR address)</span></p><p><span>which include a network portion, a host portion, and a subnet identifier.</span></p><p><strong><span>64.64.0.0/20</span></strong></p><p><span>01000000 . 01000000 . 00000000 . 00000000</span><span>	</span><span> (converted to binary)</span></p><p><img src="images\network-host.png" referrerpolicy="no-referrer" alt="network-host"></p><p><span>The first 20 bits in this case represent the network portion.</span></p><p><span>The remaining 12 bits are used for hosts.</span></p><p><span>This network can have 2</span><sup><span>12</span></sup><span> - 2 hosts.  (There are two reserved addresses for each network: the host address of all 0&#39;s is reserved to identify the network, the host address of all 1&#39;s is reserved as a broadcast address)</span></p></li><li><p><span>ones for individual hosts</span></p><p><strong><span>64.64.5.5</span></strong><span> </span></p><p><span>The key difference is the lack of a subnet identifier, when sending messages to individual machines, we do not care about how IP addresses are allocated, all we care is that the address is unique.</span></p></li></ol><p>&nbsp;</p><p><span>CIDR fixes the allocation problems of Classful domain routing:</span></p><p><span>Networks looking to add more hosts could exchange their existing CIDR address for an available address with one bit shifted over.</span></p><ul><li><span>Return: </span><strong><span>64.64.0.0/20</span></strong></li><li><span>Get Back: </span><strong><span>80.80.0.0/19</span></strong></li></ul><p><span>Because the network portion has been reduced by a single bit, this network can have twice as many hosts while ensuring all devices on the network share the same network prefix.</span></p><p>&nbsp;</p><h4><a name="reference-subnet-masks" class="md-header-anchor"></a><span>Reference: Subnet Masks</span></h4><p><span>Another way to represent a network address, used in older devices is to use a subnet mask, which adds an extra column that would have binary </span><code>AND</code><span> applied to the address to extract the network portion.</span></p><p>&nbsp;</p><p><strong><span>CIDR Notation:</span></strong></p><p><span>64.64.0.0/20</span></p><p><strong><span>Subnet Mask Notation:</span></strong></p><figure><table><thead><tr><th><span>IP Address</span></th><th><span>Subnet Mask</span></th></tr></thead><tbody><tr><td><span>66.64.0.0</span></td><td><span>255.255.240.0</span></td></tr></tbody></table></figure><p><span>255.255.240.0 written in binary is   11111111 . 11111111 . 11110000 . 00000000 </span>
+<span>which identifies 20 bits for the network.</span></p><p>&nbsp;</p><p><span>Personally I find this mask notation is confusing in contrast to CIDR notation.</span></p><p>&nbsp;</p><h3><a name="ip-packet-structure" class="md-header-anchor"></a><span>IP Packet Structure</span></h3><p>&nbsp;</p><p><span>The protocol data unit of the IPv4 protocol is the IPv4 Packet also called IPv4 Datagram.</span></p><p><span>This header wraps our payload, and gets rewrapped with a data link layer header before being transmitted.</span></p><p><img src="images/ipheader.gif" referrerpolicy="no-referrer" alt="alt"></p><ul><li><p><strong><span>Version</span></strong><span> (4 bits) - determines which version of IP this packet is using</span></p></li><li><p><strong><span>IHL</span></strong><span> (4bit) - Internet Header Length (Typically 20 bytes for IPv4)</span></p><p><span>If we ignore options in the above diagram we can see we have 5 rows of 32 bits, and with 8 bits in a byte that totals 20 bytes for the header.</span></p></li><li><p><strong><span>Type of Service</span></strong><span> - Specifies data about QoS technology.</span></p></li><li><p><strong><span>Total Length</span></strong><span> - Specifies the length of the entire packet. (Maximum size 65535)</span></p><p>&nbsp;</p><p><span>The next row deals with fragmentation of packets, should a particular packet exceed the  maximum transmission unit (MTU) of a link, that packet will need to be fragmented before it is sent.  Packets are reassembled at their final destination.</span></p><p>&nbsp;</p><p><img src="images\fragm.png" referrerpolicy="no-referrer" alt="fragm"></p><p>&nbsp;</p></li><li><p><strong><span>Identification</span></strong><span> - (16 bit) - Used to group messages together.  (When IP messages are fragmented this field is used to put back messages together.)</span></p></li><li><p><strong><span>Flags</span></strong><span> (3 bits) - The first bit is reserved and is always 0.  The second bit </span><strong><span>(Don&#39;t Fragment)</span></strong><span> indicates if a datagram is allowed to be fragmented and the last bit </span><strong><span>(More Fragments)</span></strong><span> indicates if there are more fragments.</span></p></li><li><p><strong><span>Fragment Offsets</span></strong><span> (13 bits) - If a packet is fragmented this helps sequence packets by indicating to the recipient device where in the overall message each particular fragment should be placed.</span></p></li></ul><p>&nbsp;</p><blockquote><p><span>When an MTU requirement forces a datagram to be fragmented, it is split into several smaller IP datagrams, each containing part of the original. The header of the original datagram is changed into the header of the first fragment, and new headers are created for the other fragments. Each is set to the same </span><em><span>Identification</span></em><span> value to mark them as part of the same original datagram. The </span><em><span>Fragment Offset</span></em><span> of each is set to the location where the fragment belongs in the original. The </span><em><span>More Fragments</span></em><span> field is set to 1 for all fragments but the last, to let the recipient know when it has received all the fragments.</span></p><p><a href='http://www.tcpipguide.com/free/t_IPMessageFragmentationProcess-3.htm' target='_blank' class='url'>http://www.tcpipguide.com/free/t_IPMessageFragmentationProcess-3.htm</a></p></blockquote><p>&nbsp;</p><p><strong><span>TTL</span></strong><span> - Time to Live (8bit) How many router hops a datagram can traverser before it&#39;s discarded.  (Used to prevent loops when there is a misconfigured router)</span></p><p><span>Without the TTL it is possible for a misconfigured router to cause a packet to stay on the wire forever forwarding messages such that it eventually comes back to itself.  The TTL decrements after each hop and when they hit 0 the packet is dropped.  The default TTL is 64.</span></p><p>&nbsp;</p><p><strong><span>Protocol</span></strong><span> (8bits) Determines the transport layer protocol.</span></p><p><strong><span>Header Checksum</span></strong><span> - A checksum of the entire header field.</span></p><p><strong><span>Source IP Address</span></strong><span>: IP address of sender</span></p><p><strong><span>Destination IP Address</span></strong><span>: IP address of recipient</span></p><p><strong><span>Options</span></strong><span> - Used for testing purposes. (Rarely Used)</span></p><p><strong><span>Padding</span></strong><span> - because the options field is variable in length the unused options are padded with zeros to ensure the correct size.</span></p><p>&nbsp;</p><p>&nbsp;</p><h2><a name="how-routers-encapsulate-and-de-encapsulate-data" class="md-header-anchor"></a><span>How Routers Encapsulate and De-encapsulate data</span></h2><p><span>When a router receives an IP packet, first it will see if the incoming packet&#39;s destination address is for a host on it&#39;s own network and if it is the router makes the final delivery.  </span></p><p><span>Otherwise if the destination address matches a network CIDR range in it&#39;s routing table, it will forward the message to the next router out on a specified Interface.  We will go into the details of how the routing table is populated in our next lecture.</span></p><p>&nbsp;</p><p><img src="images\routing-cidr.png" referrerpolicy="no-referrer" alt="routing-cidr"></p><p>&nbsp;</p><p><span>All routers are configured with a special catch all entry called the default gateway (which is typically your ISP) which is an IP address to forward messages to in the event that no other forwarding rule applies.</span></p><p>&nbsp;</p><p><img src="images\routing-1.png" referrerpolicy="no-referrer" alt="routing-1"></p><p>&nbsp;</p><p><span>At each hop the router receiving the packet will decrease the TTL (and drop the packet if that value hits 0),  Look up the next hop in it&#39;s own routing table and then perform fragmentation if necessary before sending the data to the next hop.  </span></p><p><span>At each hop a new data link layer header is appended to IP packets.  This data link layer header is discarded after each hop as the data link layer only facilitates delivery across a single hop.  In contrast the network layer header is discarded at it&#39;s final destination because the network layer facilitates end to end delivery of data.</span></p><p><span>Routers are considered network layer hardware because they inspect the destination IP address in each packet before making a decision on what network to forward the request to.</span></p><p>&nbsp;</p><p><img src="images\ip-net.png" referrerpolicy="no-referrer" alt="ip-net"></p><p>&nbsp;</p><blockquote><p><span>Exercise: Explain how a message is delivered from machine A to machine C, assuming they have no idea of the network topology outside  of their directly adjacent neighbors.</span></p></blockquote><h2><a name="reserved-ip-addresses" class="md-header-anchor"></a><span>Reserved IP Addresses</span></h2><p><span>There are several IP ranges that are not to be allocated to any entity.  These addresses are used locally, the three that we care about the most are 127.0.0.0/8 which allows us to communicate with ourselves, the range 192.0.0.0/24 which allows us to communicate with other devices on our private network and 224.0.0.0/4 which is used for multicasting.</span></p><figure><table><thead><tr><th><span>Address Block</span></th><th><span>Range</span></th><th><span>Devices</span></th><th><span>Scope</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>127.0.0.0/8</span></td><td><span>127.0.0.0–127.255.255.255</span></td><td><span>16,777,216</span></td><td><span>Host</span></td><td><span>Used for </span><a href='https://en.wikipedia.org/wiki/Loopback_address'><span>loopback addresses</span></a><span> to the local host.</span></td></tr><tr><td><span>192.0.0.0/24</span></td><td><span>192.0.0.0–192.0.0.255</span></td><td><span>256</span></td><td><span>Private network</span></td><td><span>IETF Protocol Assignments.</span></td></tr><tr><td><span>224.0.0.0/4</span></td><td><span>224.0.0.0–239.255.255.255</span></td><td><span>268,435,456</span></td><td><span>Internet</span></td><td><span>In use for </span><a href='https://en.wikipedia.org/wiki/IP_multicast'><span>IP multicast</span></a><span>.</span></td></tr></tbody></table></figure><p><span>More:</span></p><ul><li><a href='https://en.wikipedia.org/wiki/Reserved_IP_addresses' target='_blank' class='url'>https://en.wikipedia.org/wiki/Reserved_IP_addresses</a></li></ul><p>&nbsp;</p><h2><a name="multicast" class="md-header-anchor"></a><span>Multicast</span></h2><p><img src="images\multicast.png" referrerpolicy="no-referrer" alt="multicast.png"></p><p><span>IP Multicast uses a </span><em><span>one-to-many</span></em><span> association where datagrams are routed simultaneously in a single transmission to multiple recipients. </span></p><ul><li><span>PC Cloning / Software Updates</span></li><li><span>VOIP / Video Monitoring / Conferencing, </span></li><li><span>Streaming (Video Surveillance)</span><span>	</span></li></ul><p><span>Video surveillance systems are probably the most common usage with many CCTV&#39;s broadcasting on a specific IP address that you can navigate your browser to watch.  Because these are local IP addresses, multicast traffic will never leave your network.  A server only needs to send the message once and all registered devices will &quot;listen&quot; in on a specified IP.</span></p><p>&nbsp;</p><h3><a name="local-area-networks" class="md-header-anchor"></a><span>Local Area Networks</span></h3><p><span>Your home network can have up to 256 devices in the the address block 192.0.0.0/8.  When a device connects to your home network it is temporarily allocated one of these addresses through a process called DHCP.</span></p><p>&nbsp;</p><blockquote><p><strong><span>Food for thought</span></strong><span> - When we purchase Internet service for our home, we are leasing a single IP address from our ISP.  This IP is shared between all devices on our home network.  When sending data out, there is no problem, but what about when a request comes in to our network, which device gets that message if they all share the same IP?</span></p><p><span>We actually don&#39;t have enough information to solve this yet: we will come back to this question after discussing the transport layer.</span></p></blockquote><p>&nbsp;</p><h2><a name="dynamic-host-configuration-protocol-dhcp" class="md-header-anchor"></a><span>Dynamic Host Configuration Protocol (DHCP)</span></h2><p>&nbsp;</p><p><img src="images\dhcp.png" referrerpolicy="no-referrer" alt="dhcp"></p><p>&nbsp;</p><p><span>The DHCP algorithm has 4 stages:</span></p><ol start='' ><li><span>DHCP Discover - A discovery is request is broadcast on the network and includes the devices MAC address.</span></li><li><span>DHCP Offer - All DHCP servers who receive a request and have an available IP address, offer to lease the IP address to the newly connected device.</span></li><li><span>DHCP Request - The newly connected device sends a DHCP request to the server of the first response they receive.  When receiving multiple offers, it assumes the first offer has the smallest latency.</span></li><li><span>DHCP Acknowledgement - Upon receiving the DHCP request, the DHCP server creates a record in it&#39;s DHCP table to keep track of which local IP addresses were in use.  Then it sends an acknowledgement which includes additional information like expiration.</span></li></ol><p>&nbsp;</p><h3><a name="dynamic-ip" class="md-header-anchor"></a><span>Dynamic IP</span></h3><p><span>IP addresses assigned with DHCP are designated to be dynamic IP&#39;s.  Dynamic IPs revert back to the DHCP server once the expired.  </span></p><p><span>They are useful for devices that don&#39;t need to communicate with other local devices. (like desktop / laptops)</span></p><p><span>You can have multiple DHCP servers as long as they use seperate pools of non-conflicting local IP&#39;s for instance configure DHCP Server 1 to assign IP addresses in the range [192.168.0.1 to 192.168.0.127] and DHCP Server 2 to assign assign IP addresses in the range [192.168.0.128 to 192.168.1.254]</span></p><p>&nbsp;</p><h3><a name="static-ip" class="md-header-anchor"></a><span>Static IP</span></h3><p><span>We can also go into the router settings to configure static IP addressing.  Unlike DHCP static IP addressing does not expire unless revoked.  They are useful for devices that others may want to connect to (like a network printer)</span></p><p><span>This is because DHCP will automatically assign any newly connected devices an IP from it&#39;s available pool, there&#39;s no guarantee that device will get the same IP address.  When using a network printer, we are sending the print job to an IP address.  Should the IP Address of that printer change because DHCP gave it a new one, we may wind up sending our print jobs to the wrong location..</span></p><p>&nbsp;</p><h3><a name="no-persistence" class="md-header-anchor"></a><span>No Persistence</span></h3><p><span>IP addresses belong to networks not to the devices attached to those networks.  Devices lease an IP using the DHCP protocol.  This is contrast to MAC address which is unique per device, and always stays the same, regardless of the network it&#39;s connected to.</span></p><p><span>Each computer connected to a network is leased a local IP address, this address is unique to the network, but can be reused outside of the network as it is a reserved address.</span></p><p>&nbsp;</p><h2><a name="arp" class="md-header-anchor"></a><span>ARP</span></h2><p><span>The address resolution protocol (ARP) is used to map a known IPv4 address to  an unknown MAC address.  It cannot be used outside of local networks.  </span></p><p><span>ARP is the protocol used to map IP addresses to MAC addresses.</span></p><p><span>Data Link layer Protocol used to discover the hardware address of a node with a given IP address.</span></p><p><span>All network devices will keep a ARP table, a list of IP addresses and the MAC addresses associated with each device.  ARP table entries expire after a short period of time to ensure network changes are accounted for.</span></p><p>&nbsp;</p><p><span>If you run this in Windows you can see your local ARP table. </span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4.16667px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&gt; arp -a</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Interface: 10.0.75.1 --- 0x7</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  Internet Address &nbsp; &nbsp;  Physical Address &nbsp; &nbsp;  Type</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  10.0.75.15 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ff-ff-ff-ff-ff-ff &nbsp; &nbsp; static</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  224.0.0.251 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 01-00-5e-00-00-fb &nbsp; &nbsp; static</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  224.0.0.252 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 01-00-5e-00-00-fc &nbsp; &nbsp; static</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  255.255.255.255 &nbsp; &nbsp; &nbsp; ff-ff-ff-ff-ff-ff &nbsp; &nbsp; static</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Interface: 192.168.1.151 --- 0x11</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  Internet Address &nbsp; &nbsp;  Physical Address &nbsp; &nbsp;  Type</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  192.168.1.1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c8-a7-0a-b7-09-f9 &nbsp; &nbsp; dynamic</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  192.168.1.255 &nbsp; &nbsp; &nbsp; &nbsp; ff-ff-ff-ff-ff-ff &nbsp; &nbsp; static</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  224.0.0.251 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 01-00-5e-00-00-fb &nbsp; &nbsp; static</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  224.0.0.252 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 01-00-5e-00-00-fc &nbsp; &nbsp; static</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  255.255.255.255 &nbsp; &nbsp; &nbsp; ff-ff-ff-ff-ff-ff &nbsp; &nbsp; static</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 333px;"></div><div class="CodeMirror-gutters" style="display: none; height: 333px;"></div></div></div></pre><p>&nbsp;</p><h3><a name="broadcast-arp-request--response" class="md-header-anchor"></a><span>Broadcast ARP Request / Response</span></h3><p><span>When trying to associate a given IP address to an unknown MAC address, devices will send an ARP message to the network asking for the device currently owns the specified IP address to respond.</span></p><p>&nbsp;</p><h2><a name="final-thoughts" class="md-header-anchor"></a><span>Final Thoughts</span></h2><p><span>In this lecture there was a key assumption that we made, that our routers already know the best path to get our message delivered.</span></p><p><span>In our next lecture we will discuss routing protocols which populate our router&#39;s memory (called  a routing table) with CIDR addresses and how it keeps those records up to date with a constantly changing Internet.</span></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></div>
+</body>
+</html>
