@@ -1,0 +1,639 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>transport-layer</title><link href='https://fonts.loli.net/css?family=Merriweather:900,900italic,300,300italic&subset=latin-ext' rel='stylesheet' type='text/css' /><link href='https://fonts.loli.net/css?family=Lato:900,300&subset=latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+
+
+@include-when-export url(https://fonts.loli.net/css?family=Merriweather:900,900italic,300,300italic&subset=latin-ext);
+@include-when-export url(https://fonts.loli.net/css?family=Lato:900,300&subset=latin-ext);
+
+:root {
+	--control-text-color: #777;
+}
+
+/**
+ * forked from pixyll.com
+ * MIT license
+ */
+
+h1,
+.h1,
+.f1 {
+	font-size: 2rem;
+	line-height: 2.5rem;
+}
+h2,
+.h2,
+.f2 {
+	font-size: 1.5rem;
+	line-height: 2rem;
+}
+h3,
+.h3,
+.f3 {
+	font-size: 1.25rem;
+	line-height: 1.5rem;
+}
+p,
+.p,
+.f4,
+h4,
+h5,
+h6,
+dl,
+ol,
+ul,
+pre[cid],
+div[cid],
+#typora-source {
+	font-size: 1.125rem;
+	line-height: 1.5rem;
+}
+
+h4 {
+	font-size: 1.13rem;
+}
+/*
+ Pixyll
+ A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff.
+ Best served with BASSCSS (http://jxnblk.github.io/basscss)
+ Crafted with <3 by John Otander (@4lpine) - ©2015 John Otander MIT License http://opensource.org/licenses/MIT
+
+*/
+
+body {
+	font-family: "Merriweather", "PT Serif", Georgia, "Times New Roman", "STSong", Serif;
+	line-height: 1.5rem;
+	font-weight: 400;
+}
+
+#write {
+	max-width: 914px;
+	color: #333;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1100px;
+	}
+}
+
+@media only screen and (min-width: 1700px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+img {
+	width: auto;
+	max-width: 100%;
+}
+body {
+	font-size: 1.5rem;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.ty-table-edit {
+	background: #ededed;
+}
+
+table {
+	width: 100%;
+	font-size: 1.125rem;
+}
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td,
+table > tfoot > tr > th,
+table > tfoot > tr > td {
+	padding: 12px;
+	line-height: 1.2;
+	vertical-align: top;
+	border-top: 1px solid #333;
+}
+table > thead > tr > th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #333;
+}
+table > caption + thead > tr:first-child > th,
+table > caption + thead > tr:first-child > td,
+table > colgroup + thead > tr:first-child > th,
+table > colgroup + thead > tr:first-child > td,
+table > thead:first-child > tr:first-child > th,
+table > thead:first-child > tr:first-child > td {
+	border-top: 0;
+}
+table > tbody + tbody {
+	border-top: 2px solid #333;
+}
+p {
+	font-weight: 300;
+	line-height: 1.5;
+}
+abbr {
+	border-bottom: 1px black dotted;
+	cursor: help;
+}
+pre,
+code {
+	font-family: Menlo, Monaco, "Courier New", monospace;
+}
+
+code,
+.md-fences  {
+	color: #7a7a7a;
+}
+
+.md-fences {
+	padding: 1.125em;
+	margin-bottom: 0.88em;
+	font-size: 1rem;
+	border: 1px solid #7a7a7a;
+	padding-bottom: 0.5rem;
+	padding-top: 0.5rem;
+}
+
+blockquote {
+	padding: 1.33em;
+	font-style: italic;
+	border-left: 5px solid #7a7a7a;
+	color: #555;
+}
+blockquote em {
+	color: #000;
+}
+blockquote footer {
+	font-size: .85rem;
+	font-style: normal;
+	background-color: #fff;
+	color: #7a7a7a;
+	border-color: transparent;
+}
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	font-family: "Lato", 'Helvetica Neue', Helvetica, sans-serif;
+	font-weight: bold;
+	line-height: 1.2;
+	margin: 1em 0 0.5em;
+}
+@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.3rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before{
+		top: 1px;
+	}
+	.p,
+	p,
+	li {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}
+@media (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.3rem;
+	}
+}
+@media screen and (min-width: 64em) {
+	.h1,
+	h1 {
+		font-size: 4.498rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.29rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.9rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.591rem;
+	}
+	#write>h4.md-focus:before{
+		top:4px;
+	}
+}
+a {
+	color: #463F5C;
+	text-decoration: underline;
+}
+
+#write {
+	padding-top: 2rem;
+}
+
+#write pre.md-meta-block {
+	min-height: 35px;
+	padding: 0.5em 1em;
+	white-space: pre;
+	border: 0px;
+
+	border-left: 30px #f8f8f8 solid;
+	border-right: 30px #f8f8f8 solid;
+	width: 100vw;
+	max-width: calc(100% + 60px);
+
+	margin-left: -30px;
+	margin-bottom: 2em;
+	margin-top: -2010px;
+	padding-top: 2000px;
+	padding-bottom: 10px;
+	line-height: 1.5em;
+	color: #7a7a7a;
+	background-color: #fafafa;
+	font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+	font-weight: 300;
+	clear: both;
+	padding-left: 0;
+	font-size:1.125rem;
+}
+.md-image>.md-meta {
+	color: #463F5C
+}
+.footnotes {
+	font-size:1.1rem;
+}
+.md-tag {
+	font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+}
+.code-tooltip {
+	background: white;
+}
+.code-tooltip-content {
+	font-size: 1.1rem;
+}
+
+.task-list{
+	padding-left: 0;
+}
+
+.md-task-list-item {
+	padding-left:34px;
+}
+
+.md-task-list-item > input{
+	width: 1.25rem;
+	height: 1.25rem;
+	display: block;
+	-webkit-appearance: initial;
+	top: -0.2rem;
+	margin-left: -1.6em;
+	margin-top: calc(1rem - 7px);
+	border: none;
+}
+
+.md-task-list-item > input:focus{
+	outline: none;
+	box-shadow: none;
+}
+
+.md-task-list-item > input:before{
+	border: 1px solid #555;
+	border-radius: 1.5rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	background: #fff;
+	content: ' ';
+	transition: background-color 200ms ease-in-out;
+	display: block;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	background: #333;
+	border-width: 2px;
+	display:inline-block;
+	transition: background-color 200ms ease-in-out;
+}
+
+.md-task-list-item > input:checked:after,
+.md-task-list-item > input[checked]:after {
+	opacity: 1;
+}
+
+.md-task-list-item > input:after {
+	opacity: 1;
+	-webkit-transition: opacity 0.05s ease-in-out;
+	-moz-transition: opacity 0.05s ease-in-out;
+	transition: opacity 0.05s ease-in-out;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	position: absolute;
+	top: 0.4375rem;
+	left: 0.28125rem;
+	width: 0.9375rem;
+	height: 0.5rem;
+	border: 3px solid #fff;
+	border-top: 0;
+	border-right: 0;
+	content: ' ';
+	opacity: 0;
+}
+
+.md-tag {
+	color:inherit;
+}
+
+.md-toc:focus .md-toc-content{
+	margin-top: 19px;
+}
+
+#typora-sidebar {
+	font-size:1rem !important;
+}
+
+.html-for-mac #typora-sidebar {
+	background-color:white;
+}
+
+.outline-content li, .outline-content ul {
+	font-size:1rem !important;
+}
+
+.outline-title {
+	line-height: inherit;
+	margin-top: 10px;
+}
+
+.outline-expander {
+	width: 18px;
+}
+
+.outline-expander:before {
+ 	content: "+";
+	font-family: inherit;
+	color: rgb(108, 108, 108); 
+  	font-size: 1.5rem;
+ 	top: 0.1rem;
+}
+
+.outline-expander:hover:before {
+	content: "+";
+}
+
+.outline-item-open>.outline-item>.outline-expander:before{
+	content: "-";
+}
+
+/** source code mode */
+#typora-source {
+	font-family: Courier, monospace;
+    color: #6A6A6A;
+}
+
+.os-windows #typora-source {
+	font-family: inherit;
+}
+
+.cm-s-typora-default .cm-header, 
+.cm-s-typora-default .cm-property,
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+	color: #428bca;
+}
+
+.cm-s-typora-default .cm-atom, .cm-s-typora-default .cm-number {
+	color: #777777;
+}
+
+.md-diagram-panel {
+	margin-top: 24px;
+	margin-left: -1.2em;
+}
+
+.md-mathjax-midline {
+	background: #fafafa;
+}
+
+.enable-diagrams pre.md-fences[lang="sequence"] .code-tooltip,
+.enable-diagrams pre.md-fences[lang="flow"] .code-tooltip,
+.enable-diagrams pre.md-fences[lang="mermaid"] .code-tooltip {
+    bottom: -3.4em;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write'  class=''><p>&nbsp;</p><p>&nbsp;</p><h1><a name="transport-layer" class="md-header-anchor"></a><span>Transport Layer</span></h1><p><span>The network layer provides end to end delivery of data, but machines typically have multiple applications running at the same time.  How can I ensure that the email that I&#39;m sending doesn&#39;t get picked up by the webserver application on the receiving end?</span></p><p><span>This is the job of the transport layer, to direct traffic to specific applications on devices.</span></p><p><span>There are two main protocols used on the Transport Layer, TCP and UDP.</span></p><p><span>The Protocol Data Unit (PDU) for a TCP connection is called the segment, and for UDP it is the datagram.</span></p><p>&nbsp;</p><p><img src="images\tcp-layers.png" referrerpolicy="no-referrer" alt="tcp-layers"></p><p>&nbsp;</p><h2><a name="udp" class="md-header-anchor"></a><span>UDP</span></h2><p><span>We will start off with User Datagram Protocol (or UDP) as it is simpler.</span></p><p><span>The header contains four fields: source port, destination port, length, and checksum.</span></p><p><img src="images\udp.jpg" referrerpolicy="no-referrer" alt="udp"></p><p>&nbsp;</p><h2><a name="ports" class="md-header-anchor"></a><span>Ports</span></h2><p><span>The logical port (shortened to port) is used by </span><strong><span>both TCP and UDP</span></strong><span>.  It reflects the address that a program can lease as long it&#39;s running.</span></p><p><span>There are 2</span><sup><span>16</span></sup><span> possible ports broken up into three categories:</span></p><ul><li><strong><span>0-1023:</span></strong><span> Well known ports</span></li><li><strong><span>1024-49151:</span></strong><span> Registered Port</span></li><li><strong><span>49152-65535:</span></strong><span> Ephemeral ports</span></li></ul><p>&nbsp;</p><p><strong><span>Well known ports</span></strong><span> are reserved for system processes.  You should avoid using these ports in your application unless your building a client or server for those protocols.  On Unix accessing these ports requires superuser privileges.</span></p><p><strong><span>Registered ports</span></strong><span> are more flexible, there are no specific restrictions with choosing to use a port in this range, you only need to be careful of what other major software also uses that port</span><sup class='md-footnote'><a href='#dfref-footnote-1' name='ref-footnote-1'>1</a></sup><span>.  It is fine to overlap with other software, as long as you don&#39;t anticipate your users using that software at the exact same time as yours.</span></p><p><span>Finally we have </span><strong><span>Ephemeral ports</span></strong><span>, these are temporary ports automatically leased to applications by your operating system to be used for response type messages.  </span></p><p>&nbsp;</p><p><span>There&#39;s a wikipedia entry for common software and their port usage that I&#39;ve linked to in the transcript appendix as reference.</span></p><p>&nbsp;</p><p><span>Imagine there are two machines A and B, both hosting a webserver on port 80 with different content.  If A opens a web browser (different application) to visit B&#39;s website, That request whether it be TCP or UDP should have two port values, what are they?  Destination port is easy, that will be 80.  Your first guess might be port 80.</span></p><p><img src="images\why-ephm1.jpg" referrerpolicy="no-referrer" alt="why-ephm1"></p><p>&nbsp;</p><p><span>But if we use source port 80 there&#39;s a conflict with the webserver running on machine A.  In fact using any fixed port will be problematic as it is increasingly common to visit two or more sites at the same time (watching YouTube while doing homework)</span></p><p><span>What actually happens is that when our client makes the request, the operating system will automatically lease it an available ephemeral port.  This is set to be the source port.</span></p><p><img src="images\why-ephm2.jpg" referrerpolicy="no-referrer" alt="why-ephm2"></p><p>&nbsp;</p><p><span>When we gets a response back, the operating forwards the data to our application, then releases its hold to that ephemeral port.  This allows our browser to make multiple requests to different servers and the timing in which I get my responses back no longer matters as they each have their own ephemeral port.</span></p><p><img src="images\why-ephm3.jpg" referrerpolicy="no-referrer" alt="why-ephm3"></p><p>&nbsp;</p><p>&nbsp;</p><h2><a name="nat-network-address-translation" class="md-header-anchor"></a><span>NAT (Network Address Translation)</span></h2><p><span>Next we are going to take a detour back to the network layer, because something didn&#39;t make sense previously (if you noticed congrats!), that I couldn&#39;t explain it without knowledge of ports.</span></p><p><span>I mentioned earlier that when you purchase Internet service for your home you are leasing a single IP address.  But how would that work if my home has multiple devices?  If the single external IP address is shared between multiple machines how does my router know what device to route traffic to?</span></p><p>&nbsp;</p><p><span>It uses Network Address Translation (or NAT) to do this.  NAT is a technique that combines reserved local IP address space (192.168.0.0/16 range) and overloading ports to allow a single IP address to be shared among multiple devices.</span></p><p>&nbsp;</p><p><span>Let&#39;s consider an example where two devices A and B, both on a home network (sharing a single external IP </span><code>200.1.1.1</code><span>) are visiting the same website at </span><code>208.65.153.238</code><span>.  Both machines are assigned a local IP address by the router:  A (</span><code>192.168.0.5</code><span>) and B (</span><code>192.168.0.6</code><span>).  </span></p><p><span>Consider a single packet from A to the website:</span></p><p><img src="images\packet1.png" referrerpolicy="no-referrer" alt="packet1"></p><p><span>The router will see that the IP address </span><code>192.168.0.5</code><span> is owned by machine A.  It will then rewrite the contents of the packet using the leased IP address and a new port number in the ephemeral range.</span></p><p><img src="images\packet2.png" referrerpolicy="no-referrer" alt="packet2"></p><p>&nbsp;</p><p><span>But it will keep all original values stored in a NAT table.</span></p><p><img src="images\nat-1.png" referrerpolicy="no-referrer" alt="nat-1"></p><p><span>As the router is in charge of rewriting port numbers for all devices on the network, it can guarantee unique ports be assigned.  </span></p><p><span>As the responses come back:</span></p><p><img src="images\packet3.png" referrerpolicy="no-referrer" alt="packet3"></p><p><span>the router undoes this rewriting process using a lookup from the NAT table, this time on the destination IP and port.</span></p><p><img src="images\packet4.png" referrerpolicy="no-referrer" alt="packet4"></p><blockquote><p><span>Exercise: Trace what occurs when B sends a packet to the same IP address </span><code>208.65.153.238</code><span>, </span>
+<span>show to yourself that multiple devices can share a single IP address thanks to NAT.</span></p></blockquote><p>&nbsp;</p><p><span>This is also why if you get your IP banned from some website, it&#39;s effectively banned for your entire household (</span><em><span>at least until you lease a new IP address from your ISP by turning your router off for a few hours</span></em><span>)</span></p><p>&nbsp;</p><h3><a name="port-forwarding" class="md-header-anchor"></a><span>Port Forwarding</span></h3><p><span>NAT works fine for most applications, but requires that your machine makes the first request.</span><br/><span>What if you want to accept incoming connections without first sending out a request?  For instance if you are running a mail or web server or a BitTorrent</span><sup class='md-footnote'><a href='#dfref-footnote-2' name='ref-footnote-2'>2</a></sup><span> client.  </span></p><p><span>In that case you need to do a bit of additional configuration from within your router.  To setup </span><strong><span>port forwarding,</span></strong><span> you need to reserve a port on your router and tie it to a specific computer (and can optionally change the port).  (Eg. all incoming traffic on port 443 should be forwarded to the IP address 192.168.0.5 (in the example above the port is rewritten to 440 too)) </span></p><p>&nbsp;</p><h2><a name="socket" class="md-header-anchor"></a><span>Socket</span></h2><p><span>A socket is an instantiation of a port number that can communicate with the outside world.  When a port is opened, a socket has been created.  A port number is only an address, to be able to send/receive data, our application must explicitly tell the Operating System it wants to open a socket on that port number.  This is also for security reasons.</span></p><blockquote><p><span>We can open a socket on port 12345 in order to allow network communication to our application.</span></p></blockquote><p>&nbsp;</p><h2><a name="transmission-control-protocol-tcp" class="md-header-anchor"></a><span>Transmission Control Protocol (TCP)</span></h2><p><span>We will come back to UDP later, but let&#39;s introduce TCP.</span></p><p><span>Transmission Control Protocol (or TCP) provides reliable, ordered, and error-checked delivery of a stream of bytes between applications running on hosts communicating via an IP network.  The PDU of a TCP connection is called a Segment.</span></p><p><img src="images\tcp.jpg" referrerpolicy="no-referrer" alt="tcp"></p><p><span>In order to make all those guarantees, the tradeoff we pay is a much larger header size.  The most common TCP header size is 20 bytes (first 5 rows in the table above)  </span></p><p><span>There is also quite a bit of overhead used for sending a receiving messages, as each segment of data must be acknowledged.  Requiring another 20 byte header from the receiving end.</span></p><p>&nbsp;</p><h3><a name="structure-of-tcp-header" class="md-header-anchor"></a><span>Structure of TCP Header</span></h3><ul><li><span>Destination Port: Port that the traffic is intended for</span></li><li><span>Source Port: Port that the reply should be directed to.</span></li><li><span>Sequence Number and Acknowledgement Number: Used together to guarantee delivery of data.</span></li><li><span>Data Offset: Indicates where the data begins.</span></li><li><span>Res: Reserved</span></li><li><span>Flags: Indicates the type of TCP Segment (See </span><strong><span>Flags</span></strong><span>)</span></li><li><span>Window Size: Used for congestion control, tells sender how much data (in bytes) this device can receive at one point in time.</span></li><li><span>Checksum: Provides Data Integrity.  Personally I don&#39;t think data integrity is necessary since the data link layer also takes care of it, but there are counter arguments on the web </span><sup class='md-footnote'><a href='#dfref-footnote-3' name='ref-footnote-3'>3</a></sup></li><li><span>Urgent Pointer (not important for us) : Intended to allow segment priority.  (obsolete)</span></li><li><span>Options (not important for us): Holds optional fields like maximum segment size, window scaling, selective acknowledgements, and timestamps </span></li></ul><p><strong><span>Flags</span></strong></p><ul><li><span>ACK - Acknowledgement - The Acknowledgement Number should be inspected.</span></li><li><span>PSH - Push currently buffered data to the application on the receiving end as soon as possible.</span></li><li><span>RST - Reset - One of the sides of the TCP connection hasn&#39;t been able to recover from a series of missing or malformed segments and to restart the connection.</span></li><li><span>SYN - Synchronize - Used when establishing a TCP connection and tells the receiving end to inspect the sequence number for synchronization purposes.</span></li><li><span>FIN - Finish - Signals that one side of a TCP connection wants to terminate the connection.</span></li><li><span>URG - Urgent: Segment has priority, the urgent pointer should be inspected (obsolete)</span></li><li><strong><span>Reference:</span></strong><span> ECE + CWR: Used in newer congestion control systems for switches.</span><sup class='md-footnote'><a href='#dfref-footnote-4' name='ref-footnote-4'>4</a></sup></li></ul><p>&nbsp;</p><h3><a name="tcp-connection" class="md-header-anchor"></a><span>TCP Connection</span></h3><p><span>There are four primary types of segments: </span></p><ul><li><span>A synchronization segment used when first establishing a connection [SYN].  </span><em><span>(Only used in opening a new connection)</span></em></li><li><span>A data segment used to encode a chunk of data (no special flag), </span></li><li><span>An acknowledgement used to indicate data was received [ACK]</span></li><li><span>A finish segment used to indicate a request to terminate a connection [FIN].  </span><em><span>(Only used in closing a new connection)</span></em></li></ul><h4><a name="sender-perspective" class="md-header-anchor"></a><span>Sender Perspective</span></h4><ol start='' ><li><p><span>Three way handshake </span></p><ol start='' ><li><span>One device (either sender/receiver) initiates a synchronization request [SYN]</span></li><li><span>The other device sends back a [SYN+ACK] back</span></li><li><span>The original device [ACK] the receiver.</span></li></ol><p><span>-------------------- CONNECTION ESTABLISHED --------------------</span></p></li><li><p><span>The sender can then send data up to the receivers window size (window size is received in step 1.2) typically in segments of up to 65k bytes.</span></p><p><span>Each segment includes a sequence number representing the order of bytes sent relative to all other messages.</span></p></li><li><p><span>Wait for [ACK] segments</span></p><ol start='' ><li><span>As you receive [ACK] segments, begin sending data starting from the largest Acknowledgment number received. (send data up to the window size to ensure receiver is not overwhelmed with data, an updated window size will be included with their ACK)</span></li><li><span>If you receive an acknowledgement with the same acknowledgment number two or more times. (Some data was likely loss) resend segments starting from the largest Acknowledgment number after waiting one round trip time (RTT) to collect additional duplicate ACKs.</span></li><li><span>If the sender does not get a response within the Request Time Out (or RTO) time frame, it resend every segment starting from the largest acknowledgement number.</span></li></ol><p><span>-------------------- DATA TRANSFER COMPLETE --------------------</span></p></li><li><p><span>Four way closing handshake</span></p><ol start='' ><li><span>One device (either sender/receiver) initiates a [FIN] request to terminate the connection.  (Just like starting a connection, either side can request to terminate it)</span></li><li><span>The other device sends back a [ACK] back.  Indicating the close request was received, and begins the process of releasing resources, before terminating the connection.  (This may take time if we need to close a database connection or perform garbage collection)</span></li><li><span>Once the local shutdown of the socket is nearly complete, a [FIN] is sent to the other side</span></li><li><span>An [ACK] for that last FIN is sent and upon receiving it, the socket is closed and the port number is returned to the OS.</span></li></ol></li></ol><p>&nbsp;</p><h4><a name="receiver-perspective" class="md-header-anchor"></a><span>Receiver Perspective</span></h4><ol start='' ><li><p><span>Three way handshake </span></p><p><span>-------------------- CONNECTION ESTABLISHED --------------------</span></p></li><li><p><span>Waits for Data Segments containing sequence numbers.</span></p></li><li><p><span>For each segment received in the correct order, responses back with [ACK] segment containing:</span>
+<span>Acknowledgement number = Received Sequence Number + data.length</span>
+<span>This sent acknowledgement number indicates the next expected sequence number.</span></p></li><li><p><span>If a segment is received with a sequence number larger than the current acknowledgement number, a segment is likely to have been loss.  Store the new out of order segment in memory and send an [ACK] with acknowledgement number set to be the missing segments expected sequence number.  This will signal to the sender to resend starting from this segment.</span></p></li><li><p><span>Storing the previous segment allows the receiver to jump back to the later Acknowledgement number once the missing packet has been filled in.</span></p><p><span>-------------------- DATA TRANSFER COMPLETE --------------------</span></p></li><li><p><span>Four way closing handshake</span></p></li></ol><p><img src="images\3way.gif" referrerpolicy="no-referrer" alt="3way"><img src="images\tcp-fin.png" referrerpolicy="no-referrer" alt="tcp-fin"></p><h3><a name="tcp-is-duplex" class="md-header-anchor"></a><span>TCP is duplex</span></h3><p><span>We can send and receive at the same time, there are two sets of </span><strong><span>Sequence and Acknowledgement numbers</span></strong><span>, one on each side of the connection.</span></p><h3><a name="tcp-congestion-control" class="md-header-anchor"></a><span>TCP Congestion Control</span></h3><p><span>The receiver can tell the sender to speed up / slow down the transmission rate by adjusting the window size.  This adjusts how many packets the sender can send without waiting for an acknowledgement.</span></p><p><span>Since this value can&#39;t go above 65535 bytes due to the size of the header, for modern applications there is a TCP option called TCP window scale that wo rks as a multiplier for this value allowing connection speeds of up to 1 Gigabyte.</span></p><p>&nbsp;</p><h2><a name="udp-n191" class="md-header-anchor"></a><span>UDP</span></h2><p><span>Because every segment needs to be acknowledged TCP has quite a bit of overhead.</span></p><p><span>Silly Window Syndrome: Small payload with big headers</span></p><p><span>Applications that do not require a 100% reliable data stream may use the User Datagram Protocol (UDP) instead.   UDP provides a connectionless datagram service that emphasizes reduced latency over reliability.  </span></p><p><span>There are no guarantees of any kind, but there is also no need for acknowledgement segments.  If data is loss or corrupted there is no built in way to recover the lost data.</span></p><p><span>It is up to the layer above it to perform any error recovery necessary to keep the application from failing entirely.</span></p><p><span>It is useful in situations where some data loss is okay:</span></p><ul><li><span>Video streaming: Artifacting of video</span></li><li><span>VOIP: Distortion of voice</span></li><li><span>Online multiplayer games:  The programming of which is commonly referred to as netcode or lag compensation.  It is the reason when playing multiplayer online games, a character may seem to teleport a bit when someone experiences lag.  Instead of disconnecting the player on data loss, the game server can sometimes make some assumptions based on the players current direction and velocity and other previous input and will correct it once they come back online.</span></li></ul><p>&nbsp;</p><h3><a name="quic-reference" class="md-header-anchor"></a><span>QUIC (Reference)</span></h3><p><span>Modern transport layers like QUIC</span><sup class='md-footnote'><a href='#dfref-footnote-5' name='ref-footnote-5'>5</a></sup><span> categorize their packets as UDP and build on top of it the reliability and congestion management features that TCP has, as most older routers only recognize TCP and UDP packets.  </span></p><p><span>The benefit to this approach is to be able to pick and choose which features (and associated overhead costs) your transport layer protocol requires instead of choosing an out of the box solution that has everything.</span></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><div class='footnotes-area'  ><hr/>
+<div class='footnote-line'><span class='md-fn-count'>1</span> <a href='https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers#Registered_ports' target='_blank' class='url'>https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers#Registered_ports</a> <a name='dfref-footnote-1' href='#ref-footnote-1' title='back to document' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>2</span> <span>Peer to Peer download software</span> <a name='dfref-footnote-2' href='#ref-footnote-2' title='back to document' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>3</span> <a href='https://stackoverflow.com/a/4836023/992856' target='_blank' class='url'>https://stackoverflow.com/a/4836023/992856</a> <a name='dfref-footnote-3' href='#ref-footnote-3' title='back to document' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>4</span> <a href='https://www.juniper.net/documentation/en_US/junos/topics/concept/cos-qfx-series-explicit-congestion-notification-understanding.html' target='_blank' class='url'>https://www.juniper.net/documentation/en_US/junos/topics/concept/cos-qfx-series-explicit-congestion-notification-understanding.html</a> <a name='dfref-footnote-4' href='#ref-footnote-4' title='back to document' class='reversefootnote' >↩</a></div>
+<div class='footnote-line'><span class='md-fn-count'>5</span> <a href='https://en.wikipedia.org/wiki/QUIC#Google_QUIC_(gQUIC)' target='_blank' class='url'>https://en.wikipedia.org/wiki/QUIC#Google_QUIC_(gQUIC)</a> <a name='dfref-footnote-5' href='#ref-footnote-5' title='back to document' class='reversefootnote' >↩</a></div></div></div>
+</body>
+</html>
