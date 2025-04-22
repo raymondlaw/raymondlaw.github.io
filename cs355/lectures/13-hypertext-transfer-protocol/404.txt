@@ -1,0 +1,17 @@
+Client->(2)Server:GET /~rlaw/cs355/ HTTP/1.1\nHost: venus.cs.qc.cuny.edu
+
+Server->(2)Client:HTTP/1.1 200 OK\nETag: "578-58049612f21c0"\nContent-Length: 678\n<!DOCTYPE>....
+
+rbox over Client:Renders\nWebpage
+
+Client->(2)Server:GET /images/image00.png HTTP/1.1\nHost: venus.cs.qc.cuny.edu
+
+Client->(2)Server:GET /images/image01.png HTTP/1.1\nHost: venus.cs.qc.cuny.edu
+
+Server->(2)Client:HTTP/1.1 200 OK\n[image data]
+
+rbox over Client:Renders\nWebpage
+
+Server->(2)Client:HTTP/1.1 404 Not Found
+
+rbox over Client:Renders\nWebpage

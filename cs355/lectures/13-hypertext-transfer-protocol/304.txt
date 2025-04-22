@@ -1,0 +1,11 @@
+Client->(2)Server:GET /~rlaw/cs355/ HTTP/1.1\nHost: venus.cs.qc.cuny.edu
+
+Server->(2)Client:HTTP/1.1 200 OK\nETag: "578-58049612f21c0"\nContent-Length: 678\n<!DOCTYPE>....
+
+
+
+note over Client,Server:Later...
+
+Client->(2)Server:GET /~rlaw/cs355/ HTTP/1.1\nHost: venus.cs.qc.cuny.edu\nIf-None-Match: "578-58049612f21c0
+
+Server->(2)Client:HTTP/1.1 - 304 Not Modified\nETag: "578-58049612f21c0"
