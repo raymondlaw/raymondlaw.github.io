@@ -1,0 +1,37 @@
+## Rubric
+
+* `nist-daytime-v*.pdf` **[16pts]**
+* `daytime-traffic-segments-01.png` **[10pts]**
+* `daytime-traffic-segments-02.png` **[5pts]**
+* `daytime-client.pcapng` **[5pts]**
+* `qotd-server.js` **[10pts]**
+* `qotd-traffic-segments.png` **[10pts]**
+* `echo-server.js` **[5pts]**
+* `echo-traffic-segments.png` **[10pts]**
+* TCP Chat Server and Client `chat-server.js` and `chat-client.js` **[29pt]**
+
+## Submission
+
+1. Put all files to be submitted in the directory `A03-########` replacing `#` with your Student ID.
+
+2. Compress the files into a zip file.
+
+3. Fill out the following form to submit:
+
+   [Standard Submission](https://docs.google.com/forms/d/e/1FAIpQLScKR32Dvi_Pk3CcHiaVhip6xpErk1B65wG1zYPPvXodBc1CYQ/viewform?usp=sf_link)  	 [Late Submission](https://docs.google.com/forms/d/e/1FAIpQLScGNhMSP5G4E3UeRe8peXDYDoSa0ENpdnmzqCZ1_ANgunJY6A/viewform?usp=sf_link)
+
+   Student's who receive a permission error are not signed in to the correct account. The link below should help with switching accounts.
+
+   https://accounts.google.com/AccountChooser
+
+4. On the submission form there is an assignment comment section, this is optional and a place for feedback or minor bug/typos reports (email me major problems that prevent progress). I prefer this blank if there are no comments.
+
+5. Resubmissions are accepted until the cutoff, each student's final grade will be pieced together based on the highest components grades with late penalties applied to components submitted after the due date. Student's worried about a looming due/cutoff date can make an early submission to lock in points. There are no drawbacks to resubmissions.
+
+6. It is the sole responsibility of students to ensure the correct files are sent by the appropriate due/cutoff date.  No flexibility will be given here.
+
+   After the due date the standard form will **automatically** stop accepting submissions.
+
+   After the cutoff date the late form will **automatically** stop accepting submissions.
+
+   Once closed I will not reopen submissions for any reason, don't email me regarding this. It is the sole responsibility of the student to juggle their personal and professional obligations.

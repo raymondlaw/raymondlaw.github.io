@@ -1,0 +1,5 @@
+Client->(1)Server:HTTP GET /
+Client(1)<-Server: HTTP 200 OK + main.html
+Client->(1)Server:HTTP GET /search?artist=Taylor+Swift
+
+Server->(1)Spotify API: POST /api/token HTTP/1.1\nHost: accounts.spotify.com\nContent-Type: application/x-www-form-urlencoded\nAuthorization: Basic YjQ5MDQwZmU0NDkx...\nContent-Length: 29\ngrant_type=client_credentials

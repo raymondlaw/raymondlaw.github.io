@@ -1,0 +1,711 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>album-artist-finder</title><link href='https://fonts.loli.net/css?family=Merriweather:900,900italic,300,300italic&subset=latin-ext' rel='stylesheet' type='text/css' /><link href='https://fonts.loli.net/css?family=Lato:900,300&subset=latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+@include-when-export url(https://fonts.loli.net/css?family=Merriweather:900,900italic,300,300italic&subset=latin-ext);
+@include-when-export url(https://fonts.loli.net/css?family=Lato:900,300&subset=latin-ext);
+
+:root {
+	--control-text-color: #777;
+}
+
+/**
+ * forked from pixyll.com
+ * MIT license
+ */
+
+h1,
+.h1,
+.f1 {
+	font-size: 2rem;
+	line-height: 2.5rem;
+}
+h2,
+.h2,
+.f2 {
+	font-size: 1.5rem;
+	line-height: 2rem;
+}
+h3,
+.h3,
+.f3 {
+	font-size: 1.25rem;
+	line-height: 1.5rem;
+}
+p,
+.p,
+.f4,
+h4,
+h5,
+h6,
+dl,
+ol,
+ul,
+pre[cid],
+div[cid],
+#typora-source {
+	font-size: 1.125rem;
+	line-height: 1.5rem;
+}
+
+h4 {
+	font-size: 1.13rem;
+}
+/*
+ Pixyll
+ A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff.
+ Best served with BASSCSS (http://jxnblk.github.io/basscss)
+ Crafted with <3 by John Otander (@4lpine) - ©2015 John Otander MIT License http://opensource.org/licenses/MIT
+
+*/
+
+body {
+	font-family: "Merriweather", "PT Serif", Georgia, "Times New Roman", "STSong", Serif;
+	line-height: 1.5rem;
+	font-weight: 400;
+}
+
+#write {
+	max-width: 914px;
+	color: #333;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1100px;
+	}
+}
+
+@media only screen and (min-width: 1700px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+img {
+	width: auto;
+	max-width: 100%;
+}
+body {
+	font-size: 1.5rem;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.ty-table-edit {
+	background: #ededed;
+}
+
+table {
+	width: 100%;
+	font-size: 1.125rem;
+}
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td,
+table > tfoot > tr > th,
+table > tfoot > tr > td {
+	padding: 12px;
+	line-height: 1.2;
+	vertical-align: top;
+	border-top: 1px solid #333;
+}
+table > thead > tr > th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #333;
+}
+table > caption + thead > tr:first-child > th,
+table > caption + thead > tr:first-child > td,
+table > colgroup + thead > tr:first-child > th,
+table > colgroup + thead > tr:first-child > td,
+table > thead:first-child > tr:first-child > th,
+table > thead:first-child > tr:first-child > td {
+	border-top: 0;
+}
+table > tbody + tbody {
+	border-top: 2px solid #333;
+}
+p {
+	font-weight: 300;
+	line-height: 1.5;
+}
+abbr {
+	border-bottom: 1px black dotted;
+	cursor: help;
+}
+pre,
+code {
+	font-family: Menlo, Monaco, "Courier New", monospace;
+}
+
+code,
+.md-fences  {
+	color: #7a7a7a;
+}
+
+.md-fences {
+	padding: 1.125em;
+	margin-bottom: 0.88em;
+	font-size: 1rem;
+	border: 1px solid #7a7a7a;
+	padding-bottom: 0.5rem;
+	padding-top: 0.5rem;
+}
+
+blockquote {
+	padding: 1.33em;
+	font-style: italic;
+	border-left: 5px solid #7a7a7a;
+	color: #555;
+}
+blockquote em {
+	color: #000;
+}
+blockquote footer {
+	font-size: .85rem;
+	font-style: normal;
+	background-color: #fff;
+	color: #7a7a7a;
+	border-color: transparent;
+}
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	font-family: "Lato", 'Helvetica Neue', Helvetica, sans-serif;
+	font-weight: bold;
+	line-height: 1.2;
+	margin: 1em 0 0.5em;
+}
+@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.3rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before{
+		top: 1px;
+	}
+	.p,
+	p,
+	li {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}
+@media (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.3rem;
+	}
+}
+@media screen and (min-width: 64em) {
+	.h1,
+	h1 {
+		font-size: 4.498rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.29rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.9rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.591rem;
+	}
+	#write>h4.md-focus:before{
+		top:4px;
+	}
+}
+a {
+	color: #463F5C;
+	text-decoration: underline;
+}
+
+#write {
+	padding-top: 2rem;
+}
+
+#write pre.md-meta-block {
+	min-height: 35px;
+	padding: 0.5em 1em;
+	white-space: pre;
+	border: 0px;
+
+	border-left: 30px #f8f8f8 solid;
+	border-right: 30px #f8f8f8 solid;
+	width: 100vw;
+	max-width: calc(100% + 60px);
+
+	margin-left: -30px;
+	margin-bottom: 2em;
+	margin-top: -2010px;
+	padding-top: 2000px;
+	padding-bottom: 10px;
+	line-height: 1.5em;
+	color: #7a7a7a;
+	background-color: #fafafa;
+	font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+	font-weight: 300;
+	clear: both;
+	padding-left: 0;
+	font-size:1.125rem;
+}
+.md-image>.md-meta {
+	color: #463F5C
+}
+.footnotes {
+	font-size:1.1rem;
+}
+.md-tag {
+	font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+}
+.code-tooltip {
+	background: white;
+}
+.code-tooltip-content {
+	font-size: 1.1rem;
+}
+
+.task-list{
+	padding-left: 0;
+}
+
+.md-task-list-item {
+	padding-left:34px;
+}
+
+.md-task-list-item > input{
+	width: 1.25rem;
+	height: 1.25rem;
+	display: block;
+	-webkit-appearance: initial;
+	top: -0.2rem;
+	margin-left: -1.6em;
+	margin-top: calc(1rem - 7px);
+	border: none;
+}
+
+.md-task-list-item > input:focus{
+	outline: none;
+	box-shadow: none;
+}
+
+.md-task-list-item > input:before{
+	border: 1px solid #555;
+	border-radius: 1.5rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	background: #fff;
+	content: ' ';
+	transition: background-color 200ms ease-in-out;
+	display: block;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	background: #333;
+	border-width: 2px;
+	display:inline-block;
+	transition: background-color 200ms ease-in-out;
+}
+
+.md-task-list-item > input:checked:after,
+.md-task-list-item > input[checked]:after {
+	opacity: 1;
+}
+
+.md-task-list-item > input:after {
+	opacity: 1;
+	-webkit-transition: opacity 0.05s ease-in-out;
+	-moz-transition: opacity 0.05s ease-in-out;
+	transition: opacity 0.05s ease-in-out;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	position: absolute;
+	top: 0.4375rem;
+	left: 0.28125rem;
+	width: 0.9375rem;
+	height: 0.5rem;
+	border: 3px solid #fff;
+	border-top: 0;
+	border-right: 0;
+	content: ' ';
+	opacity: 0;
+}
+
+.md-tag {
+	color:inherit;
+}
+
+.md-toc:focus .md-toc-content{
+	margin-top: 19px;
+}
+
+#typora-sidebar {
+	font-size:1rem !important;
+}
+
+.html-for-mac #typora-sidebar {
+	background-color:white;
+}
+
+.outline-content li, .outline-content ul {
+	font-size:1rem !important;
+}
+
+.outline-title {
+	line-height: inherit;
+	margin-top: 10px;
+}
+
+.outline-expander {
+	width: 18px;
+}
+
+.outline-expander:before {
+ 	content: "+";
+	font-family: inherit;
+	color: rgb(108, 108, 108); 
+  	font-size: 1.5rem;
+ 	top: 0.1rem;
+}
+
+.outline-expander:hover:before {
+	content: "+";
+}
+
+.outline-item-open>.outline-item>.outline-expander:before{
+	content: "-";
+}
+
+/** source code mode */
+#typora-source {
+	font-family: Courier, monospace;
+    color: #6A6A6A;
+}
+
+.os-windows #typora-source {
+	font-family: inherit;
+}
+
+.cm-s-typora-default .cm-header, 
+.cm-s-typora-default .cm-property,
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+	color: #428bca;
+}
+
+.cm-s-typora-default .cm-atom, .cm-s-typora-default .cm-number {
+	color: #777777;
+}
+
+.md-diagram-panel {
+	margin-top: 24px;
+	margin-left: -1.2em;
+}
+
+.md-mathjax-midline {
+	background: #fafafa;
+}
+
+.enable-diagrams pre.md-fences[lang="sequence"] .code-tooltip,
+.enable-diagrams pre.md-fences[lang="flow"] .code-tooltip,
+.enable-diagrams pre.md-fences[lang="mermaid"] .code-tooltip {
+    bottom: -3.4em;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write'  class=''><h1><a name="assessment-04-album-art-finder" class="md-header-anchor"></a><span>Assessment 04: Album Art Finder</span></h1><p><img src="top-2.gif" referrerpolicy="no-referrer" alt="top-2.gif"></p><p>&nbsp;</p><h2><a name="assignment-goals" class="md-header-anchor"></a><span>Assignment Goals</span></h2><ul><li><p><span>Creating a HTTP Server with Node.js</span></p></li><li><p><span>Parsing URLs and Query Strings</span></p></li><li><p><span>Creating HTTP Requests and processing HTTP Responses</span></p></li><li><p><span>REST APIs</span></p><ul><li><span>How do websites that offer a REST API manage requests?</span></li><li><span>Authentication</span></li><li><span>Request Types</span></li></ul></li><li><p><span>Caching</span></p></li></ul><p>&nbsp;</p><h2><a name="template-files" class="md-header-anchor"></a><span>Template Files</span></h2><p><a href='resources/04-album-art-finder.zip'><span>04-album-art-finder.zip</span></a></p><p>&nbsp;</p><h2><a name="software-library-restrictions" class="md-header-anchor"></a><span>Software Library Restrictions</span></h2><p><span>One of the goal of this assignment is to familiarize students with buffers, streams, asynchronous programming and, the base Node.js language.</span></p><p><span>Specifically for this assignment you only need the following built in libraries.</span></p><ul><li><a href='https://nodejs.org/api/http.html' target='_blank' class='url'>https://nodejs.org/api/http.html</a><span> - HTTP to serve websites to others</span></li><li><a href='https://nodejs.org/api/https.html' target='_blank' class='url'>https://nodejs.org/api/https.html</a><span> - HTTPS to fetch data from API&#39;s</span></li><li><a href='https://nodejs.org/api/fs.html' target='_blank' class='url'>https://nodejs.org/api/fs.html</a><span> - IO</span></li><li><a href='https://nodejs.org/api/url.html' target='_blank' class='url'>https://nodejs.org/api/url.html</a><span> - Break up a URL into it&#39;s components</span></li><li><a href='https://nodejs.org/api/querystring.html' target='_blank' class='url'>https://nodejs.org/api/querystring.html</a><span> - Conversion of Query String to Object</span></li></ul><p>&nbsp;</p><p><span>Students are restricted from using NPM libraries (npmjs.com) as they abstract away many difficulties that this assignment is training you to identify.  (Similar to how in CS111 you are prevented from using the </span><code>#include &lt;vector&gt;</code><span> library)</span></p><p><span>Students will receive no credit for submissions that use npm libraries, so be careful as many solutions online for subtasks will utilize these libraries.  </span></p><p><span>Some popular libraries that are </span><strong><span>banned</span></strong><span> from this assignment</span></p><ul><li><span>request </span><a href='https://www.npmjs.com/package/request' target='_blank' class='url'>https://www.npmjs.com/package/request</a></li><li><span>express </span><a href='https://www.npmjs.com/package/express' target='_blank' class='url'>https://www.npmjs.com/package/express</a></li></ul><blockquote><p><span>If the library is available on nodejs.org you can use it, if it&#39;s on the npmjs.com website it&#39;s barred from this assignment.</span></p></blockquote><p><span>StackOverflow usage is permitted in a read-only fashion for subtasks (Do not ask questions on the platform, instead direct all questions to me)  Many examples use banned third party packages so be careful not to use those answers.</span></p><p>&nbsp;</p><h2><a name="http-debugger" class="md-header-anchor"></a><span>HTTP Debugger</span></h2><p><a href='https://insomnia.rest/' target='_blank' class='url'>https://insomnia.rest/</a></p><p><span>This tool makes debugging HTTP requests much simpler than doing it from within Node.js  You can isolate malformed requests from within a HTTP debugger before mixing in code so you can isolate problems right away.</span></p><p>&nbsp;</p><p>&nbsp;</p><h2><a name="create-a-server" class="md-header-anchor"></a><span>Create a Server</span></h2><p><code>http.createServer</code><span> has a callback that creates two variables request (</span><code>req</code><span>) and response (</span><code>res</code><span>).  </span></p><p><span>Request is of type </span><code>http.IncomingMessage</code><span> which extends the ReadableStream</span></p><p><a href='https://nodejs.org/api/http.html#http_class_http_incomingmessage' target='_blank' class='url'>https://nodejs.org/api/http.html#http_class_http_incomingmessage</a></p><p><span>Response is of type </span><code>http.ServerResponse</code><span> which technically extends Stream, but we can treat it as a WritableStream with additional methods, as for our purposes all the events and methods that we used previously, are still available. </span></p><p><a href='https://nodejs.org/api/http.html#http_class_http_serverresponse' target='_blank' class='url'>https://nodejs.org/api/http.html#http_class_http_serverresponse</a></p><p><span>This is in contrast to TCP streams which gave us a single duplex stream on connection.</span></p><p>&nbsp;</p><ol start='' ><li><p><span>Open </span><code>index.js</code></p></li><li><p><span>Create an HTTP server, add the following code to create an HTTP server.</span></p><p><img src="001edit.PNG" referrerpolicy="no-referrer" alt="001edit"></p></li><li><p><span>Start the server by running the command </span><code>node index.js</code><span> in the node command prompt</span></p></li><li><p><span>Open a browser and in the address bar visit </span><code>localhost:3000</code><span> to ensure your server is running.  You should see two requests in the command prompt and the message Hello World in your browser.  If you don&#39;t see the request for favicon.ico press </span><code>CTRL+F5</code><span> to perform a hard refresh (ignore cache)</span></p><p>&nbsp;</p><p><img src="002edit.PNG" referrerpolicy="no-referrer" alt="002edit"></p></li><li><p><span>Change the code to print your name instead of Hello World.</span></p><p><span>(Kill the server by pressing </span><code>CTRL + C</code><span> from within the node command prompt.)</span></p></li><li><p><strong><span>Remember to restart the server after each change in your code</span></strong></p></li></ol><p>&nbsp;</p><h2><a name="routing" class="md-header-anchor"></a><span>Routing</span></h2><p><code>req.url</code><span> represents the path the client requested.  </span><code>req.url</code><span> removes the domain information from the url to focus on the path portion.  While the server is running type into your browser.</span></p><p><code>localhost:3000/does-not-exist</code></p><p><span>You should get back the same result as the server is configured to </span><code>res.write()</code><span> to send the exact same message back for every request it receives.  Using </span><code>if/else statements</code><span> we will parse six different types of requests:</span></p><ol start='' ><li><span>A request for the root directory of our site: </span><code>/</code></li><li><span>A request for a favicon image that matches </span><code>/favicon.ico</code></li><li><span>A request for a banner image that matches </span><code>/images/banner.jpg</code></li><li><span>A request for an asset inside a directory </span><code>/album-art/</code><span> for example </span></li></ol><p><span>   </span><code>/album-art/5c3cf2ee3494e2da71dcf26303202ec491b26213.jpg</code></p><ol start='5' ><li><span>A request for a page </span><code>/search</code><span> which can contain query strings like </span></li></ol><p><span>   </span><code>/search?artist=&quot;Taylor Swift&quot;</code></p><ol start='6' ><li><span>A catch all request for anything else</span></li></ol><p>&nbsp;</p><p><span>Deliver content using pairs of </span><code>res.write()</code><span> followed by  </span><code>res.end()</code><span> (removing the previous pair that printed your name)</span></p><p><span>For the first three you can use a simple comparison (eg. </span><code>req.url === &#39;/&#39;</code><span> )</span></p><p><span>For the next two use </span><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith'><code>String.prototype.startsWith()</code></a></p><p><span>For the webpage requests deliver the text </span><code>REPLACE WITH HOME</code><span>, </span><code>REPLACE WITH SEARCH</code><span>, and </span><code>REPLACE WITH CATCHALL</code><span>  for now.</span></p><p><span>For the favicon and images requests deliver the text </span><code>REPLACE WITH FAVICON</code><span> and  </span><code>REPLACE WITH IMAGE</code><span> for now.</span></p><p><span>Use a browser to test each requests by copying each of the examples above and appending it to the end of </span><code>localhost:3000</code><span>, you should have different responses depending on the URL.  The image paths will display errors because of the browser guessing incorrectly the MIME type based on the extension, but we will fix it soon.</span></p><p>&nbsp;</p><h3><a name="-root" class="md-header-anchor"></a><span>/ (root)</span></h3><ol start='' ><li><p><span>Open </span><code>html/main.html</code><span> in a text editor and add the following</span></p><p><img src="003edit.PNG" referrerpolicy="no-referrer" alt="003edit"></p><p><span>This creates an HTML form that accepts a single input </span><code>artist</code><span> from the end user sends the data to the url </span><code>/search</code></p></li></ol><p>&nbsp;</p><ol start='' ><li><p><span>We want to serve this file to any clients who visit the root of our site. </span></p></li><li><p><span>For the route &quot;/&quot; replace the existing code with the following:</span></p><p><img src="004edit.PNG" referrerpolicy="no-referrer" alt="004edit"></p></li><li><p><span>This opens a ReadStream to the html file.</span></p></li><li><p><span>We then pipe the file </span><code>main.html</code><span> to the client as our response.  Pipe by default will close the response once the stream is finished so there is no need for </span><code>res.end()</code></p></li><li><p><a href='https://nodejs.org/api/http.html#http_response_writehead_statuscode_statusmessage_headers'><code>res.writeHead()</code></a><span> is used to supply header information to the browser which tells it how to interpret the data being sent (as the filename is not transmitted when sending a stream of data)  </span></p><p><span>If left out, the browser will try it&#39;s best to figure out how to interpret the data, but its better to be explicit.</span></p><p><span>In this example we are supplying it two parameters </span></p><p><code>statusCode</code><span> which represents a general category of how the request was handled.</span></p><p><span>200 or </span><code>OK</code><span> is the most common status code, signaling the request was successfully completed.</span></p><p><span>The second parameter is the Response </span><code>headers</code><span> object which is used for a variety of purposes including specify the document type, length, encoding, compression, expiration (how long can it keep this resource cached), and other meta information regarding how the browser should interpret the data transmitted.</span></p><p><a href='https://developer.mozilla.org/en-US/docs/Glossary/Response_header' target='_blank' class='url'>https://developer.mozilla.org/en-US/docs/Glossary/Response_header</a></p><p><span>This object can have many components, but our example only has one, the Content Type.  Content type  elaborates on how a given file should be interpreted, the specific values that browsers understand is maintained by IANA called the MIME type.</span></p><p><a href='https://en.wikipedia.org/wiki/Media_type' target='_blank' class='url'>https://en.wikipedia.org/wiki/Media_type</a></p><p><span>You don&#39;t need to memorize these values.  Typically when I need to lookup the MIME type, a quick web search will get the results.  For example a quick search for </span><code>MIME type .mp3</code><span> will yield </span><code>audio/mpeg</code><span>.</span></p><p><span>The browser downloading the file will see the MIME type and open the file with the appropriate tool (eg. audio player, video player, pdf reader, or web page) </span></p><p><code>res.writeHead()</code><span> method must be called before any data is transmitted. (Call it before any calls to </span><code>pipe()</code><span>, </span><code>write()</code><span>, or </span><code>end()</code><span>)</span></p><p>&nbsp;</p><p>&nbsp;</p></li></ol><h3><a name="faviconico" class="md-header-anchor"></a><span>/favicon.ico</span></h3><p><span>When visited browsers will automatically request a favicon asset when you visit a site, if you send back a </span><code>.ico</code><span> file it will display it in the top corner of the browser tab representing the site icon.  </span></p><blockquote><p><span>There are a few clever hacks done with this like notifications (Gmail unread count), counters (Google Calendar dynamic date), and recently a full game</span></p><p><a href='http://www.p01.org/defender_of_the_favicon/' target='_blank' class='url'>http://www.p01.org/defender_of_the_favicon/</a></p></blockquote><ol start='' ><li><span>Using </span><code>fs.createReadStream()</code><span> create a file stream for the file </span><code>images/favicon.ico</code></li><li><span>Content type is </span><code>&#39;image/x-icon&#39;</code></li><li><span>Pipe the contents to the response.</span></li><li><span>Navigate to </span><code>localhost:3000/favicon.ico</code><span>, you should see the image</span></li><li><span>Navigate to </span><code>localhost:3000/index.html</code><span>, you should see the image in the top corner of your tab.  The browser automatically makes secondary requests.  Typically this is based on what resources are embedded on the HTML received, but favicons are a special case that most browsers try to get even if it wasn&#39;t explicitly specified in the HTML.  (The browser will automatically check </span><code>domain.com/favicon.ico</code><span>)</span></li></ol><p>&nbsp;</p><h3><a name="imagesbannerjpg" class="md-header-anchor"></a><span>/images/banner.jpg</span></h3><p><span>After the browser downloads the file </span><code>html/main.html</code><span> it will automatically begin parsing the document, when it encounters an embed resource </span><code>&lt;img src=&quot;/images/banner.jpg&quot; alt=&quot;Album Artist Search&quot; /&gt;</code><span>  The browser will make a secondary request to the server for this resource.  This is why sometimes you may sometimes see partially loaded websites, the browser is still downloading certain embedded resources.</span></p><p><span>It will do this for all embedded resources like stylesheets, scripts, images, audio, and video.  Hyperlinks however are not downloaded and only get requested when the user clicks on them.  (A web page could have hundreds of links to large files, it only makes sense to download those resources if the user clicks on the link)</span></p><p><span>Right now the request is being made we can see that by navigating to </span><code>localhost:3000/</code><span> in a browser, toggling the web inspector tools </span><code>CTRL + SHIFT + I</code><span>, and performing a hard refresh </span><code>CTRL + F5</code></p><p><img src="005edit.PNG" referrerpolicy="no-referrer" alt="005edit"></p><p><span>You should see requests for </span><code>banner.jpg</code><span>, this request is successful, but it is not actually delivering the image.</span></p><p>&nbsp;</p><ol start='' ><li><span>Using </span><code>fs.createReadStream()</code><span> create a file stream for the file </span><code>images/banner.jpg</code></li><li><span>Using Content type is </span><code>&#39;image/jpeg&#39;</code></li><li><span>Pipe the contents to the response.</span></li><li><span>Restart the server and navigate to </span><code>localhost:3000/</code><span> you should see the banner image.</span></li></ol><p>&nbsp;</p><p><img src="006edit.PNG" referrerpolicy="no-referrer" alt="006edit"></p><p><span>We can look a bit more in-depth at how each of the resources arrive in your browser by clicking through each request and going to the Timings tab.  Started time gives us a relative time value for when a particular request was sent out from your browser.  Notice </span><code>favicon.ico</code><span> starts downloading substantially later than </span><code>banner.jpg</code><span>.  Most browsers deprioritize favicon requests and will request them after everything else on the page has been downloaded and executed.  This is typically referred to as lazy loading.  This is actually a rabbit hole that you can go very deep into exploring how to optimize page load times, but it&#39;s not for us.</span></p><p>&nbsp;</p><h3><a name="album-art" class="md-header-anchor"></a><span>/album-art/</span></h3><p><span>images that we are going to work with are going to have the format </span>
+<code>/album-art/5c3cf2ee3494e2da71dcf26303202ec491b26213.jpg</code></p><p><span>To service a request for the above file our application will check the </span><code>/album-art/</code><span> directory for a file with that filename </span><strong><span>and if available</span></strong><span>, pipe the result back to the user.</span></p><ul><li><span>In the previous examples we can be confident that the images will exist, but this is not the case for this example.  The standard way to respond to request for files that don&#39;t exist is to send a 404 status code.</span></li></ul><p><img src="008edit.PNG" referrerpolicy="no-referrer" alt="008edit"></p><p><span>The </span><code>ready</code><span> event is emitted when the image has been loaded into memory.</span></p><p><span>I&#39;ve already created two test image inside album-art.  Restart the server and in a browser navigate to  </span><code>localhost:3000/album-art/test1.jpg</code><span> and </span><code>localhost:3000/album-art/test2.jpg</code><span> and ensure that you see the images.</span></p><p><span>Then navigate to </span><code>localhost:3000/album-art/does-not-exist.jpg</code><span> and ensure you are getting a 404 Not Found message.</span></p><p><span>We can replace the </span><code>res.write(&quot;404 Not Found&quot;, ()=&gt; res.end())</code><span> </span>
+<span>with a </span><code>res.end(&quot;404 Not Found&quot;)</code><span> which is equivalent to the above.</span></p><h3><a name="search-part-1-delivering-the-form" class="md-header-anchor"></a><span>/search (part 1): delivering the form</span></h3><p><span>When the end-user fills out the form from </span><code>/</code><span>, the data will be appended to the URL as a query string.</span></p><p><a href='https://nodejs.org/api/url.html#url_url_strings_and_url_objects' target='_blank' class='url'>https://nodejs.org/api/url.html#url_url_strings_and_url_objects</a></p><p><span>The chart on this page shows the structure of the URL.  The </span><code>url</code><span> library will be helpful here.  It allows you to input a URL and using the </span><code>parse()</code><span> method break it up into useful components.</span></p><ol start='' ><li><p><span>Create a new URL object by feeding in </span><code>req.url</code></p></li><li><p><span>Check </span><code>url_object.searchParams</code><span> to learn the structure of the object</span></p><p><span>Example</span></p><p><a href='https://nodejs.org/api/url.html#url_class_urlsearchparams' target='_blank' class='url'>https://nodejs.org/api/url.html#url_class_urlsearchparams</a></p></li><li><p><span>Print the string </span><code>artist</code><span> to console</span></p><p><a href='https://nodejs.org/api/url.html#url_urlsearchparams_get_name' target='_blank' class='url'>https://nodejs.org/api/url.html#url_urlsearchparams_get_name</a></p><p>&nbsp;</p></li></ol><p>&nbsp;</p><p><img src="009edit.PNG" referrerpolicy="no-referrer" alt="009edit"></p><p>&nbsp;</p><h2><a name="else" class="md-header-anchor"></a><span>else</span></h2><p><span>Send a 404 Not Found response, and close the connection.</span></p><p>&nbsp;</p><h2><a name="using-a-rest-api" class="md-header-anchor"></a><span>Using a REST API</span></h2><p><span>A REST API is an interface from which our application can communicate with third party servers to fetch data or request services.  For example the Google Translate API can convert between various languages which can be useful in certain applications.  To interact with it programmatically we use APIs.</span></p><p><span>Spotify is a streaming music platform that offer&#39;s music subscriptions, they also have a very beginner friendly API.  </span></p><p><span>This assignment will have students utilize Spotify&#39;s API to lookup album art related to a search term and display results.</span></p><h3><a name="setup-a-spotify-account" class="md-header-anchor"></a><span>Setup a Spotify Account</span></h3><ol start='' ><li><p><span>You need a Spotify account to use the API, if you don&#39;t have one or have concerns about privacy you can create a new one (free accounts work fine)</span></p><p><a href='https://www.spotify.com'><span>https://www.spotify.com</span></a></p></li><li><p><span>Navigate to the developer dashboard</span></p><p><a href='https://developer.spotify.com/dashboard/'><span>https://developer.spotify.com/dashboard/</span></a></p></li><li><p><span>Click Create an App</span></p><p><span>	</span><span>Name: </span><code>CS355 Album Art Search App</code></p><p><span>	</span><span>Description: </span><code>Learning Spotify API 1 - Client Credentials Grant</code></p><p><span>	</span><span>What are you building? </span></p><p><span>	</span><span>Choose </span><code>I don&#39;t know</code><span>  , </span><code>Next</code><span> , Check all the boxes, and </span><code>Submit</code></p></li><li><p><span>Click on the project to find your credentials.</span></p><p><img src="credentials.PNG" referrerpolicy="no-referrer" alt="credentials"></p></li><li><p><span>Client ID is the identifier for your application</span></p></li><li><p><span>Client Secret is your application&#39;s password</span></p></li></ol><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h3><a name="authentication" class="md-header-anchor"></a><span>Authentication</span></h3><ol start='' ><li><p><span>We will store credentials in a json file inside </span><code>/auth/</code><span>.  Be careful to not share this file as it allows anyone who has it to impersonate your application.  Spotify&#39;s API is free, but for billed API&#39;s like AWS, accidentally publishing your client secret can be an extremely expensive  mistake.</span></p><blockquote><p><em><span>Accidentally</span></em><span> pushing API keys to GitHub can be an </span><em><span>Expensive/Stressful Lesson</span></em><span>: </span></p><p><span>A group of bitcoin miners evidently ran a script to find client secrets for servers on GitHub and took control of the AWS account.  After just one week of the account being compromised, the monthly bill was $285,000!</span></p><p><a href='https://www.quora.com/My-AWS-account-was-hacked-and-I-have-a-50-000-bill-how-can-I-reduce-the-amount-I-need-to-pay' target='_blank' class='url'>https://www.quora.com/My-AWS-account-was-hacked-and-I-have-a-50-000-bill-how-can-I-reduce-the-amount-I-need-to-pay</a></p></blockquote><p><span>In the future, I hope to add a section related to protecting your keys using environmental variables, but for now I&#39;ll post some resources at the end of this assignment if you want to look further into it.  For now ensure that your keys are centralized into a single location </span><code>/auth/credentials.json</code><span>  and that file never gets shared, use gitignore files if using Git/Github.</span></p><p>&nbsp;</p></li><li><p><span>Open </span><code>/auth/credentials.json</code><span>.  The JSON file should represent an object with </span><code>client_id</code><span> and </span><code>client_secret</code><span> attributes set to be the values Spotify has given us.  Add these values.</span></p><p><span>Use </span><a href='https://jsonlint.com/' target='_blank' class='url'>https://jsonlint.com/</a><span> to validate your JSON.  (Pitfalls: JSON requires double quotes for all strings)</span></p><p><span>This is done to avoid hard coding credentials into </span><code>index.js</code></p><p><span>We can import the </span><code>credentials.json</code><span> file by using a require statement.</span></p><p><span>Add the following to your </span><code>index.js</code><span> file</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="javascript"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="javascript"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4.16666px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">const</span> <span class="cm-def">credentials</span> <span class="cm-operator">=</span> <span class="cm-variable">require</span>(<span class="cm-string">'./auth/credentials.json'</span>);</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>This will automatically parse the JSON string into a JavaScript object.</span></p></li><li><p><span>To get Spotify to accept our queries the application needs to identify itself by sending it&#39;s client_id and secret.  There are three different types of authorization flows, (Authorization Code, Implicit Grant, and Client Credentials) each which serve a different purpose.  </span></p><p><span>For this assignment we will be using the </span><a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/#client-credentials-flow'><span>&quot;Client Credentials Flow&quot;</span></a></p><p><span>Keep this link open, as I will refer to it as the Spotify Authorization doc.</span></p><p>&nbsp;</p></li></ol><p><span>Client Credential allows us to access resources that are independent of any particular user.  In our example album art does not change from user to user.  In contrast, if we were to try to access a particular Spotify user&#39;s personal playlists, we would need to explicitly ask for permission from that user (using either Authorization Code or Implicit Grant).  </span></p><p>&nbsp;</p><p><img src="phase1.svg" referrerpolicy="no-referrer" alt="phase1"></p><p>&nbsp;</p><p><span>Conceptually Client Credential and API Key authentication are roughly the same.  The main benefit between of Client Credential over API key authentication is that we can transition from Client Credential to 3-Legged OAuth fairly easily, where as API key requires an entire rewrite.  Technically there is an additional initial handshake where our server sends Client ID and Secret to the API in exchange for an access token.  This access token is then attached to subsequent requests.  Typically these access tokens also expire and a new one needs to be requested again after a window (1 hour in the case of Spotify)</span></p><p>&nbsp;</p><h4><a name="testing-the-request" class="md-header-anchor"></a><span>Testing the Request</span></h4><p><span>Debugging HTTPS errors from within Node.js is not a good idea.  Instead there are dedicated tools like Insomnia and Postman.  I&#39;ll be stepping through a quick tutorial on how to use Insomnia.</span></p><p><span>   </span><img src="010edit.PNG" referrerpolicy="no-referrer" alt="010edit"></p><p><span>   From the main window create a New Request, call it Spotify and change the request type to POST</span></p><blockquote><p><span>The request is sent to the </span><code>/api/token</code><span> endpoint of the Accounts service:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4.16667px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">POST https://accounts.spotify.com/api/token</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>The body of this POST request must contain the following parameters encoded in </span><code>application/x-www-form-urlencoded</code><span> as defined in the OAuth 2.0 specification:</span></p><figure><table><thead><tr><th><span>REQUEST BODY PARAMETER</span></th><th><span>VALUE</span></th></tr></thead><tbody><tr><td><span>grant_type</span></td><td><em><span>Required.</span></em><span>  Set it to </span><code>client_credentials</code><span>.</span></td></tr></tbody></table></figure><p><span>-Spotify Authorization doc</span></p></blockquote><p><span>   First add Spotify&#39;s API endpoint into the URL bar on top.</span></p><p><span>   The OAuth 2.0 specification dictates that the body type will be </span><code>application/x-www-form-urlencoded</code><span>, this means the body should be interpreted as Form URL Encoded.  Click the arrow next to Body and click Form URL Encoded.</span></p><p><span>   This will add a new value to Header </span><code>Content-Type</code><span> : </span><code>application/x-www-form-urlencoded</code></p><p><span>   Next in the Form Body we will add </span><code>grant_type</code><span> : </span><code>client_credential</code></p><p><span>   </span><img src="011edit.PNG" referrerpolicy="no-referrer" alt="011edit"></p><p><span>   Next the Header</span></p><blockquote><p><span>The header of this POST request must contain the following parameter:</span></p><figure><table><thead><tr><th><span>HEADER PARAMETER</span></th><th><span>VALUE</span></th></tr></thead><tbody><tr><td><span>Authorization</span></td><td><em><span>Required.</span></em><span>  Base 64 encoded string that contains the client ID and client secret key. The field must have the format: Authorization: </span><code>Basic &lt;base64 encoded client_id:client_secret&gt;</code></td></tr></tbody></table></figure><p><span>-Spotify Authorization doc</span></p></blockquote><p><span>This one is harder because while we do have the </span><code>client_id</code><span> and </span><code>client_secret</code><span> we need to combine them into a single base64 encoded value.  I&#39;ve already written a script to do this.</span></p><p><span>   </span><img src="012edit.PNG" referrerpolicy="no-referrer" alt="012edit"></p><p><span>Type it up into a new script file, add your client id and secret, and run it to get the value required for Authorization.</span></p><p><span>   </span><img src="013edit.PNG" referrerpolicy="no-referrer" alt="013edit"></p><p><span>Click send and you should get an </span><code>access_token</code><span> which can be used to query other endpoints for data.  This token is valid for 1 hour, and after that a new token must be requested.  In the response go to Timeline and scroll down to see the full request.  Notice the purple line</span></p><blockquote><p><span>grant_type=client_credentials</span></p></blockquote><p><span>This is the Body information represented as </span><code>application/x-www-form-urlencoded</code><span> data</span></p><p><strong><span>The next steps will have students to go through this exact process from within Node.js.</span></strong></p><p>&nbsp;</p><ol start='3' ><li><p><span>We need two objects </span><code>post_data</code><span> representing our Form Body Data containing </span><code>grant_type</code><span>  and a Headers object containing </span><code>Content-Type</code><span> and </span><code>Authorization</code></p><p><span>Create two objects </span><code>post_data</code><span> and </span><code>headers</code><span> with these properties.</span></p><p><span>In the </span><code>headers</code><span> object add an additional property </span><code>&quot;Content-Length&quot;</code><span> and set it to be the calculated value </span><code>post_data.length</code><span>.  (That&#39;s why I requested </span><code>post_data</code><span> be created first)  This value was automatically added by insomnia and I believe Node.js will also automatically add in when it knows the length, but it&#39;s better to be explicit.</span></p><p><img src="014edit.PNG" referrerpolicy="no-referrer" alt="014edit"></p><p><span>Use the previous code to generate the base64 encoded string.  Instead of printing it out, use the variable </span><code>base64data</code><span> as part of the next request made.</span></p><p>&nbsp;</p></li><li><p><span>The authentication server only accepts HTTPS POST requests to the API endpoint</span></p><p><code>https://accounts.spotify.com/api/token</code></p></li><li><p><span>Include the </span><code>https</code><span> library if you haven&#39;t done so already.  (We need both </span><code>http</code><span> and </span><code>https</code><span> libraries)  </span></p><ul><li><code>http</code><span> for our server (so we don&#39;t have to deal with certificates)</span></li><li><code>https</code><span> so we can make requests as clients to API&#39;s.  (If you look at the previous URL it is using the </span><code>https</code><span> protocol, </span><code>https</code><span> cannot communicate with </span><code>http</code><span>)</span></li></ul><p>&nbsp;</p></li><li><p><code>post_data</code><span> needs to be in querystring format.  Currently it is in JS object format (eg. </span><code>foo=bar&amp;baz=qux</code><span>)</span></p><blockquote><p><a href='https://en.wikipedia.org/wiki/Query_string' target='_blank' class='url'>https://en.wikipedia.org/wiki/Query_string</a></p></blockquote><p><span>There is a built in library </span><code>querystring</code><span> with a method </span><code>stringify</code><span> that can convert an object into a querystring.</span></p><p><a href='https://nodejs.org/api/querystring.html#querystring_querystring_stringify_obj_sep_eq_options' target='_blank' class='url'>https://nodejs.org/api/querystring.html#querystring_querystring_stringify_obj_sep_eq_options</a></p><p><span>Convert </span><code>post_data</code><span> to a querystring using this method</span></p><p>&nbsp;</p></li><li><p><span>To create a POST request use the </span><code>https.request()</code><span> method we need to utilize all three arguments</span></p><p><a href='https://nodejs.org/api/https.html#https_https_request_url_options_callback' target='_blank' class='url'>https://nodejs.org/api/https.html#https_https_request_url_options_callback</a></p><p><span>Look through the options here</span></p><p><a href='https://nodejs.org/api/http.html#http_http_request_options_callback' target='_blank' class='url'>https://nodejs.org/api/http.html#http_http_request_options_callback</a></p><p>&nbsp;</p></li><li><p><span>Create an object </span><code>options</code><span> with two properties </span></p><ul><li><code>method</code><span> set to </span><code>POST</code></li><li><code>headers</code><span> set to be the headers object we created earlier.</span></li></ul><p><span>This is describing our request as well as embedding header information.</span></p><p>&nbsp;</p></li><li><p><span>Create the request using </span><code>http.request</code><span> supplying it relevant data.  </span></p><p><img src="auth_req_new.PNG" referrerpolicy="no-referrer" alt="auth_req_new"></p><p>&nbsp;</p><p><span>The </span><code>stream_to_message</code><span> function is a utility function created to wait for a stream of data to be completely collected before executing the callback (next phase of execution).  This will be used multiple times in this program (each time we have a stream of text data we need to process) so I moved it to the top.   </span></p><p><code>stream_to_message</code><span> operates as follows, it listens on a </span><code>stream</code><span> (in our example these will be sockets) and each time a </span><code>data</code><span> event occurs it casts the chunk to text (don&#39;t use this for binary data) and then appends to </span><code>body</code><span>.  Finally when there is no more data an </span><code>end</code><span> event is caught which executes </span><code>callback</code><span> (next function in execution) passing in </span><code>body</code></p><p><img src="stream_to_message.PNG" referrerpolicy="no-referrer" alt="stream_to_message"></p><p>&nbsp;</p></li><li><p><span>Add in the code for </span><code>auth_sent_time</code><span> we will use it for caching later</span></p></li><li><p><code>https.request()</code><span> creates a new </span><code>ClientRequest</code><span> object</span></p><p><a href='https://nodejs.org/api/http.html#http_class_http_clientrequest' target='_blank' class='url'>https://nodejs.org/api/http.html#http_class_http_clientrequest</a></p><p><code>ClientRequest</code><span> represents Node.js&#39;s internal representation of a </span><strong><span>(currently unsent)</span></strong><span> request to the Spotify URL.  This object extends stream and add 8 new events.  We listen to two events </span><code>error</code><span> (part of stream) and </span><code>response</code><span>.  </span></p><p><a href='https://nodejs.org/api/http.html#http_event_response' target='_blank' class='url'>https://nodejs.org/api/http.html#http_event_response</a></p><blockquote><p><span>Emitted when a response is received to this request. This event is emitted only once.</span></p></blockquote><p><span>Because it is only emitted once, I listen to it using </span><code>once()</code><span> instead of </span><code>on()</code><span> to be explicit about it&#39;s behavior, in case I need to come back to the code later.</span></p><p>&nbsp;</p><p><span>When we are ready to send the request we can either use </span><code>auth_req.end()</code><span> or </span><code>auth_req.write()</code><span> if we want to keep the connection open (we don&#39;t in this case)</span></p><p>&nbsp;</p><p><span>We pass in any data that should be part of the body of the request as the parameter to </span><code>socket.end(data)</code><span> or </span><code>socket.write(data)</code><span>.  For most </span><code>POST</code><span> requests this is a querystring.</span></p><p>&nbsp;</p></li><li><p><span>If successful you should see something like this without the formatting.</span></p><p><img src="token.PNG" referrerpolicy="no-referrer" alt="token"></p><p>&nbsp;</p><p><span>Replace </span><code>console.log</code><span> in the previous code to </span><code>received_authentication</code><span> making sure to include </span><code>message</code><span>, in addition also pass in variables </span><code>user_input</code><span>, </span><code>authe_sent_time</code><span>, and </span><code>res</code></p><p>&nbsp;</p></li><li><p><span>Write the function </span><code>received_authentication</code><span> to proceed to the next phase of our application.  </span></p><p><span>The message returned is a JSON encoded string, use </span><code>JSON.parse()</code><span> to convert it back to a JS object and print it to console to examine the structure.  </span></p><p><img src="received_new.PNG" referrerpolicy="no-referrer" alt="received_new"></p><p>&nbsp;</p><p><span>Ignore the two functions </span><code>create_access_token_cache</code><span> and </span><code>create_search_req</code><span> for now.  You can write two empty function and fill them in in the next step.</span></p><p>&nbsp;</p></li><li><p><span>Upon successfully sending the data, the response will include an </span><code>access_token</code><span>.  With this </span><code>access_token</code><span> the  Spotify API can be used for the next 3600 seconds.  Each time we query the API we should include the </span><code>access_token</code><span> in the request.  </span></p><blockquote><p><span>Note this is how Spotify does authentication, not how all REST API&#39;s perform authentication. OAuth 2.0 is not a protocol, but a framework, implementation specifications are left to the API developer.  This means you as an application level developer need to learn the authentication specifications for each new REST API you want to include in your application.  Use an HTTP debugger to test all calls before translating each request to code.</span></p></blockquote></li></ol><p>&nbsp;</p><p>&nbsp;</p><h3><a name="token-expiration-and-caching" class="md-header-anchor"></a><span>Token Expiration and Caching</span></h3><p><span>This token expires in 3600 seconds after which a new token needs to be requested.  Our current code gets a new token every time though.  To reduce the overhead of requesting a new token every time, we will cache this token.</span></p><p><span>Caching is a term for saving previous requests and reusing the data as long as it is still relevant.  It is important when working with third party API&#39;s as most will have a rate limit to control how many requests can be made, and many paid API&#39;s will charge it&#39;s users per request.  If you can cut down your requests without impacting performance this can save you real world dollars.</span></p><p><span>The token generated is valid for 3600 seconds so we can save it for future requests instead of creating a new token every time.  There&#39;s a problem however, saving 3600 to a file won&#39;t work as once it&#39;s saved it won&#39;t decrease for every second that passes.  Instead calculate and save the </span><strong><span>time</span></strong><span> this token expires, and if the current time is after the saved value, fetch a new token.</span></p><p><span>The missing block above creates a new property </span><code>spotify_auth.expiration</code><span> and sets it to be one hour from </span><code>auth_sent_time</code><span> which was created earlier for this sole purpose. </span></p><p><span>I used the following methods to generate the expiration property:</span></p><p><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date' target='_blank' class='url'>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date</a></p><p><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime' target='_blank' class='url'>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime</a><span> </span>
+<span>(This function returns back milliseconds, make sure to convert from seconds)</span></p><p><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toJSON' target='_blank' class='url'>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toJSON</a></p><ol start='' ><li><p><span>Generate the </span><code>spotify_auth.expiration</code><span> property and set it to be one hour from </span><code>auth_sent_time</code><span> </span></p></li><li><p><span>Write a function </span><code>create_access_token_cache(spotify_auth)</code><span> that writes </span><code>spotify_auth</code><span> to a file </span><code>&#39;./auth/authentication-res.json&#39;</code><span> (Make sure to convert it to a JSON string, you cannot write objects to files)  Hint: </span><code>JSON.stringify()</code><span> will convert objects to JSON encoded strings</span></p></li><li><p><code>fs.writeFile</code><span> is ideal for writing a cache.  </span></p><p><a href='https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback' target='_blank' class='url'>https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback</a></p><p><span>The task of caching results can be accomplish asynchronously, because it only benefits future requests, the current request does not need the cache in any manner.  This is In contrast to the synchronous methods like </span><code>writeFileSync()</code><span> where we can not proceed until the write operation is completed.</span></p><p><img src="wfsvswf.PNG" referrerpolicy="no-referrer" alt="wfsvswf"></p><p>&nbsp;</p><p><span>You can use my code for checking to see if a cached file exists, but be prepared to write your own for the image cache.</span></p></li></ol><p><img src="cache2.PNG" referrerpolicy="no-referrer" alt="cache2"></p><p><span>   In my example </span><code>authentication_cache</code><span> points to the location of the saved cache.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="javascript"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="javascript"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4.16667px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">const</span> <span class="cm-def">authentication_cache</span> <span class="cm-operator">=</span> <span class="cm-string">'./auth/authentication-res.json'</span>;</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><h4><a name="fsexistssyncpath" class="md-header-anchor"></a><span>fs.existsSync(path)</span></h4><p><a href='https://nodejs.org/api/fs.html#fs_fs_existssync_path' target='_blank' class='url'>https://nodejs.org/api/fs.html#fs_fs_existssync_path</a></p><p><span>Notice we use </span><code>fs.existSync</code><span> over here.   There is an async version </span><code>fs.access()</code><span> but there is little reason to use it, because our program cannot do anything else in the meantime.  It has to decide which path to go down </span><code>create_search_request</code><span> or </span><code>received_auth</code><span> and it&#39;s decision is based on the contents of this file.</span></p><h3><a name="cache-independence" class="md-header-anchor"></a><span>Cache Independence</span></h3><p><span>Make sure your code is not dependent on it&#39;s cache.  To test this, delete the </span><code>authentication-res.json</code><span> file and run your code.  It should request a new access_token and recreate the file </span><code>authentication-res.json</code><span>.</span></p><p>&nbsp;</p><h3><a name="callback-hell" class="md-header-anchor"></a><span>Callback Hell</span></h3><p><a href='http://callbackhell.com/' target='_blank' class='url'>http://callbackhell.com/</a></p><p><span>Try to avoid nesting too many callbacks inside each other by modularizing your code.</span></p><p>&nbsp;</p><h3><a name="search-part-2-createsearchrequest" class="md-header-anchor"></a><span>/search (part 2): </span><code>create_search_request()</code></h3><p><img src="phase2.svg" referrerpolicy="no-referrer" alt="phase2"></p><p><span>The next step creates another request to Spotify&#39;s API </span></p><p><span>This time requesting album art related to the users search query</span></p><p><span>Here&#39;s the relevant Spotify documentation</span></p><p><a href='https://developer.spotify.com/documentation/web-api/reference/search/search/' target='_blank' class='url'>https://developer.spotify.com/documentation/web-api/reference/search/search/</a></p><h4><a name="endpoint" class="md-header-anchor"></a><span>Endpoint</span></h4><p><span>The endpoint is a communication channel that will process requests.  This tells us the protocol and the url that we send our requests to.</span></p><p><span>In this example this is using the </span><code>GET</code><span> method to the URL </span><code>https://api.spotify.com/v1/search</code></p><p><span>Because this is a </span><code>GET</code><span> request and request parameters need to be attached to the URL instead of sent via the body with </span><code>res.end()</code><span> for </span><code>POST</code><span> request.  Because no data is being sent and </span><code>GET</code><span> is the default method we can remove options entirely and use the two argument version of </span><code>https.request(url,callback)</code></p><p><a href='https://nodejs.org/api/https.html#https_https_request_url_options_callback' target='_blank' class='url'>https://nodejs.org/api/https.html#https_https_request_url_options_callback</a></p><h4><a name="request-parameters" class="md-header-anchor"></a><span>Request Parameters</span></h4><p><span>Describes how to structure a requests.  In this example we need to supply </span><code>access_token</code><span>, </span><code>q</code><span>, and </span><code>type</code><span>.</span></p><ul><li><code>q</code><span>: would be the artist name the user typed in</span></li><li><code>type</code><span>: hard code this to </span><code>album</code><span> since we are trying to get album art.</span></li><li><code>access_token</code><span>: Get from the </span><code>authentication-res.json</code><span> file</span></li></ul><p><span>Use Insomnia to simulate a request for a search.  This request is a </span><code>GET</code><span> request which means embedded data goes into the query field (part of the URL)</span></p><p><span>You should receive back a larger JSON object this time representing the list of albums that fit the search term.  </span></p><p><img src="music-data.PNG" referrerpolicy="no-referrer" alt="music-data"></p><p><span>Here&#39;s a cleanup version of the Spotify&#39;s </span><code>album</code><span> object structure.   We are interested in getting the album art images.  We get back a much larger object though so we need to navigate it&#39;s properties after parsing it.</span></p><p><span>The values that we need are the URLs of the album art.  The structure we wind up traversing through is:</span></p><p><code>albums.items[n].images[0].url</code><span>, where </span><code>n</code><span> goes from </span><code>0</code><span> to </span><code>albums.length</code><span>.</span></p><p>&nbsp;</p><p><span>Using the previous request as an example, write code to download this json file and print it to console.</span></p><h3><a name="downloading-the-images" class="md-header-anchor"></a><span>Downloading the Images</span></h3><p><img src="phase3.svg" referrerpolicy="no-referrer" alt="phase3"></p><p><span>We need to download multiple images asynchronously.  (Refer to assignment-01 file system example for how to process multiple files asynchronously)  </span></p><p><span>Create a counter to keep track of how many images have finished downloading and once that number matches total albums, move to the final phase of serving a webpage.</span></p><p><span>For each image create a request to download the image at the url specified.</span></p><p><span>When receiving images don&#39;t use </span><code>stream_to_message()</code><span>, </span>
+<code>body += chunk</code><span> has an implicit </span><strong><span>string</span></strong><span> conversion which doesn&#39;t work with binary data.  Instead create a file (using the original filename which is guaranteed to be unique, </span><strong><span>don&#39;t rename it</span></strong><span>) and </span><code>pipe()</code><span> the download to the file.  There&#39;s a specific </span><code>finish</code><span> event emitted when a Write Stream has emptied.</span></p><p><img src="album-img.PNG" referrerpolicy="no-referrer" alt="album-img"></p><p>&nbsp;</p><p><span>This syntax is slightly different, instead of using a </span><code>response</code><span> event listener like in the previous examples, you can put the </span><code>response</code><span> handler as the second parameter in </span><code>https.get()</code><span> or </span><code>https.request()</code><span>  This is slightly more compact, but increases the indentation complexity, combined with an inline function it can get messy fast.  Either choice is fine, I prefer using the observer pattern, but put this here to show a commonly used alternative.</span></p><p><span>I used </span><code>https.get()</code><span> in this example because it is a </span><code>GET</code><span> request, </span>
+<span>but you can use </span><code>https.request()</code><span> if you prefer</span>
+<a href='https://nodejs.org/api/https.html#https_https_get_options_callback' target='_blank' class='url'>https://nodejs.org/api/https.html#https_https_get_options_callback</a></p><p>&nbsp;</p><p><span>For writing the image </span><code>{&#39;encoding&#39;:null}</code><span> prevents the system from encoding the data in </span><code>utf8</code><span> .  The event  </span><code>finish</code><span> is unique to Write Streams.  Read Streams use the event </span><code>end</code><span>.</span>
+<a href='https://stackoverflow.com/a/34310963/992856' target='_blank' class='url'>https://stackoverflow.com/a/34310963/992856</a></p><p>&nbsp;</p><h3><a name="serving-a-webpage" class="md-header-anchor"></a><span>Serving a Webpage</span></h3><p><span>After a write stream completes the </span><code>finish</code><span> event fires, increasing </span><code>downloaded_images</code><span> by one.  When it reaches </span><code>albums.length</code><span> call a function </span><code>generate_webpage()</code><span> </span></p><p><span>The webpage for the results should display a heading (</span><code>h1</code><span>) with the text </span><code>Search Results</code><span> followed by the search query sent by the user.  It will then display an image (</span><code>img</code><span>) for each album art returned.</span></p><p>&nbsp;</p><p><span>Refer to the </span><code>/ (root)</code><span> section on top of this document to see the basic HTML syntax.  You are essentially trying to generate a piece of text that looks like that, but with links to the 20 images you downloaded (don&#39;t point to the Spotify URLs, point to your cached versions, refer to </span><code>/album-art/</code><span> section on top to see the URL format, instead of using </span><code>localhost</code><span> use </span><code>./</code><span> to represent the current directory ) </span></p><p>&nbsp;</p><p><span>One way to do this is to collect all the local image paths after the </span><code>download_album_art</code><span> phase into an array of strings, apply a map function to wrap the results in </span><code>img</code><span> tags and then applied the </span><code>Array.prototype.join()</code><span> method to combine them.</span></p><p><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join' target='_blank' class='url'>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join</a></p><p><span>Use </span><code>res.end()</code><span> to send the generated webpage to the client.</span></p><p><span>When the webpage loads it will make subsequent requests for the image in the image tag which we took care of earlier.  If the </span><code>/album-art/</code><span> path is setup correctly it should serve images which are then embedded into the webpage.</span></p><p>&nbsp;</p><h3><a name="caching-images" class="md-header-anchor"></a><span>Caching Images</span></h3><p><span>Before downloading an image check your </span><code>/album_art/</code><span> directory to see if you have an image with the same filename and if so serve that instead of making a request to the server.</span></p><p><span>Use </span><code>fs.access()</code><span> to test for file existence.  Use this over </span><code>fs.existsSync</code><span> so we can check multiple files at the same time.</span></p><p><a href='https://nodejs.org/api/fs.html#fs_fs_access_path_mode_callback' target='_blank' class='url'>https://nodejs.org/api/fs.html#fs_fs_access_path_mode_callback</a></p><h2><a name="analyzing-the-traffic" class="md-header-anchor"></a><span>Analyzing the Traffic</span></h2><p><span>Using </span><a href='https://sequencediagram.org/' target='_blank' class='url'>https://sequencediagram.org/</a><span> create three sequence diagrams analyzing the Layer 5 traffic (Application Layer) for the following scenarios:</span></p><p><span>Do not include TCP level information like handshakes, SYNs or ACKs.</span></p><ol start='' ><li><span>The first request to your server for artist A.</span></li><li><span>A second request (from the same user within one hour) to your server for artist B</span></li><li><span>A third request (from the same user within the same one hour) to your server for artist B again.</span></li></ol><p><span>There should be three entities, Client, Server, and Spotify API  </span></p><p><span>Template for first request:</span></p><p><img src="sequence-example.svg" referrerpolicy="no-referrer" alt="sequence-example"></p><p>&nbsp;</p><p><span>For large bodies of text use filename (eg. </span><code>index.html</code><span>) if available or describe data if unavailable</span></p><h2><a name="performance-improvements" class="md-header-anchor"></a><span>Performance Improvements</span></h2><p><span>We&#39;ve cached the </span><code>access_token</code><span> and the album art images as part of this assignment.</span></p><p><span>There is something else we can cache, although this last cache has drawbacks.  Imagine that our goal was to minimize API calls at any cost however.</span></p><p><span>Discover what can be cached by looking at the sequence diagram and see the only remaining un-cached request to the API server, is it possible to cache this request such that if multiple users searches the exact same artist we don&#39;t need to query the API as often?</span></p><p><span>Implement this cache and show using an additional sequence diagram how it improves upon the current design.</span></p><p><span>What is the drawback to this cache?  What happens if an artist releases a new album?  How can we minimize the impact of the drawback?</span></p><h2><a name="testing" class="md-header-anchor"></a><span>Testing</span></h2><p><span>Delete all cached album art and </span><code>authentication-res.json</code><span> </span></p><p><span>Search for the following terms:</span></p><ul><li><span>Taylor Swift</span></li><li><span>P!nk</span></li><li><span>Hear&#39;Say</span></li><li><span>AC/DC</span></li></ul><p><span>Create a </span><code>console.log()</code><span> message inside the callback for each </span><code>https.request()</code><span> / </span><code>https.get()</code><span> make sure those messages are </span><strong><span>NOT</span></strong><span> being printed if you are using a cached resource (whether it be </span><code>access_token</code><span>, image, or something else).</span></p><p>&nbsp;</p><p>&nbsp;</p><h2><a name="further-reading" class="md-header-anchor"></a><span>Further Reading</span></h2><p><span>Environmental Variables</span></p><p><a href='https://github.com/dwyl/learn-environment-variables' target='_blank' class='url'>https://github.com/dwyl/learn-environment-variables</a></p></div>
+</body>
+</html>

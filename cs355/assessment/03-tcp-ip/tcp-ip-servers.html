@@ -1,0 +1,704 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>tcp-ip-servers</title><link href='https://fonts.loli.net/css?family=Merriweather:900,900italic,300,300italic&subset=latin-ext' rel='stylesheet' type='text/css' /><link href='https://fonts.loli.net/css?family=Lato:900,300&subset=latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+@include-when-export url(https://fonts.loli.net/css?family=Merriweather:900,900italic,300,300italic&subset=latin-ext);
+@include-when-export url(https://fonts.loli.net/css?family=Lato:900,300&subset=latin-ext);
+
+:root {
+	--control-text-color: #777;
+}
+
+/**
+ * forked from pixyll.com
+ * MIT license
+ */
+
+h1,
+.h1,
+.f1 {
+	font-size: 2rem;
+	line-height: 2.5rem;
+}
+h2,
+.h2,
+.f2 {
+	font-size: 1.5rem;
+	line-height: 2rem;
+}
+h3,
+.h3,
+.f3 {
+	font-size: 1.25rem;
+	line-height: 1.5rem;
+}
+p,
+.p,
+.f4,
+h4,
+h5,
+h6,
+dl,
+ol,
+ul,
+pre[cid],
+div[cid],
+#typora-source {
+	font-size: 1.125rem;
+	line-height: 1.5rem;
+}
+
+h4 {
+	font-size: 1.13rem;
+}
+/*
+ Pixyll
+ A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff.
+ Best served with BASSCSS (http://jxnblk.github.io/basscss)
+ Crafted with <3 by John Otander (@4lpine) - ©2015 John Otander MIT License http://opensource.org/licenses/MIT
+
+*/
+
+body {
+	font-family: "Merriweather", "PT Serif", Georgia, "Times New Roman", "STSong", Serif;
+	line-height: 1.5rem;
+	font-weight: 400;
+}
+
+#write {
+	max-width: 914px;
+	color: #333;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1100px;
+	}
+}
+
+@media only screen and (min-width: 1700px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+img {
+	width: auto;
+	max-width: 100%;
+}
+body {
+	font-size: 1.5rem;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.ty-table-edit {
+	background: #ededed;
+}
+
+table {
+	width: 100%;
+	font-size: 1.125rem;
+}
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td,
+table > tfoot > tr > th,
+table > tfoot > tr > td {
+	padding: 12px;
+	line-height: 1.2;
+	vertical-align: top;
+	border-top: 1px solid #333;
+}
+table > thead > tr > th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #333;
+}
+table > caption + thead > tr:first-child > th,
+table > caption + thead > tr:first-child > td,
+table > colgroup + thead > tr:first-child > th,
+table > colgroup + thead > tr:first-child > td,
+table > thead:first-child > tr:first-child > th,
+table > thead:first-child > tr:first-child > td {
+	border-top: 0;
+}
+table > tbody + tbody {
+	border-top: 2px solid #333;
+}
+p {
+	font-weight: 300;
+	line-height: 1.5;
+}
+abbr {
+	border-bottom: 1px black dotted;
+	cursor: help;
+}
+pre,
+code {
+	font-family: Menlo, Monaco, "Courier New", monospace;
+}
+
+code,
+.md-fences  {
+	color: #7a7a7a;
+}
+
+.md-fences {
+	padding: 1.125em;
+	margin-bottom: 0.88em;
+	font-size: 1rem;
+	border: 1px solid #7a7a7a;
+	padding-bottom: 0.5rem;
+	padding-top: 0.5rem;
+}
+
+blockquote {
+	padding: 1.33em;
+	font-style: italic;
+	border-left: 5px solid #7a7a7a;
+	color: #555;
+}
+blockquote em {
+	color: #000;
+}
+blockquote footer {
+	font-size: .85rem;
+	font-style: normal;
+	background-color: #fff;
+	color: #7a7a7a;
+	border-color: transparent;
+}
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	font-family: "Lato", 'Helvetica Neue', Helvetica, sans-serif;
+	font-weight: bold;
+	line-height: 1.2;
+	margin: 1em 0 0.5em;
+}
+@media screen and (min-width: 48em) {
+	.h1,
+	h1 {
+		font-size: 3.250rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.298rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.625rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.3rem;
+	}
+	#write>h4.md-focus:before,
+	#write>h5.md-focus:before,
+	#write>h6.md-focus:before{
+		top: 1px;
+	}
+	.p,
+	p,
+	li {
+		font-size: 1.25rem;
+		line-height: 1.8;
+	}
+	table {
+		font-size: 1.25rem;
+	}
+}
+@media (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.3rem;
+	}
+}
+@media screen and (min-width: 64em) {
+	.h1,
+	h1 {
+		font-size: 4.498rem;
+	}
+	.h2,
+	h2 {
+		font-size: 2.29rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.9rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.591rem;
+	}
+	#write>h4.md-focus:before{
+		top:4px;
+	}
+}
+a {
+	color: #463F5C;
+	text-decoration: underline;
+}
+
+#write {
+	padding-top: 2rem;
+}
+
+#write pre.md-meta-block {
+	min-height: 35px;
+	padding: 0.5em 1em;
+	white-space: pre;
+	border: 0px;
+
+	border-left: 30px #f8f8f8 solid;
+	border-right: 30px #f8f8f8 solid;
+	width: 100vw;
+	max-width: calc(100% + 60px);
+
+	margin-left: -30px;
+	margin-bottom: 2em;
+	margin-top: -2010px;
+	padding-top: 2000px;
+	padding-bottom: 10px;
+	line-height: 1.5em;
+	color: #7a7a7a;
+	background-color: #fafafa;
+	font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+	font-weight: 300;
+	clear: both;
+	padding-left: 0;
+	font-size:1.125rem;
+}
+.md-image>.md-meta {
+	color: #463F5C
+}
+.footnotes {
+	font-size:1.1rem;
+}
+.md-tag {
+	font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+}
+.code-tooltip {
+	background: white;
+}
+.code-tooltip-content {
+	font-size: 1.1rem;
+}
+
+.task-list{
+	padding-left: 0;
+}
+
+.md-task-list-item {
+	padding-left:34px;
+}
+
+.md-task-list-item > input{
+	width: 1.25rem;
+	height: 1.25rem;
+	display: block;
+	-webkit-appearance: initial;
+	top: -0.2rem;
+	margin-left: -1.6em;
+	margin-top: calc(1rem - 7px);
+	border: none;
+}
+
+.md-task-list-item > input:focus{
+	outline: none;
+	box-shadow: none;
+}
+
+.md-task-list-item > input:before{
+	border: 1px solid #555;
+	border-radius: 1.5rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	background: #fff;
+	content: ' ';
+	transition: background-color 200ms ease-in-out;
+	display: block;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	background: #333;
+	border-width: 2px;
+	display:inline-block;
+	transition: background-color 200ms ease-in-out;
+}
+
+.md-task-list-item > input:checked:after,
+.md-task-list-item > input[checked]:after {
+	opacity: 1;
+}
+
+.md-task-list-item > input:after {
+	opacity: 1;
+	-webkit-transition: opacity 0.05s ease-in-out;
+	-moz-transition: opacity 0.05s ease-in-out;
+	transition: opacity 0.05s ease-in-out;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	position: absolute;
+	top: 0.4375rem;
+	left: 0.28125rem;
+	width: 0.9375rem;
+	height: 0.5rem;
+	border: 3px solid #fff;
+	border-top: 0;
+	border-right: 0;
+	content: ' ';
+	opacity: 0;
+}
+
+.md-tag {
+	color:inherit;
+}
+
+.md-toc:focus .md-toc-content{
+	margin-top: 19px;
+}
+
+#typora-sidebar {
+	font-size:1rem !important;
+}
+
+.html-for-mac #typora-sidebar {
+	background-color:white;
+}
+
+.outline-content li, .outline-content ul {
+	font-size:1rem !important;
+}
+
+.outline-title {
+	line-height: inherit;
+	margin-top: 10px;
+}
+
+.outline-expander {
+	width: 18px;
+}
+
+.outline-expander:before {
+ 	content: "+";
+	font-family: inherit;
+	color: rgb(108, 108, 108); 
+  	font-size: 1.5rem;
+ 	top: 0.1rem;
+}
+
+.outline-expander:hover:before {
+	content: "+";
+}
+
+.outline-item-open>.outline-item>.outline-expander:before{
+	content: "-";
+}
+
+/** source code mode */
+#typora-source {
+	font-family: Courier, monospace;
+    color: #6A6A6A;
+}
+
+.os-windows #typora-source {
+	font-family: inherit;
+}
+
+.cm-s-typora-default .cm-header, 
+.cm-s-typora-default .cm-property,
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+	color: #428bca;
+}
+
+.cm-s-typora-default .cm-atom, .cm-s-typora-default .cm-number {
+	color: #777777;
+}
+
+.md-diagram-panel {
+	margin-top: 24px;
+	margin-left: -1.2em;
+}
+
+.md-mathjax-midline {
+	background: #fafafa;
+}
+
+.enable-diagrams pre.md-fences[lang="sequence"] .code-tooltip,
+.enable-diagrams pre.md-fences[lang="flow"] .code-tooltip,
+.enable-diagrams pre.md-fences[lang="mermaid"] .code-tooltip {
+    bottom: -3.4em;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write'  class=''><h1><a name="tcpip-server" class="md-header-anchor"></a><span>TCP/IP Server</span></h1><p><span>This assignment explores various simple application layer protocols and how messages are constructed using lower level protocols like TCP and IP.  Students will use packet sniffing software to intercept traffic arriving on their machine and build their own TCP servers using Node.js.</span></p><h2><a name="learning-goals" class="md-header-anchor"></a><span>Learning Goals</span></h2><ul><li><span>Use Wireshark to analyze network traffic</span></li><li><span>Understand TCP traffic flow and handshakes</span></li><li><span>Understand TCP / IP datagram components</span></li><li><span>Understanding the Node.js net package</span></li><li><span>Writing a TCP server in Node.js</span></li><li><span>Writing a TCP client in Node.js</span></li><li><span>Learning about server-side event listeners.</span></li><li><span>Introducing streams and sockets</span></li></ul><h2><a name="software-required" class="md-header-anchor"></a><span>Software Required</span></h2><blockquote><p><span>These instructions are designed with a Windows OS in mind.  They should technically work on Mac, but I cannot provide support if you have software problems.</span></p></blockquote><ul><li><p><strong><span>Npcap</span></strong></p><p><a href='https://nmap.org/npcap/' target='_blank' class='url'>https://nmap.org/npcap/</a></p><blockquote><p><span>Npcap is a </span><strong><span>Windows</span></strong><span> packet sniffing (and sending) library.</span></p></blockquote><ul><li><span>Used to capture network traffic.</span></li><li><span>If your using a Mac skip this.</span></li></ul></li><li><p><strong><span>Wireshark </span></strong><span>(Install Npcap first)</span></p><p><a href='https://www.wireshark.org/#download' target='_blank' class='url'>https://www.wireshark.org/#download</a></p><blockquote><p><span>Wireshark is a network protocol analyzer.</span></p></blockquote><ul><li><p><span>Npcap only captures traffic, Wireshark adds a visual layer that can give a more in-depth analysis of the captured packets.</span></p></li><li><p><span>Do not install WinPcap (We are using Npcap) or USB debugging (We will not be capturing USB traffic)</span></p></li><li><p><span>If using Mac, install chmodBPF after installing Wireshark (comes with the dmg installer)</span></p><ul><li><span>The assignment is designed with Windows in mind, if using different O.S. no support related to software issues is provided.</span></li></ul></li></ul></li><li><p><strong><span>Netcat</span></strong><span> via </span><strong><span>MobaXterm Shell</span></strong><span> (Home edition)</span></p><p><a href='https://mobaxterm.mobatek.net/download.html' target='_blank' class='url'>https://mobaxterm.mobatek.net/download.html</a></p><blockquote><p><span>Netcat is a networking utility for reading and writing on network connections using TCP or UDP.</span></p></blockquote><ul><li><span>Generates TCP traffic.  Acts as a TCP client for servers we will write in Node.js</span></li><li><span>MobaXterm&#39;s has a special version of Netcat in its Shell.  This version sends a </span><code>FIN</code><span> packet when a connection is closed.</span></li><li><span>For those using Mac, I don&#39;t see why Terminal wouldn&#39;t work, but no support is provided.  The </span><code>nc</code><span> comand should work.</span></li></ul></li></ul><ul><li><p><strong><span>Sequence Diagramming Tool</span></strong></p><p><a href='https://sequencediagram.org/' target='_blank' class='url'>https://sequencediagram.org/</a></p><blockquote><p><span>sequencediagram.org is a web based sequence diagram creator.</span></p></blockquote><ul><li><span>Click on the fourth icon </span><code>[?]</code><span> to learn the syntax required to create sequence diagrams.</span></li></ul></li></ul><ul><li><p><strong><span>PDF Reader capable of Form Filling</span></strong></p><ul><li><span>One of the tasks requires you to fill out a pdf.  A fillable PDF is included. (Fall 2020 - you do not need to submit this)</span></li></ul></li><li><p><strong><span>Node.js</span></strong></p><ul><li><span>TCP Server code will be written in JavaScript.  Node.js runtime  will execute the code.</span></li></ul></li></ul><h2><a name="setup" class="md-header-anchor"></a><span>Setup</span></h2><ul><li><span>Create a directory </span><code>A03-########</code><span> to keep all the files created, replacing </span><code>#</code><span> with your Student ID.  (For Fall 2020 you do not need to submit this, but it helps to keep everything organized)</span></li><li><span>Start the </span><code>Node Command Prompt</code><span> and type </span><code>node -v</code><span> to check the version.  Ensure it is at least version 13.10.1  (If not download the latest version from the Node.js website)</span></li></ul><h2><a name="reading" class="md-header-anchor"></a><span>Reading</span></h2><p><a href='https://nodejs.org/api/net.html' target='_blank' class='url'>https://nodejs.org/api/net.html</a></p><ul><li><p><span>Server Events</span></p><ul><li><code>connection</code></li><li><code>listening</code></li></ul></li><li><p><span>Server Methods</span></p><ul><li><code>net.createServer()</code></li><li><code>server.listen()</code></li></ul></li><li><p><span>Socket Events</span></p><ul><li><code>close</code></li><li><code>connect</code></li><li><code>data</code></li><li><code>end</code></li></ul></li><li><p><span>Socket Methods</span></p><ul><li><code>net.createConnection()</code></li><li><code>socket.connect()</code></li><li><code>socket.write()</code></li><li><code>socket.end()</code></li></ul></li></ul><h2><a name="nist-daytime-client" class="md-header-anchor"></a><span>NIST Daytime Client</span></h2><p><span>We will be walking through the process of sending a DAYTIME request to the server </span><code>time-a-g.nist.gov</code><span> and analyzing the traffic generated.</span></p><ol start='' ><li><p><span>Start Wireshark</span></p><p><span>There should be two connections that are not flat, choose the one that is </span><strong><span>not</span></strong><span> </span><code>Loopback Adapter</code><span>, wired connections should be </span><code>Local Area Connection / Ethernet</code><span>, wireless should be </span><code>Wireless Network Connection</code><span>.</span></p></li></ol><p><img src="351-a1-01.PNG" referrerpolicy="no-referrer" alt="351-a1-01"></p><ol start='2' ><li><p><span>In the top left corner is the &quot;Start capturing packets&quot; button which has a shark icon.</span></p><p><span>Click it and there will be a swarm of messages, as most computers have substantial background traffic.</span></p></li><li><p><span>Click the stop button.</span></p></li><li><p><span>Click the &quot;Close this capture file&quot; button which has the icon of a paper with an X.  Do not save the file.  We want to capture certain traffic, but there is noise in other networked applications.  We need a mechanism to filter the results.</span></p></li><li><p><span>We will get the Daytime from  </span><code>time-a-g.nist.gov</code><span>, a server hosted by NIST</span></p></li><li><p><span>On Wireshark home, click the same connection as before </span></p><ul><li><span>Important, click before typing (step 7), but don&#39;t double click</span></li><li><span>The filter on Wireshark home (capture filter) and the display filter are not the same.  You cannot type port 13 into the display filter, you must go back to Wireshark home by clicking </span><code>Stop</code><span> and </span><code>Close Capture File</code><span>. </span></li></ul></li><li><p><span>Type into the capture filter bar</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4.16667px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">port 13</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre></li><li><p><span>It should turn green, click on the &quot;Start capturing packets&quot; button.  Wireshark will now start capturing any traffic between the local device and the any transmissions on port 13.</span></p></li><li><p><span>We will use Netcat to create traffic.</span><br/><span>Start MobaXterm, Click </span><code>Session</code><span>  (Leftmost Icon not plural form), Click </span><code>Shell</code><span>, Click </span><code>OK</code></p></li></ol><ol start='10' ><li><p><span>In MobaXterm&#39;s Shell type in:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4.16667px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">nc time-a-g.nist.gov 13</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>Double check that a date time value is printed, this may take two attempts.  If it fails to print the date or you see reset flags jump back to the step &quot;Close the capture file&quot;</span></p><p><span>If you are still having issues try changing the domain to one of the following instead:</span></p><p><a href='https://tf.nist.gov/tf-cgi/servers.cgi' target='_blank' class='url'>https://tf.nist.gov/tf-cgi/servers.cgi</a></p></li></ol><p><span>	</span><span>This will call the Netcat application to make a TCP request to the host </span><code>time-a-g.nist.gov</code><span> on port 13.</span></p><p><span>	</span><span>Port 13 is reserved for the Daytime Protocol</span></p><p><span>	</span><a href='https://tools.ietf.org/html/rfc867' target='_blank' class='url'>https://tools.ietf.org/html/rfc867</a></p><ol start='11' ><li><p><span>Switching back to Wireshark there should be some traffic.  Click the stop button to stop capturing.  Double check that the traffic has a total of </span><strong><span>8 segments</span></strong><span> and contains a segment with protocol DAYTIME.  If not, restart from &quot;Close this capture file&quot; until 8 segments are received.  You may also have to redo this step if you see a TCP Reset flag </span><code>[RST]</code></p><p><img src="351-a1-02.PNG" referrerpolicy="no-referrer" alt="351-a1-02"></p></li><li><p><span>There are 8 TCP segments in total, each one is wrapped with an IP header and an Ethernet frame.  Click on the drop down arrow to see the values.</span></p><p><img src="351-a1-03.PNG" referrerpolicy="no-referrer" alt="351-a1-03"></p><p><span>On each Layer click through each component to see where exactly each of the headers are. </span></p><p><span>The next question tasks you with filling out 8 diagrams with data from WireShark, one for each segment sent (Write on top of each section).  The PDF is fillable if you have the right software. </span><strong><span>[16pt]</span></strong></p><ul><li><span>If your computer is running IPv4 (most common) fill out the </span><a href='nist-daytime-v4.pdf'><span>following</span></a><span> diagram</span></li><li><span>If your computer is running IPv6 fill out the </span><a href='nist-daytime-v6.pdf'><span>following</span></a><span> diagram </span></li></ul><p><span>For Sequence and Acknowledgement numbers write the relative value.</span></p><p>&nbsp;</p></li></ol><h2><a name="daytime-server" class="md-header-anchor"></a><span>Daytime Server</span></h2><p><span>We will be walking through creating a Node.js server that simulates the TCP half of the Daytime Protocol (We skip the UDP portion as mixing TCP and UDP traffic increases the complexity)</span></p><ol start='0' ><li><p><span>Read the Daytime RFC</span></p><p><a href='https://tools.ietf.org/html/rfc867' target='_blank' class='url'>https://tools.ietf.org/html/rfc867</a></p></li><li><p><span>Create a file </span><code>daytime-server.js</code><span> in the assignment directory.</span></p></li><li><p><span>Start with the code from here:</span></p><p><a href='https://nodejs.org/api/net.html#net_net_createserver_options_connectionlistener' target='_blank' class='url'>https://nodejs.org/api/net.html#net_net_createserver_options_connectionlistener</a></p><p><span>Save the file</span></p></li><li><p><span>Open </span><code>Explorer</code><span> and navigate to the assignment directory, Click the address bar and copy the path.</span></p></li><li><p><span>Start the </span><code>Node.js Command prompt</code><span> and type in </span><code>cd</code><span> (Change directory) then paste the copied path.</span></p></li><li><p><span>To start the server, type:</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4.16667px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">node daytime-server.js</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>The message </span><code>server bound</code><span> should appear.  Leave this terminal open.</span></p></li><li><p><span>Type in the following to MobaXterm&#39;s Shell</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4.16667px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">nc localhost 8124</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><span>This will send a TCP request to port 8124.  </span><code>localhost</code><span> resolves to </span><code>127.0.0.1</code><span> which is a reserved IP address, called the local loopback which refers to the local computer.</span></p></li><li><p><span>The message </span><code>hello</code><span> should appear in MobaXterm&#39;s Shell, and </span><code>client bound</code><span> in the Node.js terminal.</span></p></li><li><p><span>Type your name and press enter into the MobaXterm Shell, the server should reply by repeating back any received message.</span></p></li><li><p><span>Press </span><code>CTRL + C</code><span> to end the communication. MobaXterm&#39;s version of </span><code>Netcat</code><span> sends a </span><code>FIN</code><span> to the server to end the connection, (not all versions of </span><code>Netcat</code><span> do this).  This lets the connection terminate gracefully and keep the server running.</span></p></li><li><p><span>Run netcat again.  (Do not terminate </span><code>daytime-server.js</code><span> )</span></p><blockquote><p><span>Hint: Push up to cycle through previous commands</span></p></blockquote></li><li><p><span>With the existing shell session still open, in MobaXterm start another Shell session and type in the same command again.  On the Node.js end, there should be two </span><code>client connected</code><span> messages in a row.  This demonstrates the TCP server&#39;s ability to handle multiple clients at the same time.</span></p></li><li><p><span>Close both connections and kill one of the shells.</span></p></li><li><p><span>Close the </span><code>daytime-server.js</code><span> with </span><code>CTRL + C</code><span>  </span></p><p><span> Whenever the server code changes, the existing process needs to be restarted.</span></p></li><li><p><span>Rewrite the server code into the following:</span></p><p><span> </span><img src="351-a1-04.PNG" referrerpolicy="no-referrer" alt="351-a1-04"></p><p><span>The functionality should not change, the reason for the rewrite is solely for clarity.  The initial code uses language constructs and objects that we may have only covered in limited amounts (arrow functions, connection listeners, and sockets)  The original code is cleaner, but also more complexity dense.</span></p></li><li><p><span>The following offers a line by line explanation of the above code</span></p><ul><li><p><strong><span>Line 1</span></strong><span>: </span><code>&quot;use strict&quot;;</code><span>  Turns on strict mode, turning common mistakes into discoverable errors.</span></p><p><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode' target='_blank' class='url'>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode</a></p></li><li><p><strong><span>Line 2</span></strong><span>: </span><code>net</code><span> is Node.js&#39;s built in TCP library (</span><code>dgram</code><span> would be the equivalent UDP library).  Node.js separates its library code into packages which are imported using the </span><code>require</code><span> keyword.  All public methods of this package are then contained inside the newly created </span><code>net</code><span> object.</span></p></li><li><p><strong><span>Line 13</span></strong><span>: Create a new TCP server of type </span><code>net.Server</code><span> using the </span><code>net</code><span> package</span></p><p><a href='https://github.com/nodejs/node/blob/bcef949c931f54e3d8ae2a1701f2538262e6bec9/doc/api/net.md#new-netserveroptions-connectionlistener' target='_blank' class='url'>https://github.com/nodejs/node/blob/bcef949c931f54e3d8ae2a1701f2538262e6bec9/doc/api/net.md#new-netserveroptions-connectionlistener</a></p><p><code>net.createServer</code><span> method accepts two optional inputs </span><code>options</code><span> (modifies the server&#39;s behavior) and </span><code>connectionListener</code><span> (</span><code>callback function</code><span> that fires when a new client connects)   </span></p><ul><li><p><code>options</code><span> is truly optional (the default values are what we typically want).  The sample code leaves this variable out.</span></p></li><li><p><code>connectionListener</code><span> is optional, in the sense that without it, the code will not break, but it also does nothing.  The sample code assigns a variable </span><code>connectionListener</code><span> which is a function that listens for a </span><code>&quot;connection&quot;</code><span> event before running it&#39;s function body.</span></p><p><a href='https://nodejs.org/api/net.html#net_event_connection' target='_blank' class='url'>https://nodejs.org/api/net.html#net_event_connection</a></p><ul><li><code>socket</code><span> - The first input variable of </span><code>connectionListener</code><span> is of type </span><code>net.Socket</code><span> and represents the connection that </span><code>connectionListener</code><span> responded to.  The variable name is unimportant (in the original code it was called </span><code>c</code><span>) what matters is that the variable is the first argument.</span></li></ul></li></ul></li><li><p><strong><span>Lines 15-18</span></strong><span>: Defines a more typical event emitter for errors.  Lines 15-17 define what should happen in case of a server failure.  Line 18 creates an event listener that listens for a specific event.  The list of server events are </span><code>[&quot;close&quot;, &quot;connection&quot;, &quot;error&quot;, &quot;listening&quot;]</code></p><p><a href='https://nodejs.org/api/net.html#net_event_close' target='_blank' class='url'>https://nodejs.org/api/net.html#net_event_close</a></p><p><span>We could rewrite the code </span><em><span>(but don&#39;t)</span></em><span> using this listener format and it would behave the the same.</span></p><p><img src="351-a1-06.PNG" referrerpolicy="no-referrer" alt="351-a1-06"></p><p><span>I prefer this style as it&#39;s more uniform, but do not rewrite it </span><em><span>(yet)</span></em><span> as the line numbers would no longer match up making the rest of the instructions confusing.</span></p><p><span>The reason the code is written the other way, is because the  </span><code>&quot;connection&quot;</code><span> event is the most important event for the server and defining it when creating the server is preferred by some.</span></p></li><li><p><strong><span>Lines 20-23</span></strong><span>: Defines an anonymous function that is saved into the variable </span><code>connectionStart</code><span>.  When the server starts listening for connections, the function stored in </span><code>connectionStart</code><span> is called.  Server&#39;s do not start listening until the </span><code>listen</code><span> method is called which binds the server to a specific port number; 8124 in this case.</span></p></li><li><p><strong><span>Lines 4-12</span></strong><span>: Defines an anonymous function that is saved into the variable </span><code>connectionListener</code><span> .  Whenever a client connects with the server, the function stored in </span><code>connectionListener</code><span> is fired and all the code inside is executed.   (Conversely if no client ever connects, this code never executes)</span></p><p><span>This function has a single input </span><code>socket</code><span> representing the connection that was established.</span></p><blockquote><p><strong><span>net.Socket</span></strong></p><p><span>This class is an abstraction of a TCP socket... A </span><code>net.Socket</code><span> is also a </span><a href='https://nodejs.org/api/stream.html#stream_class_stream_duplex'><span>duplex stream</span></a><span>, so it can be both readable and writable, and it is also an </span><a href='https://nodejs.org/api/events.html#events_class_eventemitter'><code>EventEmitter</code></a><span>.</span></p><p><a href='https://nodejs.org/api/net.html#net_class_net_socket' target='_blank' class='url'>https://nodejs.org/api/net.html#net_class_net_socket</a></p></blockquote><ul><li><p><strong><span>stream</span></strong><span> - Streams deal with controlling data flows from various sources.  They are useful for data sources that may not have a well defined start and end (like user input).</span></p><ul><li><p><strong><span>writable</span></strong><span>: An abstraction of a data source that is created</span></p></li><li><p><strong><span>readable</span></strong><span>: An abstraction of a data source that is consumed</span></p><ul><li><p><code>readable.pipe(writable)</code><span> </span></p><p><span>A method of the </span><code>readable</code><span> stream that directs the input (</span><code>readable</code><span>) to an output stream (</span><code>writable</code><span>)</span></p><p><a href='https://nodejs.org/api/stream.html#stream_readable_pipe_destination_options' target='_blank' class='url'>https://nodejs.org/api/stream.html#stream_readable_pipe_destination_options</a></p></li></ul></li><li><p><strong><span>duplex</span></strong><span>: both readable and writable at the same time, in a later assignment we will use </span><code>http</code><span> which can better separate request from response.</span></p></li></ul></li><li><p><strong><span>EventEmitter</span></strong><span>: individual connections can emit event similar to how the server can emit events.  We can set up listeners that fire when events are emitted.</span></p></li></ul></li><li><p><strong><span>Line 5-7</span></strong><span>: Function inside of a function.  This is allowed in JavaScript, the function stored in variable </span><code>connectionEnd</code><span> is scoped to only exist inside the </span><code>connectionListener</code><span> function.</span></p></li><li><p><strong><span>Line 8</span></strong><span>: Binds the function </span><code>connectionEnd</code><span> to the socket&#39;s  </span><code>end</code><span> listener.  When the </span><code>end</code><span> event is emitted from the socket </span><code>connectionEnd</code><span> will execute.</span></p></li></ul></li></ol><p><span>Socket&#39;s have 9 events that can be emitted vs. a server&#39;s 4.</span></p><p><code>[&quot;close&quot;, &quot;connect&quot;, &quot;data&quot;, &quot;drain&quot;, &quot;end&quot;, &quot;error&quot;, &quot;lookup&quot;, &quot;ready&quot;, &quot;timeout&quot;]</code><span> </span></p><p><a href='https://nodejs.org/api/net.html#net_event_close_1' target='_blank' class='url'>https://nodejs.org/api/net.html#net_event_close_1</a></p><ul><li><p><strong><span>Line 10</span></strong><span>: Writing to connected client</span></p></li><li><p><strong><span>Line 11</span></strong><span>: Sockets are duplex, meaning we can read from them as well.  This line reads the next input the client sends and directs the input to be sent back on the same stream.</span></p><p><strong><span>Changing the code to:</span></strong></p><p><img src="351-a1-07.PNG" referrerpolicy="no-referrer" alt="351-a1-07"></p><p><span>will send the typed message to a file </span><code>file.txt</code></p><p><strong><span>Changing the code to:</span></strong></p><p><img src="351-a1-08.PNG" referrerpolicy="no-referrer" alt="351-a1-08"></p><p><span>will send the contents of </span><code>file.txt</code><span> to any client that connects.</span></p><p><em><span>(Yes, the contents of one file can be piped to another)</span></em></p></li></ul><ol start='16' ><li><p><span>Change the code to the following:</span></p><p><img src="351-a1-09.PNG" referrerpolicy="no-referrer" alt="351-a1-09"></p></li><li><p><span>Start the node server.</span></p></li><li><p><span>Start Wireshark, this time use the </span><code>Loopback adapter</code><span>.  This allows us to capture loopback traffic (has the same origination and destination).</span></p></li><li><p><span>Change the capture filter to </span><code>port 3013</code><span>, start capturing data.</span></p></li><li><p><span>In MobaXterm Shell type </span><code>nc localhost 3013</code><span> which will create 5 packets in Wireshark.  </span></p></li><li><p><span>Press </span><code>CTRL + C</code><span> to close the connection which will generate the next 4 packets.</span></p><p><img src="351-a1-10.PNG" referrerpolicy="no-referrer" alt="351-a1-10"></p><p><span>Notice that the traffic generated is not identify as a </span><code>DATETIME</code><span> packet by WireShark.  This is because this example uses port 3013, and not the standard port 13.</span></p><p><span>Side note: I choose port 3013 instead of port 13, because some computers have these test services running and I want to minimize the chance of conflicting with the OS&#39;s version of daytime/qotd/echo.  In general try to avoid using low numbered ports in the range 1-1023 when writing programs.</span></p></li><li><p><span>Draw the network traffic diagram for these 9 segments. </span><strong><span>[10pts]</span></strong></p><p><span>Use </span><a href='https://sequencediagram.org' target='_blank' class='url'>https://sequencediagram.org</a><span> to draw the diagram (The 4th icon </span><code>[?]</code><span> covers the syntax)</span></p><ul><li><p><span>Example network traffic diagram:</span></p><p><a href='https://www.youtube.com/watch?v=F27PLin3TV0' target='_blank' class='url'>https://www.youtube.com/watch?v=F27PLin3TV0</a></p></li></ul><p><span>Include relative sequencing numbers/acknowledgement numbers, flags, and payload data/protocol  (if available)  The sample video does not include all of these.</span></p><p><span>On the diagram identify the 3-way </span><strong><span>connection</span></strong><span> handshake and the 4-way </span><strong><span>termination</span></strong><span> handshake</span></p><ul><li><a href='https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Connection_establishment' target='_blank' class='url'>https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Connection_establishment</a></li><li><a href='https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Connection_termination' target='_blank' class='url'>https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Connection_termination</a></li></ul><p><span>Save it as </span><code>daytime-traffic-segments-01.png</code></p><p><em><span>Since the machine running the client/server is the same it will have the same IP: to differentiate client from server traffic look at the ports.</span></em><span>  (One will use a high numbered ephemeral port)</span></p></li><li><p><span>In the previous example the client ended the connection.  </span></p><p><span>Change the code on line 15 to the following:</span></p><p><img src="351-a1-11.PNG" referrerpolicy="no-referrer" alt="351-a1-11"></p><p><span>and capture the traffic again.</span></p></li><li><p><span>Draw the sequence diagram for the traffic of these 9 segments.  </span><strong><span>[5pts]</span></strong></p><p><span>Save it as </span><code>daytime-traffic-segments-02.png</code><span> </span></p></li></ol><h2><a name="daytime-client" class="md-header-anchor"></a><span>Daytime Client</span></h2><p><span>Next we will write a dedicated client program that will query the server, so that we no longer need to use </span><code>netcat</code><span>.</span></p><ol start='0' ><li><p><span>Read up on </span><code>net.createConnection()</code><span> (third signature)</span></p><p><a href='https://nodejs.org/api/net.html#net_net_createconnection' target='_blank' class='url'>https://nodejs.org/api/net.html#net_net_createconnection</a></p></li><li><p><span>Create a new file </span><code>daytime-client.js</code></p></li><li><p><span>Add the following code:</span></p><p><img src="date-time-client.JPG" referrerpolicy="no-referrer" alt="date-time-client"></p><p><code>net.createConnection</code><span>: creates a socket</span></p></li><li><p><span>Start a command prompt and start the server</span></p></li><li><p><span>Start a second command prompt and run the client.</span></p></li><li><p><span>In the code change the value for </span><code>server_address</code><span> to </span><code>time-a-g.nist.gov</code><span> and </span><code>server_port</code><span> to </span><code>13</code><span> and run it again.</span></p></li><li><p><span>Repeat the process one more time, this time using wireshark to capture the data, make sure to listen on port 13.  Save the capture file as </span><code>daytime-client.pcapng</code><span> </span><strong><span>[5pt]</span></strong></p></li></ol><h2><a name="qotd-server" class="md-header-anchor"></a><span>QoTD Server</span></h2><p><span>Write a TCP server according to the following specs:  (Students only need to write the TCP server, skip UDP, don&#39;t write a client, instead use netcat to test it)  Use port 3014.</span></p><p><a href='https://tools.ietf.org/html/rfc865' target='_blank' class='url'>https://tools.ietf.org/html/rfc865</a><span>  </span></p><p><span>Save it as </span><code>qotd-server.js</code><span> </span><strong><span>[10pts]</span></strong></p><p><span>Have at least 7 different quotes that will change each day.  You may decide the quotes.</span></p><p>&nbsp;</p><p><span>Use Wireshark to capture the traffic. Examine the network traffic, specifically the contents of the payload packet (quote) </span></p><p><span>Draw the sequence diagram.  Save it as </span><code>qotd-traffic-segments.png</code><span> </span><strong><span>[10pts]</span></strong></p><h2><a name="echo-server" class="md-header-anchor"></a><span>echo Server</span></h2><p><span>Write a TCP server according to the following specs:  (Students only need to write the TCP server, skip UDP, don&#39;t write a client, instead use netcat to test it)  Use port 3015.</span></p><p><a href='https://tools.ietf.org/html/rfc862' target='_blank' class='url'>https://tools.ietf.org/html/rfc862</a><span>  </span></p><p><span>Save it as </span><code>echo-server.js</code><span> </span><strong><span>[5pts]</span></strong></p><p><span>Use Wireshark to capture the traffic. </span></p><p><span>Wireshark will classify the payload packet as generic TCP because the port number is unrecognized.</span></p><p><span>Generate two echo statements </span><code>CS355</code><span> and your </span><code>student_id</code><span>.  Then close the connection using </span><code>CTRL + C</code><span>.</span></p><p><span>Draw the sequence diagram.  Save it as </span><code>echo-traffic-segments.png</code><span> </span><strong><span>[10pts]</span></strong></p><h3><a name="hint" class="md-header-anchor"></a><span>Hint</span></h3><p><a href='https://nodejs.org/api/net.html#net_net_createserver_options_connectionlistener' target='_blank' class='url'>https://nodejs.org/api/net.html#net_net_createserver_options_connectionlistener</a></p><p><span>Remember that sockets are bidirectional.  Any socket can be both read from and written to.</span></p><h2><a name="tcp-chat-server-and-client" class="md-header-anchor"></a><span>TCP Chat Server and Client</span></h2><p><img src="demo2.gif" referrerpolicy="no-referrer" alt="demo2"></p><p><span>There will be two files, a server and a client.  There will be only one instance of a server, but there can be many clients.  All connected clients can send a message to the server which will then be sent to all other clients. </span><strong><span>[29pts]</span></strong></p><h3><a name="server" class="md-header-anchor"></a><span>Server</span></h3><p><span>Start with a copy of </span><code>daytime-server.js</code><span> as a starting template, save it as </span><code>chat-server.js</code></p><p><span>The server will need to listen to the following events:</span></p><ul><li><p><code>error</code><span>: Throw an error</span></p></li><li><p><code>listening</code><span>: Print </span><code>server bound</code><span> to console.</span></p></li><li><p><code>connection</code><span>: Called when a client connects.  Set up three listeners, then adds the socket of the current connection to an array of all connections.  Finally add </span><code>console.log(socket.remotePort);</code><span> to the end of the &quot;connection&quot; event handler to see the unique ports  being used by clients</span></p><p><span>Once a connection is established the socket will listen to the following events:</span></p><ul><li><p><code>end</code><span>: print </span><code>client disconnected</code><span> and remove that socket from the connections array.</span></p></li><li><p><code>error</code><span>: same</span></p></li><li><p><code>data</code><span>: Use </span><code>socket.write()</code><span> to send the data to everyone except the current connection.</span></p><p><a href='https://nodejs.org/api/net.html#net_socket_write_data_encoding_callback' target='_blank' class='url'>https://nodejs.org/api/net.html#net_socket_write_data_encoding_callback</a></p></li></ul></li></ul><h3><a name="client" class="md-header-anchor"></a><span>Client</span></h3><p><span>Start with a copy of </span><code>date-time-client.js</code><span> as a starting template, save it as </span><code>chat-client.js</code></p><p><span>Create a variable </span><code>nickname</code><span> on top, but don&#39;t set it to anything yet.</span></p><p><span>Add the following code to setup console input.</span></p><p><img src="tcp-chat-readline.JPG" referrerpolicy="no-referrer" alt="tcp-chat-readline"></p><p><a href='https://nodejs.org/api/readline.html#readline_readline' target='_blank' class='url'>https://nodejs.org/api/readline.html#readline_readline</a></p><p><span>We will need to implement the same methods, </span><code>connectionData</code><span>, </span><code>connectionEnd</code><span>, and </span><code>connectionStart</code><span> as the client needs to accommodate for these three actions.</span></p><p><code>connectionStart()</code><span> will ask the user to choose a nickname and then call a new function </span><code>chat()</code><span>.</span><br/><span>Use the </span><code>readline.question()</code><span> method to capture input.</span></p><p><a href='https://nodejs.org/api/readline.html#readline_rl_question_query_callback' target='_blank' class='url'>https://nodejs.org/api/readline.html#readline_rl_question_query_callback</a></p><p><code>chat()</code><span>: </span></p><ol start='' ><li><p><span>print the users nickname surrounded in braces</span></p></li><li><p><span>Wait for user input</span></p></li><li><p><span>Check if input is the string </span><code>/exit</code><span>, if so use </span><code>socket.end()</code><span> and </span><code>process.exit();</code><span> to exit</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="javascript"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="javascript"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4.16667px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">client</span>.<span class="cm-property">end</span>(<span class="cm-keyword">function</span>(){<span class="cm-variable">process</span>.<span class="cm-property">exit</span>();});</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="display: none; height: 21px;"></div></div></div></pre><p><code>client</code><span> represents the variable name of the socket to be closed, it is not a keyword.</span></p><p><a href='https://nodejs.org/api/net.html#net_socket_end_data_encoding_callback' target='_blank' class='url'>https://nodejs.org/api/net.html#net_socket_end_data_encoding_callback</a></p></li><li><p><span>Otherwise use </span><code>socket.write()</code><span> to send data to the server to be propagated to all clients, prefix the message with the users nickname in square braces.</span></p></li><li><p><span>Call the </span><code>chat()</code><span> function recursively. (Chat messages from the same user should be synchronous).  </span></p><p>&nbsp;</p></li></ol><p><code>connectionEnd()</code><span>: is unchanged, will also print </span><code>client disconnected</code></p><p><code>connectionData()</code><span>:</span></p><p><img src="tcp-chat-connectdata.jpg" referrerpolicy="no-referrer" alt="tcp-chat-connectdata"></p><ul><li><span>Line 25 clears the TTY console.</span></li><li><span>Line 26 moves the cursor to the beginning of the line.</span></li><li><span>Line 27 prints the data received and a newline</span></li><li><span>Line 28 Rewrites the erased prompt.</span></li></ul><h3><a name="hints" class="md-header-anchor"></a><span>Hints</span></h3><ul><li><p><span>First try getting the message sent to all connected clients.  Then try to exclude the sending client from the recipient socket list.</span></p><p>&nbsp;</p></li></ul><p><span>This chat application should work with different machines if you have friends to test it with, (just plug in their IP address) but it&#39;s not necessary to perform this testing.</span></p><p>&nbsp;</p><p>&nbsp;</p></div>
+</body>
+</html>
