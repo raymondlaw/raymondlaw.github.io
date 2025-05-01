@@ -1,10 +1,10 @@
-# CS355 Final Project (Spring 2023)
+# CS355 Final Project (Spring 2025)
 
 In this project students will choose two API's and create a mashup that uses them **synchronously**.  Once the code is completed students will then present their projects in a short recoded screencast walking through their code and demoing the final result.
 
 
 
-You will need to complete the HTTP and API playlist and most of assessment 4 to understand how to write code to utilize the HTTP and HTTPS protocols on Node.js.  Your project must use the techniques we covered this semester.
+You will need to complete the HTTP and Third Party API topics and Assessment 4 to understand how to write code to utilize the HTTP and HTTPS packages on Node.js.  Your project must use the techniques we covered this semester.
 
 
 
@@ -45,9 +45,9 @@ A successful project will have at minimum four phases in code execution:
 
    
 
-   *You have to be careful here: the user cannot be the driver of this secondary request, if they have to interact with the page at all, (for example clicking a button) this is considered two separate requests and not two synchronous requests.  In the GitHub Jobs x Todoist mashup upon receiving a response from GitHub our application immediate contacts Todoist for the next phase.*  
+   *You have to be careful here: the user cannot be the driver of this secondary request, if they have to interact with the page at all, (for example clicking a button) this is considered two separate requests and not two synchronous requests.  In the USAJobs x Todoist mashup upon receiving a response from USAJobs our application immediate contacts Todoist for the next phase.*  
    
-   The server must make all the requests to the API, if you are unsure please do not hestiate to contact me.
+   The server must make all the requests to the API, if you are unsure please do not hesitate to contact me.
 
    
 
@@ -94,7 +94,7 @@ This score ceiling is based on the **most difficult** API you choose:
 
 ## List of API's
 
-https://github.com/public-apis/public-apis
+https://github.com/marcelscruz/public-apis
 
 You should avoid OAuth 1.0 API's as we did not cover certificate signing this semester.
 
@@ -112,12 +112,8 @@ This project is used to demonstrate your understanding of low-level Node.js.  Th
 
 This project tasks you with writing an HTTP server to communicate with various API's.  Some API's offer helper libraries to automate the authentication process.  You **cannot** use these libraries.  (You can still use those API's, but you must do so using **only HTTP / HTTPS** Node.js modules)
 
-Some popular libraries that are **banned** from this assignment
-
-* request https://www.npmjs.com/package/request
-* express https://www.npmjs.com/package/express
-
-
+* As an example express is banned 
+  https://www.npmjs.com/package/express
 
 #### How to avoid accidentally used a third party module 
 
@@ -125,7 +121,7 @@ The only libraries you are allowed to use are built in libraries. (Node.js core 
 
 If the library is available on **nodejs.org** ✅ you can use it (fs, http, https, querystring, url, ...).  If it's anywhere else including **npmjs.com** ❌ or **github.com**❌ it's barred from this project.  Specifically the only libraries you should be using are the one's found in the sidebar on the [nodejs documentation page](https://nodejs.org/dist/latest-v14.x/docs/api/).  
 
-* If an API provides a Node.js or JavaScript helper "library" you should **not** use that, instead look for API's that offer a REST or cURL interface.  These are typically language agnostic and easy to test with Insomnia Core and then you can use `https.request()` or `https.get()` to interact with.  These will be the two main ways you will be pulling (or pushing) API data.
+* If an API provides a Node.js or JavaScript helper "library" you should **not** use that, instead look for API's that offer a REST or cURL interface.  These are typically language agnostic and easy to test with an HTTP Debugger like Bruno and then you can use `https.request()` or `https.get()` to interact with.  These will be the two main ways you will be pulling (or pushing) API data.
 * If the instructions on an API tell you to run the command `npm install` at any point, it is directing you to install 3rd party module.
 * Review the `require` statements on top of your code, there should only be built in libraries and one's you wrote yourself.
 * If you find at any point in your project you have a `node_modules` directory that is required for your program to function, you are using an external library (and should rewrite your code to remove those).
@@ -136,9 +132,9 @@ If the library is available on **nodejs.org** ✅ you can use it (fs, http, http
 
 We have covered callback and observer pattern this semester, your solution must demonstrate understanding of these techniques.
 
-### setTimeout and equivalents are banned.
+### setTimeout and equivalents are banned in submissions.
 
-The code may look like it works initially, but it has race conditions, doesn't scale, and is always going to be slower in the scenario where it does work.
+The code may look like it works initially, but it has race conditions, doesn't scale, and is always going to be slower in the scenario where it does work.  You can use `setTimeout` for testing purposes, but any code you submit should not contain it.
 
 ### API's must be different than demos
 
@@ -149,12 +145,12 @@ As this is meant to be an independent research project, API's used in current an
 - https://developer.todoist.com/
 - https://developer.spotify.com/ 
 
-  - Exception: Three legged OAuth endpoints are allowed for Spotify API as we only used Client Credential.
 
 
 
+### If you are unsure ask
 
-If you are unsure if your usage of a construct is allowed, please do not hestitate to email me.
+If you are unsure if your usage of a construct is allowed, please do not hesitate to email me.
 
 
 
@@ -170,9 +166,13 @@ If you are  having difficulty finding two related API's, it is fine to use two u
 
 ## Phase 1: Choosing a pair of APIs
 
-First check this list to see which pairing of API's your fellow classmates have chosen (this will be updated daily)  **This document is set to read only - You will not be editing this document**
+First check this list to see which pairing of API's your fellow classmates have chosen (this will be updated daily)  
 
-<https://cuny907-my.sharepoint.com/:x:/g/personal/raymond_law43_login_cuny_edu/EdhdNNDDQatLk7d-akTgSMsBbxL9yz3Br6gRnsTuljlUIQ?e=2iLjwy>
+
+
+**This document is set to READ ONLY - You will NOT be editing this document**
+<https://cuny907-my.sharepoint.com/:x:/g/personal/raymond_law43_login_cuny_edu/Ef60EFgm01ZBrxOuroe78c4BXB6YYjfnVoTGlSxiZkgg0g?e=PfHiif>
+**This document is set to READ ONLY - You will NOT be editing this document**
 
 
 
@@ -184,7 +184,7 @@ There's little need to rush this process and it can be harmful if you lock yours
 
 
 
-During this phase you should be looking through and setting up accounts with various API's to find a pair that you want to create your project with.  Make sure to try using each API before deciding on your API, as some API's are much harder to use than others.  Use an HTTP debugger like **Insomnia** or Postman to try to authenticate and make queries.
+During this phase you should be looking through and setting up accounts with various API's to find a pair that you want to create your project with.  Make sure to try using each API before deciding on your API, as some API's are much harder to use than others.  Use an HTTP debugger like **Bruno** to try to authenticate and make queries.
 
 I would recommend first looking into API's that interest you, having contextual knowledge about a particular hobby can make working with the API much easier.  (E.g. A Hearthstone player would understand the intricate details of the Hearthstone API better than non-players)
 
@@ -198,25 +198,24 @@ During this phase you should:
 
 * Ensure that you can correctly authenticate and access all endpoints.
 
-* For each network request to a third party (outbound arrow) in the sequence diagram, try to replicate them with an HTTP debugger (Insomnia or Postman).  
+* For each network request to a third party (outbound arrow) in the sequence diagram, try to replicate them with an HTTP debugger (Bruno).  
 
 * Take screenshots of the responses, submit one screenshot for each API
 
   
 
-My assistance will be limited for this project, in contrast to the Spotify API, I do not have intimate knowledge of your chosen APIs, if you find that you are having trouble using the API, **don't choose it!**
+My assistance will be limited for this project, in contrast to the Dictionary, USAJobs, Todoist, and Spotify API, I do not have intimate knowledge of your chosen APIs, if you find that you are having trouble using the API, **choose a different API**
 
 
 
 ### Submit Choices
 
-Once testing is completed you will submit your API choice here, login with your CUNY Microsoft Forms account.
-
-The account should have the extension **@login.cuny.edu**, It is **NOT** your qmail account.
-
-<https://forms.office.com/r/v6dK1LxAJH>
+Once testing is completed you will submit your API choice here, login with your **CUNY Microsoft Forms** account.
 
 
+
+The account should have the extension **@login.cuny.edu**, It is **NOT your qmail account.**  If the link is not working, use an incognito window and login again.
+https://forms.cloud.microsoft/r/Txj7Ns3Kbb
 
 
 Within 24 hours of submitting the form (likely much sooner) , you will receive an email notifying you of your choices either be approved or rejected.  API pair choice is assigned on a first come first serve.
@@ -242,7 +241,7 @@ First make a formalized HTTP Sequence Diagram describing a (non-cached) use of y
 
 This will organize your thought so you can keep track of various endpoints and decide at any point if you are sending or receiving data.
 
-After the diagram has been formalized, build the project.  
+After the diagram has been formalized, build the project.  The point of the sequence diagram is to blueprint your plan such that implementing that plan becomes easier.
 
 
 
@@ -300,7 +299,7 @@ If the code blows through the delay and makes the call to the second API without
 
 Refer to the N Domains Synchronously topic of lecture 6.
 
-https://venus.cs.qc.cuny.edu/~rlaw/cs355/lectures/06-asynchronous-programming/asynchronous-programming.html#n-domains-synchronously-recursion
+https://raymondlaw.github.io/cs355/lectures/03-asynchronous-programming/asynchronous-programming.html#n-domains-synchronously-recursion
 
 
 
@@ -402,7 +401,7 @@ Review the code:
 
 Save all code into a directory `CS355-FP-########` replacing `#` with your Student ID.  Zip the directory.
 
-Submit 3 items via Blackboard under Assignments
+Submit 3 items via Brightspace under Assignments
 
 1. Screencast Recording (either as a file [~2GB max size] or a YouTube URL)
 2. Project Code
@@ -413,7 +412,7 @@ Submit 3 items via Blackboard under Assignments
 
 ## Due Date
 
-* May 17th 23:59
+* May 21st, 2025 23:59:00
 
 * The form is scheduled to close automatically at this date and uploading may take a bit of time depending on your connection speed so have it submitted a bit before the deadline.
 
