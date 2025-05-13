@@ -128,7 +128,7 @@ If the library is available on **nodejs.org** ✅ you can use it (fs, http, http
 
 
 
-### Promise, Fetch, and Async/Away notation is banned
+### Promise, Fetch, and Async/Await notation is banned
 
 We have covered callback and observer pattern this semester, your solution must demonstrate understanding of these techniques.
 
