@@ -39,26 +39,13 @@
 				<aside>
 					<h2>Updates &amp; Errata</h2>
 					<ul>
-						<li>[05/02] Updated Topic 12 Demo files to include Downloader + Definitions Example</li>
-						<li>[03/01] Topic 6 Will Be The Final Topic Before Exam 1</li>
 						<li>[01/25] First Day of Class</li>
 					</ul>
 
 				</aside>
 				<aside>
 					<h2>Office Hours</h2>
-						<p><b>Open Hours: </b> <br /> T/Th 9:15-10:15pm (B131/A201)<br /> Sa 12:00-1:00pm (B131/A201)</p>
-						<!--
-						<div class="topic">
-							<h3><a href="https://us.bbcollab.com/guest/6982226157ef4eb890c954fc51eafb08" target="_blank">Access Link</a></h3>
-						</div>
-						<p><b>Reserved Hours:</b> After synchronous session 9:45-10:45</p>
-						
-						<div class="topic">
-							<h3><a href="https://calendar.google.com/calendar/u/0/selfsched?sstoken=UUZBejBhc0FubEVTfGRlZmF1bHR8MjQwZWI4NWMyNGExNDhmNGM5OTM3Njg3ZjBjNWM5MDc" target="_blank">Book an Appointment</a></h3>
-							<p>Use the same Blackboard Access Link above, the automatically generated Google Hangouts link will not be used.</p>
-						</div>
-						-->
+						<p><b>Open Hours: </b> <br /> M/T/W/Th 9:15-9:45pm (B131/A201)<br /> Sa 12:00-1:00pm (B131/A201)</p>
 				</aside>
 				
 				<aside>
@@ -81,92 +68,7 @@
 		
 			<section id="content">
 
-				<!--
-						
-				<article>
-					<h2>Final Examination</h2>
-					<section class="article-content">
-						<div class="topic">
-						
-						
-						<p>The exam will be accessible on Blackboard at 6:15pm.  It will not be visible before that time.</p>
-						<p>On Blackboard Collaborate I've created a special room for troubleshooting during the examination.</p>
-						<p>You can refresh the exam webpage if something isn't loading, it will not ruin your exam progress.</p>
-						
-						<p>If you expereince any issues during the exam <b>immediately</b> contect me through there.  Do not wait until the end of the exam.</p>
-						
-						<p><b><a href="https://us.bbcollab.com/guest/6982226157ef4eb890c954fc51eafb08" /> Trouble Shooting Room Access Link</a></b></p>
-						<p>Do not hang around this room as I will need students to share their screens with me.</p>
-						
-						
-						<p>I don't require constant monitoring for examinations.  The Blackboard Collaborate room is only for troubleshooting.  I won't be providing any other assistance in there.  Only enter the room if you have technical problems accessing the exam.</p>
-						
-						
-						<h4>Post-Exam</h4>
-						<p>Once completed, <b>Don't forget to take the Post-Exam Affidavit</b>, Your exam will not be graded until that is submitted.</p>
-						
-						<h4>Reporting</h4>
-						<p>If you want to report observed academic dishonesty you may do so <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxrKMfwLXXqUWDnD6WD2WWO4Uh5Nz_J9yvpheoBt1AGVvCUA/viewform?usp=sf_link" target="_blank">here</a>.  Student's who ignore course policies and take advantage of the online format during a pandemic are undermining the effort everyone else has made to diligently study and make notes.</p>  
-						
-						<p>This is a zero-sum game, each section only has two A+ and curves are determined by the average.  I'll do my best to catch these incidents, but between me and the TA's there are only three pairs of eyes.</p>
-
-						<p>Every effort will be made to protect the idenity of those whistleblowing.  Evidence will only be disclosed to the University Academic Integrity Officer who will make a final punitive decission.</p>
-						
-						<p>In the event any student is found to be culpable, the curve will be recalculated and additional points will be redistributed among the entire class.</p>
-
-						
-						</div>
-					</section>
-				</article>
-
-			
-				
--->
 <!--
-				<article>
-					<h2>Final Exam: December 14th 6:15pm - 8:15pm</h2>
-					<section class="article-content">
-					<div class="topic">
-						<ul>
-							<li>The final exam has been scheduled for December 14th 6:15pm - 8:15pm</li>
-							<li>This exam will take place on Blackboard</li>
-							<li>CUNY First lists a room number due to the class being listed as Hybrid, but the exam will be online.  Please do not go to the room listed.</li>
-							<li>Topics 01 to 14 will be covered on the exam.</li>
-						</ul>
-					</div>
-					
-					<div class="topic">
-						<h3>Project Notes:</h3>
-						<p>Certain 3-Legged OAuth API's (eg. Google, Imgur) hide the access_token behind a #&nbsp;character which does not automatically get transmitted, this requires a second redirect</p>
-						
-						<code>
-							<pre>
-if(req.url.startsWith("/redirection_part1")){
-    fs.createReadStream("redirect.html").pipe(res);
-}
-else if(req.url.startsWith("/redirection_part2")){
-    // You should have the access token here
-}
-							</pre>
-						</code>
-						
-						<p>Have the redirect URL caught by redirection_part1, deliver the file below which redirects the request to redirection_part2 replacing the hash (#) with a query (?)</p>
-						
-						<code>
-							<pre>
-<b>redirect.html</b>
-&lt;html&gt;
-    &lt;script&gt;
-    let queryString = location.hash.substring(1);
-    window.location.href = `localhost:3000/redirection_part2?${queryString}`;
-    &lt;/script&gt;
-&lt;/html&gt;
-							</pre>
-						</code>
-					</div>
-					</section>
-				</article>
-				<!--
 				<article>
 					<h2>Topic 15: Building a Web Service (C27 + C28)</h2>
 					<section class="article-content">
@@ -178,30 +80,6 @@ else if(req.url.startsWith("/redirection_part2")){
 
 						</ul>
 					</div>
-					</section>
-				</article>
-				
-				
-				
-
-				<article>
-					<h2>C21: Asynchronous Session (includes Saturday Sessions this week)</h2>
-					<section class="article-content">
-						<div class="topic">
-							<p>Saturday sessions are typically synchronous, but on exam dates the second half of class will be asynchronous (complete it anytime before our next meeting).</p>
-							<ul>
-								<li>Start working through Topic 12: Hypertext Transfer Protocol, this will be a 2-session topic, the scribing assignment will be released after our next synchronous session.</li>
-							</ul>
-						</div>
-					</section>
-				</article>
-				<article>
-					<h2>Grades are posted.</h2>
-					<section class="article-content">
-						<div class="topic">
-							<p>Individual scores are on Blackboard, if your Exam 2 was exempt, it was worse than Exam 1 and I stopped grading as soon as there was not enough remaining points. (Eg. If you scored an 80 on Exam 1 and skipped the coding question on Exam 2, it is impossible to score better than an 80)</p>
-							<p>I'll be out of the office until, 6/8.  I can answer emails, but won't have access to any paper documents (like exams) until I return.  </p>
-						</div>
 					</section>
 				</article>
 				
@@ -223,8 +101,6 @@ else if(req.url.startsWith("/redirection_part2")){
 						</div>
 					</section>
 				</article>
-				
-
 				
 				<article>
 					<h2>Topic 15: Domain Name System (C27)</h2>
@@ -253,7 +129,10 @@ else if(req.url.startsWith("/redirection_part2")){
 					</section>
 				</article>
 
-				-->
+-->
+
+<!--  //CS355 Course Material
+
 				<article>
 					<h2>Final Projects Submissions Timeline</h2>
 					<section class="article-content">
@@ -302,7 +181,6 @@ else if(req.url.startsWith("/redirection_part2")){
 								</a>
 							</li>
 							
-							<!--
 							<li>
 								<p>Note to self replace</p>
 								<a href="https://github.com/raymondlaw/third-party-apis/tree/main/03-dictionary%20x%20jobs" target="_blank" rel="noopener noreferrer">Dictionary API x USA Jobs Mashup</a>
@@ -313,7 +191,6 @@ else if(req.url.startsWith("/redirection_part2")){
 								</a>
 								
 							</li>
-							-->
 							
 							<li>
 								<a href="https://github.com/raymondlaw/third-party-apis/tree/main/04-oauth-2" target="_blank" rel="noopener noreferrer">Todoist API (OAuth 2.0 3LO) (Requires Todoist Account)</a>
@@ -536,9 +413,9 @@ else if(req.url.startsWith("/redirection_part2")){
 							<li><a href="https://nodejs.org/api/events.html#events_events" target="_blank" rel="noopener noreferrer">Event Emitters | Node.js Foundation</a></li>
 							
 							<li><a href="assessment/02-observer-pattern/observer-pattern.html">Assesment 02</a>
-							<!-- <br />Solutions will be posted in a week. Attempt it before then and email me any questions that you may have.  
+							<br />Solutions will be posted in a week. Attempt it before then and email me any questions that you may have.  
 							Making an attempt before the solution release date and then cross referencing afterwards is the best way to prepare for the exams coding question.
-							-->
+							
                             </li>
 							
 							<li style="background:yellow"><a data-fancybox href="https://www.youtube.com/watch?v=xGg0RTG-FKg?rel=0&modestbranding=1">Assesment 02 Solution</a></li>
@@ -637,6 +514,8 @@ else if(req.url.startsWith("/redirection_part2")){
 					</section>
 				</article>
 				
+
+
 				<article>
 					<h2>Topic 04: OSI / TCP IP Model (C07)</h2>
 					<section class="article-content">
@@ -654,6 +533,8 @@ else if(req.url.startsWith("/redirection_part2")){
 					</section>
 				</article>
 
+			-->
+				
 				<article>
 					<h2>Topic 03: Asynchronous Programming (C05 + C06)</h2>
 					<section class="article-content">
