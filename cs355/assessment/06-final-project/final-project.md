@@ -1,22 +1,22 @@
-# CS355 Final Project (Spring 2025)
-
-* [Phase 1] Due Date: 2025/12/20 23:59:00 [Submit API Choices on Microsoft Form]
-  https://forms.cloud.microsoft/r/u7f5VuinxE
-* [Phase 2] Due Date: 2025/12/22 23:59:00 [Submit on BrightSpace]
+# CS355 Final Project (Fall 2025)
 
 In this project students will choose two API's and create a mashup that uses them **synchronously**.  Once the code is completed students will then present their projects in a short recoded screencast walking through their code and demoing the final result.
 
-
-
 You will need to complete the HTTP and Third Party API topics and Assessment 4 to understand how to write code to utilize the HTTP and HTTPS packages on Node.js.  Your project must use the techniques we covered this semester.
-
-
 
 Some notable examples from previous semesters includes:
 
 * Nasa API + Google Drive: Connect to a users Google drive and uploads a new photo from Space.
 * OpenDota API + Wunderlist: Create Calendar events for all league matches.
 * OpenWeatherMap + OpenBreweryDB: Let the user search for brewery's by zip code and display weather information for the surrounding area.
+
+
+
+## Important Dates
+
+* [Phase 1] Due Date: 2025/12/20 23:59:00 [Submit API Choices on Microsoft Form]
+  https://forms.cloud.microsoft/r/u7f5VuinxE
+* [Phase 2] Due Date: 2025/12/22 23:59:00 [Submit on BrightSpace]
 
 
 
