@@ -16,6 +16,12 @@ Some notable examples from previous semesters includes:
 
 * [Phase 1] Due Date: 2025/12/20 23:59:00 [Submit API Choices on Microsoft Form]
   https://forms.cloud.microsoft/r/u7f5VuinxE
+
+​	Test this link right away with your **CUNY Microsoft Forms** account.
+
+​	The account should have the extension **@login.cuny.edu**, It is **NOT your qmail account.**  
+​	If the link is not working, use an incognito window and login again.
+
 * [Phase 2] Due Date: 2025/12/22 23:59:00 [Submit on BrightSpace]
 
 
