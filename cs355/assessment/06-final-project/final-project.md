@@ -142,9 +142,7 @@ If the library is available on **nodejs.org** ✅ you can use it (fs, http, http
 
 We have covered callback and observer pattern this semester, your solution must demonstrate understanding of these techniques.  More specifically your solution should use either `https.request()` or `https.get()` for the API calls.
 
-### setTimeout and equivalents are banned in submissions.
 
-The code may look like it works initially, but it has race conditions, doesn't scale, and is always going to be slower in the scenario where it does work.  You can use `setTimeout` for testing purposes, but any code you submit should not contain it.
 
 ### API's must be different than demos
 
@@ -154,6 +152,14 @@ As this is meant to be an independent research project, API's used in current an
 - https://developer.usajobs.gov/ 
 - https://developer.todoist.com/
 - https://developer.spotify.com/ 
+
+
+
+### setTimeout and equivalents should not be used for anything, but tracking if an API is unresponsive.
+
+Not so much as a restriction, but a warning.  Many students struggle with asynchronous programming and use `setTimeout` as a shoehorn to make it work.  The code may look like it works initially, but it has race conditions, doesn't scale, and is always going to be slower in the scenario where it does work.  I can engineer an input where it doesn't work or is too slow to be reasonable and will not be awarded a passing grade.
+
+You can use `setTimeout` for testing purposes, but any code you submit should not contain it with the exception of scenarios where you actually want to track an API timeout.
 
 
 
