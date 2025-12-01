@@ -1,5 +1,9 @@
 # CS355 Final Project (Spring 2025)
 
+* [Phase 1] Due Date: 2025/12/20 23:59:00 [Submit API Choices on Microsoft Form]
+  https://forms.cloud.microsoft/r/u7f5VuinxE
+* [Phase 2] Due Date: 2025/12/22 23:59:00 [Submit on BrightSpace]
+
 In this project students will choose two API's and create a mashup that uses them **synchronously**.  Once the code is completed students will then present their projects in a short recoded screencast walking through their code and demoing the final result.
 
 
@@ -25,7 +29,7 @@ If any of these are missing no partial credit will be awarded:
 2. An HTTP sequence diagram which shows all **HTTP** requests/responses made between client and server. 
    (Be sure to **not** include TCP handshakes and ACKs which should be abstracted away)
 
-   [Here is an example of what I want](https://sequencediagram.org/index.html#initialData=C4S2BsFMAIBUHsAm8QGdjQMwBkDy0BBAV2AAtoAmAOgAZoAKANREUnmgBYBKK6AKD4BDcBgTI0GAgAUAktADaBALrRBAO0RwkKdIVkKAQisEAnGGRipBAW0gAaaHIDGZwcEiaO0SGtChIqNDA7IIAbiiaLvCoqCBqAObQ4HEBDtbwZtCoAA6QTiAAZiBOwuAAntAAqqiQJqoa0ADKtaG1qpmQgk7kcay5Gj4QFU7wvl2gCVriuvQWmWjQauzWLIhQALTW6lx8PogC2aag+Ye+UzqSsopKfIcmxyCnGNW1t0fFj+oYzSatJm-3D5Pc4SPQyeRGARLdzQeB-Ko1EwALgMJngAHdEdAzABHIgBYCBAA6ajR8Aw8AKWTAkD4LxM6wAfPQAIxcH5-JEAcQAorBoAB6EkACWiwCR4HgJXApDFSMwNEVfA5tSZrK49KRlEV0FwAGloABqaC9SAADyopGA1nADAKGWsQXYRXAtvgJB2fGhMDhbU19OgLvAgXdGHtJkd9FQRGy2WSAWgiDcgi1ACpU8BBKgANbprj8OmItVslXI3n8gWCRCIAD6mZzAH569mALwGIhlQ0AWRA4GzIrlkulsvQ8sVNCh5J98NLWoASupkDaKvEfLU3An0+gN+mSY0wgmAN7Nhzb9wAXxNvnYzZrZ4TphMgjKAlLxY1iK1CoocEg1myGSmBUc4eCAZhOMAJLYFKbggKMSJWsA2SoEiAoCsE0zAFQIzWAK8CCCQpCVk4TgBKgdbwNmPgNk48a+DWLAtgAJIetEgIMDGIOeJIAGSoCMuTMYe-HwLk558Zm7hCfel4kiS9BcjeSmYWCTpJPA8RxPUmjxE+ZzWBUBCxoEADCdHADIAAi0AkhYqgAEa9mAFTBFe7hPhB0DomA5BlO6dS5CYqCjMIToqV0IxEGcJJRawdTJCs7iaCJuTYkQUCBPIriIHY2XoiYNJ2KwUDuHYVDlSoJL3iagREDUmiuZKlExtAflEHUzawmo2KQMA7VqJ63qwvCmr0KiGJYjUCbfg4JIma47iBIIiyQOi0Dlj1eIEmpYgXGCJLhuipiIHEiSHmZ7G+FZp4CfYWSSZA56ekIIhwKQCwlN19mWLK9z5CYThEDSmiFEEpAwHVbQLMI2UVJK8SriD3WLtApBZqo4Cw9AulfB40CBSsMRwWohaqsybK7aC0jgso3J8oK+GEcRpExBRVFqDR5mcUJbEcSw3FqHxt3Sbd4n3tJD0C6Ko6IchqHodoEjYfA1h8JTujU9c76ahQOr6ka6mad14aq-S77q5cNNKEiAbw4EcRq4rGtXMo2ufrrdD68aBA5iaVJtV5XxqTjZwsSlj347UhOxKMxLXmDMCCLGJqsL4hTsZo9kVCxvP0fz-Bm+TXAW2C1w25Nz6BGUAS7BoAgl5rrtF5qWA0D+sB-gBT4mMBoHgZBajQSUoDwUOwgjuKCqKgK4GQCArQ1iMrA0UgkA86vYsPRLG6yWo8kgSd-fQJDdT2V02ZqaWXk+dAS+Jw0968CZq89dkZg1L4gR2SfcfmnGHwYAJmgGOxsMjQBzlzfOrk4juXGNfMgYMFj0iWiRd00U1CxTaGHUW2MgbFRSKgKgg0pzDT9J+MaaJMRtCmoEGaNk1DzU6ItVQK01obVxPiXQjUYIyjlFPGgM88hzwXnfehh1jqnWgKxVep5JbPULuqWcG1BGkXnpAReq8VHCPUXfFerB16sE3hubeF56HS3FGPXho5+GThhL6Oos4ESblTPedMqhAhURcuwJq2YWrpmbOmV8LQybqgblcIwSIpC4EaBWRmZBmZkTZj4AcMtgBIRQmhDCFxlbWBJAbVikCcq3y5jUFwvUHB3wFvJZoGhAgFMusATiFSSl5DMMACpG9bLsFXBgCKZEnTs1suDMGZgYA4QAmoQYX9ICugTvtNQ6Zc6gEQOmLULBBjpwTHZJO2R5LbOTnIfKJDQiELmaMGAAcjkwhivVNSwAPIX3fv5Uix8rCrm0vQrSwVbBZFImoUwcFaq3PDNARyrpTpcBJIs8ypS2mrNULGAA5IEAARIcGI6IMiIBRfQxZq94VmDfgEQYsFRiwipCfZF9CgFEzJdA3w65PLeQQRFNBwBPRhPBEYd8s4Pa6gNMadMfTWbBHZoE5UwSGRF05RCa2USYmCnfsAAUoQWToSzNmVAKTxSywyZWbIIAqBZKVjhEkxAyAZBAAAL1JWoLUBhOhmDqMeSiPgBaGmPBqqpah6CMI3CwzqdKnbtNeTAQ8wryKirdWpAiFg07D0gBy4NpduVF15TQFk0A-VJQNrYTMSZMwOVDKw8ot8Fp406vJOItEiAnUmJUOc2ByVBA1Z6N8zdPzfl-P+QCPdoAHzAnkAeQ9bUITSXLTJwacn6uyAKN+8AABWQ6BQsXnUuiCnFzzqpzCuz1OZN37z7kOtSDam2Uhbb7INKl0SQHsrEdwxC7EjXIeNKhdQaGtwoLNBh5alqsPWvTDh21XIWwEAoimybG7W2UTsudaJ13KtXfBodm7t3Zl3befm2qkTGvQDk+ukGXZKDdrUJEfL9b0BOjkcAlcL3ZmekAA)
+   [Here is an example of what I want](https://sequencediagram.org/index.html#initialData=C4S2BsFMAIBUHsAm8QGdjQPIEECuwALaAJgDoAGaPQ+AJxAC8BDUeAO2gGEkYAxceAHdoAKBEAHJrVABjEJLYZgSFOlIz4AWwlTZ8pougAhWkNSRaO6SDkKM2ceOgBlCwDcLVvXehNxIUmVkNGB1LTEAc1NcJwARSHAQD1poXjptEzMLAFoAPgAKAEYASgcnV1pkgC4AKhqACQBRbFjGgCU6gB02AHFG2GgAemh62FgABUHibvr4dCqBGSZwAjngKoBmcm2RMpd3HIKSzMFzWiroOqaW9q62UYmpkm3uuqNMWIBNO4BtUYBZAAyAF1oCA2IhIAAPUgEYCacDQDSKSCKVBiVGISLRJwAVTOLlwACNNGBUKl0mITmc8kVSo59pULLUGs1Wh0at0+gNBkxEIgAPrAJioADWAH5hWKALwAbylooAviMxpNpvc1gt4EsVpqtjsRGx4MAYPBklQGRVqtA2gZkAiAJ7QCKoiwsGBMaDod2kbrOYUmsHkmT0WTLaAAMzoXGcbV40HEphNMlYbF9bAAkhg0L5wKh4NBcOZEJHo8iTVCMInIGc3CwQOx0-66DBCDBJCAUuCvQHIEKRaLoP8-N1oNBAEQE0AA0pAHRdvSbRxPoAA1Za4SAXBUYiHY+AxVKmRTZTgEAxsBI2yCITuQFPk-LjYmJGTFMR7K2HOnU5mXVk3DkZlVJ4tnVQFtXrdgqjhYBxFQKpBkGIJVFCDRNEGeAmHwAheWwuhGEgcUZESVFgAFEBEGlAASWViJAUjyMQRVugAMlQDRxEgajZXY+BOMVNje24hdIEVMQjUDM0LAtcoDloAAaH9zmgHoC2UaBkJCKhxgzDSCwECJuztZ1aAMDBNCdMpgxIxRGOgbo218IkQESYAnXU8ETVMlNoEEMAiAdfcUk42h8zYcNNPQXwZA0XBDG6OLIRSHiONE6BaFwKByR+WhID5eTcr5QRQ0geTISgE15NIarQW6Hje2VPzwERIkYDimQzzYF0S2MnMi2vPToAEeBRQPQLcBSBVoHYdLIGACa2HE41TXNJSqiUr1IBraBQPk+y2E4QqTXJT0L2EXKAEcNyi9TItQrRuijWhBCkG8uugWibLIii9t4zjfoasQRCU2kSjusJNBZa52Tubkhkw7DcJoegGEIuiGIo7j0dsijmLYNjUuE1KBJE4SGpVR51VmeYYLghCkJUEIIZEPiMFgAgcyWDhWq9VZpDkWgZFwMABpACMNIIGAiVMU5pJzZZCsQJ0DO6sFFpEcG0NB4o1quNlbk5e5gOIZ5yFeGp3i+X4ARBaBwMMjg0lobQqRlmkjmKTWtHWt3pNQGJxBI8l+toAVws0D0IQTEVUEEOgS3BJ7NEg9XMRZ8Q2Y54MDGgHnUD54ABaFkWE-FxzpayFIzxO8BFadKIzIGkLSVQVAG3VjXGbULWPd1-8YcNh41VN83Le+Q2-lgIFQSdzRfDFcEIjBcXxt8szBobwwaL+tLm7QNv2HJBy1Ml3wGQo0ixfoksiSdGjse+pjRGB33aG1r3IY21AmAdckHRrEQadO7BG7lobWa0-zQwNkBSmO1yBgQgqmLUOpVjzH1OQQYuUZCQCSH2DQkIiI8CxjwEmQlt6A0NMtaa5oP6KVflUNo15bw+Q2kSJgMhBzqQ-HJXy-kPr4LSsZeq7pFTpjHJOARQZfCzWrOYRQKdpriz3q3duv1OJyAjDYZY4B3Kn3xBYAA5OSaEgcbBgATBYFuB82BLjHKWZKD9GLKg8iibyGA-KEAln1M4YcmARyMdFWKhhErSW3sTZ0wtyrghrGI5cIkpFPRerQSEN92GcILA-QsbAOoGG6qQJaklVr0K-ltcku19qHTysdaRZ1ZpXRrMAY+Q0IK6jQdsDBWCcEeAFJIx6dAklvSXrREhvgo7CJNGJV2ldtbcKZOcPWAFYb9CGJ03BPSeCEMhMQyEpD3RkxERTNUMxNSLGWKg9Y6CdxYhEFEfcTgjBpJPJ1C8iIECilRNARoUIcldRgI+egdYTRvkoYU6SszrT6PJHUESdR57QHee5fS8ARoHjqAqOo75LRyW1n4AIH8ob60AmwcYmBnA8gRoQXkMUayoCFCND5Q8pjHPmLiwIXd7qaG6NwFEx5YAOk4hcPwpilipkGFCbIghJXZCTtkCaUBsk8EQKPD449uiOMxp9eiOMmIsUceYEMc05R6rvLlYAAkBFGpIQUlaYKsVzPkqy-FrgITkk1RjRAe1jUGuAJ6kZ6kXQYHYdg1uel3k2LYOzVsBBcowDQuIdgpFyQmmahLGA2AdJVHNg-CidQLgX0UFfbajkhXQHyOIZ8NhijdHyP1Est1vKDlyvmCa2DCzfxdHtZR1jUB7WMs5Zqi8q1sDqA-fVprc0JlMB4ckQgLyhQ5k4eA4sS1loBe6Yo+0R08AnblWRpEFFLugPo2gASu3t0Gp5N0PkPFECDfuRQYhHXsohjMu11QFkDxgcPYgLxh0WxVb8AAUs4TAAA5UE5YmDgldUGmldKw2TIkjalI4KLAOv8GykBHKqiylg63eDqJlQ5gvNeUWHBHKSz5BYJpl63G8M8QYJ0mJ42eWmuR0+CAsPaQzFcvcB5KnujgAOTFsk5k4ow-ij90DiWkp5E24Agw3DECQgOckjKqaaifVhiG3RqB80YCnC4Rg8q5RSHUXD1L8PKAQ3cblJpeX8s3GfYVKdBgACswrKqthPYDYHQTDJ5esBUkytMoRfR7VD8z+7SfUyPP9Y8gMgfA-w9g9mfVIiOteAULA9p1DlXUPa1VSCIaoVJFDb60OhaZmhKozrEDkjYRw6AvnQMyKbZfd6jkpqEBYGvYMmWlVsDlZOviFg3JIlS1Btg5IABEtN4KIQ-oMfOQhYADnFBqhUTiZu8ZuTiVI4JwyMJvFg4AInGTJHAfQqTRLYugX2uBEV7ccNyrEkh6htrRPJDoZXBhTDTuDVlK9xRGlhMguQ8YYpr9NrbXKVyzLJ1oC1MutdRpig1LPrQlM2Wb8PaSei0SuG836ZLZW4INbYoNuUXlAOJxhyphiA-ld37N27ixZ-WbeLAGJ421BLENAgcf7kgp4OGnYonFXKAA)
 
 3. **A screencast where students will record them walking through their project and code.**
 
@@ -79,12 +83,12 @@ Each step increases project complexity, but there is a larger reward for those w
 | ------------------------------------------------------------ | ------------- |
 | Public API                                                   | 0%           |
 | API Key                                                      | 90%           |
-| [OAuth 2.0 Client Credential](https://github.com/Kong/mashape-oauth/blob/master/FLOWS.md#oauth-2-two-legged) | 100%          |
-| [OAuth 2.0 Three Legged](https://github.com/Kong/mashape-oauth/blob/master/FLOWS.md#oauth-2-three-legged) | 110%          |
+| OAuth 2.0 Client Credential | 100%          |
+| OAuth 2.0 Authorization Code (Requires asking for Resource Owner's Permission) | 110%          |
 
 This score ceiling is based on the **most difficult** API you choose:
 
-* If you choose to do a mashup between an OAuth Three Legged and a public API you will have a ceiling of 110%.  
+* If you choose to do a mashup between an OAuth 2.0 Authorization Code and a public API you will have a ceiling of 110%.  
 * If you choose two Client Credential APIs you will have a ceiling of 100%.
 * If you choose an API key and a public API your ceiling will be 90%
 * If you choose two APIs that both use API key your ceiling will be 90%
@@ -130,7 +134,7 @@ If the library is available on **nodejs.org** ✅ you can use it (fs, http, http
 
 ### Promise, Fetch, and Async/Await notation is banned
 
-We have covered callback and observer pattern this semester, your solution must demonstrate understanding of these techniques.
+We have covered callback and observer pattern this semester, your solution must demonstrate understanding of these techniques.  More specifically your solution should use either `https.request()` or `https.get()` for the API calls.
 
 ### setTimeout and equivalents are banned in submissions.
 
@@ -171,20 +175,22 @@ First check this list to see which pairing of API's your fellow classmates have 
 
 
 **This document is set to READ ONLY - You will NOT be editing this document**
-<https://cuny907-my.sharepoint.com/:x:/g/personal/raymond_law43_login_cuny_edu/Ef60EFgm01ZBrxOuroe78c4BXB6YYjfnVoTGlSxiZkgg0g?e=PfHiif>
+<https://cuny907-my.sharepoint.com/:x:/g/personal/raymond_law43_login_cuny_edu/IQB-Lsh8GjpeS6Ipp2aPGUyVAcpJenZu2wDHIIYsdXiK5hY?rtime=41e9nuUw3kg>
 **This document is set to READ ONLY - You will NOT be editing this document**
 
 
 
 You cannot use the exact same pair as someone else, but you can change one of them to a different API and it will be considered a different pairing.
 
-Don't rush to lock in your API without thoroughly testing it.  The public API list currently has 773 different API's meaning there are ~773~C~2~ = 298,378 possible pairings.  It's very unlikely for two students choose the exact same pair of APIs at random.
+Don't rush to lock in your API without thoroughly testing it.  The public API list currently has over 1500 different API's meaning there are at least ~1500~C~2~ = 1,124,250 possible pairings.  It's very unlikely for two students choose the exact same pair of APIs at random.
 
 There's little need to rush this process and it can be harmful if you lock yourself into an API that you later find incredibly difficult to use.
 
 
 
-During this phase you should be looking through and setting up accounts with various API's to find a pair that you want to create your project with.  Make sure to try using each API before deciding on your API, as some API's are much harder to use than others.  Use an HTTP debugger like **Bruno** to try to authenticate and make queries.
+During this phase you should be looking through and setting up accounts with various API's to find a pair that you want to create your project with.  If you are targeting a specific minimum grade this limits which API's you can use, the public api list does provide a few filters on public vs. API Key vs. OAuth, but you'll need to test the API's yourself to tell if it's client credential or authorization key.  (Is the resource owner being actively asked to give permission?)
+
+Make sure to try using each API before deciding on your API, as some API's are much harder to use than others.  Use an HTTP debugger like **Bruno** to try to authenticate and make queries.  You will need to prove you have done this by submitting a screenshot of each API.
 
 I would recommend first looking into API's that interest you, having contextual knowledge about a particular hobby can make working with the API much easier.  (E.g. A Hearthstone player would understand the intricate details of the Hearthstone API better than non-players)
 
@@ -212,10 +218,9 @@ My assistance will be limited for this project, in contrast to the Dictionary, U
 
 Once testing is completed you will submit your API choice here, login with your **CUNY Microsoft Forms** account.
 
-
-
 The account should have the extension **@login.cuny.edu**, It is **NOT your qmail account.**  If the link is not working, use an incognito window and login again.
 https://forms.cloud.microsoft/r/Txj7Ns3Kbb
+
 
 
 Within 24 hours of submitting the form (likely much sooner) , you will receive an email notifying you of your choices either be approved or rejected.  API pair choice is assigned on a first come first serve.
@@ -224,7 +229,7 @@ In the case where someone submits the exact same pair of APIs as you, you will n
 
 Once approved you may move to the next phase.
 
-If you want to change your API choices after they have been approved just submit the form again and wait 24 hours.  You can resubmit as many times as you want.
+If you want to change your API choices after they have been approved just submit the form again and wait 24 hours.  You can resubmit as many times as you want up until the form closes (close date on form).
 
 
 
@@ -412,7 +417,7 @@ Submit 3 items via Brightspace under Assignments
 
 ## Due Date
 
-* May 21st, 2025 23:59:00
+* December 22nd, 2025 23:59:00 PM (note the :00) [BrightSpace Limitation]
 
 * The form is scheduled to close automatically at this date and uploading may take a bit of time depending on your connection speed so have it submitted a bit before the deadline.
 
