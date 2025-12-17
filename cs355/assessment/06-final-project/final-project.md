@@ -14,8 +14,9 @@ Some notable examples from previous semesters includes:
 
 ## Important Dates
 
-* [Phase 1] Due Date: 2025/12/20 23:59:00 [Submit API Choices on Microsoft Form]
-  https://forms.cloud.microsoft/r/u7f5VuinxE
+* [Phase 1] Due Date: 2025/12/20 23:59:00 
+  [Submit API Choices on Microsoft Form][submission-form]
+
 
 ​	Test this link right away with your **CUNY Microsoft Forms** account.
 
@@ -231,7 +232,8 @@ My assistance will be limited for this project, in contrast to the Dictionary, U
 Once testing is completed you will submit your API choice here, login with your **CUNY Microsoft Forms** account.
 
 The account should have the extension **@login.cuny.edu**, It is **NOT your qmail account.**  If the link is not working, use an incognito window and login again.
-https://forms.cloud.microsoft/r/u7f5VuinxE
+
+[Submit API Choices on Microsoft Form][submission-form]
 
 
 
@@ -435,3 +437,4 @@ Submit 3 items via Brightspace under Assignments
 
 
 
+[submission-form]: https://forms.cloud.microsoft/r/u7f5VuinxE
