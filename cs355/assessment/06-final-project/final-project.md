@@ -1,4 +1,4 @@
-# CS355 Final Project (Fall 2025)
+# CS355 Final Project (Spring 2026)
 
 In this project students will choose two API's and create a mashup that uses them **synchronously**.  Once the code is completed students will then present their projects in a short recoded screencast walking through their code and demoing the final result.
 
@@ -14,7 +14,7 @@ Some notable examples from previous semesters includes:
 
 ## Important Dates
 
-* [Phase 1] Due Date: 2025/12/20 23:59:00 
+* [Phase 1] Due Date: 2026/05/21 23:59:00 
   [Submit API Choices on Microsoft Form][submission-form]
 
 
@@ -23,7 +23,7 @@ Some notable examples from previous semesters includes:
 ​	The account should have the extension **@login.cuny.edu**, It is **NOT your qmail account.**  
 ​	If the link is not working, use an incognito window and login again.
 
-* [Phase 2] Due Date: 2025/12/22 23:59:00 [Submit on BrightSpace]
+* [Phase 2] Due Date: 2025/05/26 23:59:00 [Submit on BrightSpace: Note :00 seconds BrightSpace does not track seconds]
 
 
 
@@ -89,9 +89,9 @@ Each step increases project complexity, but there is a larger reward for those w
 | Authentication                                               | Maximum Score |
 | ------------------------------------------------------------ | ------------- |
 | Public API                                                   | 0%           |
-| API Key                                                      | 90%           |
+| API Key                                                      | 95%           |
 | OAuth 2.0 Client Credential | 100%          |
-| OAuth 2.0 Authorization Code (Requires asking for Resource Owner's Permission) | 110%          |
+| OAuth 2.0 Authorization Code (Requires asking for Resource Owner's Permission) | 105%         |
 
 This score ceiling is based on the **most difficult** API you choose:
 
@@ -151,7 +151,7 @@ As this is meant to be an independent research project, API's used in current an
 
 - https://dictionaryapi.dev/
 - https://developer.usajobs.gov/ 
-- https://developer.todoist.com/
+- https://docs.github.com/en/rest
 - https://developer.spotify.com/ 
 
 
@@ -188,7 +188,7 @@ First check this list to see which pairing of API's your fellow classmates have 
 
 
 **This document is set to READ ONLY - You will NOT be editing this document**
-<https://cuny907-my.sharepoint.com/:x:/g/personal/raymond_law43_login_cuny_edu/IQB-Lsh8GjpeS6Ipp2aPGUyVAcpJenZu2wDHIIYsdXiK5hY?rtime=41e9nuUw3kg>
+<https://cuny907-my.sharepoint.com/:x:/g/personal/raymond_law43_login_cuny_edu/IQAnpY3p3XbITJa4N5e97MJ5AWllBWIAw-eoQuX6Rq0jfx0?e=ory6DE>
 **This document is set to READ ONLY - You will NOT be editing this document**
 
 
@@ -431,10 +431,10 @@ Submit 3 items via Brightspace under Assignments
 
 ## Due Date
 
-* December 22nd, 2025 23:59:00 PM (note the :00) [BrightSpace Limitation]
+* May 26th, 2025 23:59:00 PM (note the :00) [BrightSpace Limitation]
 
 * The form is scheduled to close automatically at this date and uploading may take a bit of time depending on your connection speed so have it submitted a bit before the deadline.
 
 
 
-[submission-form]: https://forms.cloud.microsoft/r/u7f5VuinxE
+[submission-form]: https://forms.cloud.microsoft/r/D9bua9XLFw
