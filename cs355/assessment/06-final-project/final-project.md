@@ -95,10 +95,10 @@ Each step increases project complexity, but there is a larger reward for those w
 
 This score ceiling is based on the **most difficult** API you choose:
 
-* If you choose to do a mashup between an OAuth 2.0 Authorization Code and a public API you will have a ceiling of 110%.  
+* If you choose to do a mashup between an OAuth 2.0 Authorization Code and a public API you will have a ceiling of 105%.  
 * If you choose two Client Credential APIs you will have a ceiling of 100%.
-* If you choose an API key and a public API your ceiling will be 90%
-* If you choose two APIs that both use API key your ceiling will be 90%
+* If you choose an API key and a public API your ceiling will be 95%
+* If you choose two APIs that both use API key your ceiling will be 95%
 * A project with two public API's will not be accepted.
 
 
@@ -377,6 +377,8 @@ There are no specific requirements, you can use any screen recording software th
 
 * Open Broadcast Software (OBS)
   * https://obsproject.com/
+* Zoom
+* Loom
 * YouTube Live streaming
 
 ### Hosting:
